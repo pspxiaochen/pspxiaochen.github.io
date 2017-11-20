@@ -3,22 +3,6 @@
   
     
     <entry>
-      <title></title>
-      <url>/2017/11/20/2017-11-20-test/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 这只是一个测试<br>date: 2017-11-20 09:12:00<br>categories:</p>
-<ul>
-<li>机器学习<br>tags:</li>
-<li>hexo</li>
-<li>markdown<br>description: 这只是一个测试．</li>
-</ul>
-<p>#测试</p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Hexo博客撰写之：MarkDown语法介绍]]></title>
       <url>/2017/11/18/2017-11-17-test/</url>
       <content type="html"><![CDATA[<p>#前言<br>搭建好了hexo，接下来的就是写博客了， hexo 支持用 markdown 写博客，markdown 语法很简单，本文给出一些基本的 markdown 语法，结合 hexo 教你如何在 hexo 下用 markdown 撰写博客。</p>
