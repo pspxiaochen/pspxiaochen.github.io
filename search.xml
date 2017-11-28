@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title></title>
+      <url>/2017/11/28/2017-11-28-Kurtosis/</url>
+      <content type="html"><![CDATA[<hr>
+<p>title: 峰度（Kurtosis）和偏度（Skewness）<br>date: 2017-11-28 19:12:00<br>categories:</p>
+<ul>
+<li>其他<br>tags:</li>
+<li>峰度</li>
+<li>偏度<br>description: 介绍一下峰度（Kurtosis）和偏度（Skewness）的基本概念</li>
+</ul>
+<p>#峰度（Kurtosis）</p>
+<p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
+<p>#偏度（Skewness）<br>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo博客撰写之：MarkDown语法介绍]]></title>
       <url>/2017/11/18/2017-11-17-test/</url>
       <content type="html"><![CDATA[<p>#前言<br>搭建好了hexo，接下来的就是写博客了， hexo 支持用 markdown 写博客，markdown 语法很简单，本文给出一些基本的 markdown 语法，结合 hexo 教你如何在 hexo 下用 markdown 撰写博客。</p>
@@ -216,9 +234,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -329,9 +347,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
