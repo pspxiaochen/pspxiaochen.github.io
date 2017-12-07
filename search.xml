@@ -3,6 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[Sum of Two Integers（使用位运算实现）]]></title>
+      <url>/2017/12/07/2017-12-07-add/</url>
+      <content type="html"><![CDATA[<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>&emsp;&emsp;两个数的加法分为两步，对应位相加和进位。<br><br><br>&emsp;&emsp;举个简单的例子：997+24<br><img src="http://images2015.cnblogs.com/blog/920491/201607/920491-20160712110859998-340357180.png" alt="此处输入图片的描述"></p>
+<p>  &emsp;&emsp;我们平时计算时是将对应位相加和进位同时计算，其实可以保留下进位，只计算对应位相加，保留进位的位置（值）。接下来，将进位向左移动一位，将上一步的结果与移位后的进位值进行对应位相加，直到没有进位结束。<br>  &emsp;&emsp;对于二进制数的而言，对应位相加就可以使用异或（xor）操作，计算进位就可以使用与（and）操作，在下一步进行对应位相加前，对进位数使用移位操作（&lt;&lt;）。<br>  <br><br>&emsp;&emsp;这样就非常好理解下面的实现代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int getSum(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        int c = a ^ b;</span><br><span class="line">        b = (a &amp; b) &lt;&lt; 1;</span><br><span class="line">        a = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> a;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;最后，再给一个详细的运行过程示意，计算523+1125.（另外，如果是有负数的话，算法也是可行的，可以去看一下补码的相关内容）<br><img src="http://images2015.cnblogs.com/blog/920491/201607/920491-20160712112232779-1674865256.png" alt="此处输入图片的描述"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 刷题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 位运算 </tag>
+            
+            <tag> 异或 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[峰度（Kurtosis）和偏度（Skewness）]]></title>
       <url>/2017/11/28/2017-11-28-Kurtosis/</url>
       <content type="html"><![CDATA[<p>#峰度（Kurtosis）</p>
@@ -239,9 +265,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -352,9 +378,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
