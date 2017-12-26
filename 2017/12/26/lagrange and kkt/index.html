@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SVM," />
 
 
 
@@ -94,17 +94,30 @@
 
 
 
-<meta name="description" content="自我介绍  &amp;emsp;&amp;emsp;&amp;ensp;我是pspxiaochen,也可以叫我发条晨，目前是一名计算机专业在读研究生，喜欢编程，喜欢各类主机，喜欢任天堂，喜欢sony，喜欢电影，追剧。最近也开始喜欢一些文化类节目，锵锵三人行，圆桌派。然后呢，希望通过写博客记录下学习的点点滴滴，记录下自己">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://pspxiaochen.github.io/about/index.html">
+<meta name="description" content="这次想填一个超级大的坑！！！！！">
+<meta name="keywords" content="SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从拉格朗日乘子法再到KKT条件的理解">
+<meta property="og:url" content="https://pspxiaochen.github.io/2017/12/26/lagrange and kkt/index.html">
 <meta property="og:site_name" content="pspxiaochen的博客">
-<meta property="og:description" content="自我介绍  &amp;emsp;&amp;emsp;&amp;ensp;我是pspxiaochen,也可以叫我发条晨，目前是一名计算机专业在读研究生，喜欢编程，喜欢各类主机，喜欢任天堂，喜欢sony，喜欢电影，追剧。最近也开始喜欢一些文化类节目，锵锵三人行，圆桌派。然后呢，希望通过写博客记录下学习的点点滴滴，记录下自己的成长之路……">
+<meta property="og:description" content="这次想填一个超级大的坑！！！！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-20T07:39:44.771Z">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu7qn45b7j20k00akt8o.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu88xe79yj209004yjr6.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu88uoupyj208c060747.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu94wrl0aj207x02k746.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmu94z9hz2j20cw04nwem.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu9qs81wdj20k00a8mxa.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmua4u75oxj20j4039t9u.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmubpsfd0oj20d9072dhm.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubpstwbhj207l033748.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubptawonj20bh03j3yk.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmuhrzcvsbj20dw083weu.jpg">
+<meta property="og:updated_time" content="2017-12-26T13:31:10.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="自我介绍  &amp;emsp;&amp;emsp;&amp;ensp;我是pspxiaochen,也可以叫我发条晨，目前是一名计算机专业在读研究生，喜欢编程，喜欢各类主机，喜欢任天堂，喜欢sony，喜欢电影，追剧。最近也开始喜欢一些文化类节目，锵锵三人行，圆桌派。然后呢，希望通过写博客记录下学习的点点滴滴，记录下自己的成长之路……">
+<meta name="twitter:title" content="从拉格朗日乘子法再到KKT条件的理解">
+<meta name="twitter:description" content="这次想填一个超级大的坑！！！！！">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu7qn45b7j20k00akt8o.jpg">
 
 
 
@@ -133,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.github.io/about/"/>
+  <link rel="canonical" href="https://pspxiaochen.github.io/2017/12/26/lagrange and kkt/"/>
 
 
 
 
 
-  <title>about | pspxiaochen的博客</title>
+  <title>从拉格朗日乘子法再到KKT条件的理解 | pspxiaochen的博客</title>
   
 
 
@@ -289,34 +302,188 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.github.io/2017/12/26/lagrange and kkt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pspxiaochen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pspxiaochen的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><p>  &emsp;&emsp;&ensp;我是pspxiaochen,也可以叫我发条晨，目前是一名计算机专业在读研究生，喜欢编程，喜欢各类主机，喜欢任天堂，喜欢sony，喜欢电影，追剧。最近也开始喜欢一些文化类节目，锵锵三人行，圆桌派。然后呢，希望通过写博客记录下学习的点点滴滴，记录下自己的成长之路……</p>
-
+          <h1 class="post-title" itemprop="name headline">从拉格朗日乘子法再到KKT条件的理解</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T21:27:00+08:00">
+                2017-12-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-26T21:31:10+08:00">
+                2017-12-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  这次想填一个超级大的坑！！！！！
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>&emsp;&emsp;西瓜书看了有一阵子了，终于看到了SVM，遥想研一看SVM的时候。。我操 这是什么。。这又是什么。。论高中数学的重要性的，出来混都是要还的。只好一点一点补齐SVM中用到的各种知识点。今天先扯一扯自己对拉格朗日乘子法和KKT条件的理解，希望这篇文章写完之后，能让我对这2个臭逼玩意能有更好的理解，那么现在开始。</p>
+<h1 id="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"><a href="#我们为什么在SVM中要用到拉格朗日和KKT条件！！！" class="headerlink" title="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"></a>我们为什么在SVM中要用到拉格朗日和KKT条件！！！</h1><p>&emsp;&emsp;因为在SVM中我们要计算一个有约束条件的极值问题，而拉格朗日乘子法和KKT条件是非常重要的两个求取方法。<br><br><br>&emsp;&emsp;对于等式约束的优化问题（就是限制的那个式子是个等式 s.t h(x) = 0 类似这种），可以应用拉格朗日乘子法去求取最优值。<br>&emsp;&emsp;如果含有不等式约束，可以应用KKT条件去求取最优值。<br>&emsp;&emsp;这两种方法求得的结果只是必要条件，只有当是凸函数（二次导数大于0为凸）的情况下，才能保证是充分必要条件。而KKT条件是拉格朗日乘子法的泛化。<br>&emsp;&emsp;下面我就针对这两个玩意，谈一谈我的理解。</p>
+<h1 id="拉格朗日乘子法！！！"><a href="#拉格朗日乘子法！！！" class="headerlink" title="拉格朗日乘子法！！！"></a>拉格朗日乘子法！！！</h1><p>&emsp;&emsp;拉格朗日乘子法在考研的数学二中就用到过，当时只知道要那么用，那么用就能解决条件极值的问题，但是真心不知道为什么，这次先把为什么可以用拉格朗日说一下。<br>&emsp;&emsp;想象一下，目标函数f(x,y)是一座山的高度，约束g(x,y)=C是镶嵌在山上的一条曲线如下图。（渣画技看看就好了）<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu7qn45b7j20k00akt8o.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;你为了找到曲线上的最低点，就从最低的等高线（0那条）开始网上数。数到第三条，等高线终于和曲线有交点了（如上图所示）。因为比这条等高线低的地方都不在约束范围内，所以这肯定是这条约束曲线的最低点了。<br><br><br>&emsp;&emsp;而且约束曲线在这里不可能和等高线相交，一定是相切。因为如果是相交的话，如下图所示，那么曲线一定会有一部分在B区域，但是B区域比等高线低，这是不可能的。假设g(x)与等高线相交，交点就是同时满足等式约束条件和目标函数的可行域的值，但肯定不是最优值，因为相交意味着肯定还存在其它的等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小，只有到等高线与目标函数的曲线相切的时候，可能取得最优值。<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu88xe79yj209004yjr6.jpg" alt="此处输入图片的描述"><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu88uoupyj208c060747.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;两条曲线相切，意味着他们在这点的法线平行，也就是法向量只差一个任意的常数乘子（取为-λ）：<br>&emsp;&emsp;<strong>∇f（x, y) = -λ(∇g(x,y)-C)</strong> 把这个式子的右边移动到左边，就得到<strong>∇（f(x,y)+λ(g(x,y)-C)=0</strong><br>&emsp;&emsp; 在看看这个式子，你又能想起来什么呢？高中数学。。。这个就是<strong>f(x,y)+λ(g(x,y)-C)</strong>没有约束情况下极值点的充分条件吧。。（令其导数等于0，求极值点。。。高中用的就是这个套路。。哎）所以证明了拉格朗日乘子法确实可以解决这类问题，拉格朗日确实牛逼。。高中数学也应该好好学 哎。难受啊。<br>&emsp;&emsp;那拉格朗日乘子法到底是怎么用的呢？简单的再说一下就是 <strong>把等式约束hi(x)用一个系数与f(x)写为一个式子，称为拉格朗日函数，而系数称为拉格朗日乘子。通过拉格朗日函数对各个变量求导，令其为零，可以求得候选值集合，然后验证求得最优值。</strong><br><br></p>
+<h1 id="KKT条件！！！！！"><a href="#KKT条件！！！！！" class="headerlink" title="KKT条件！！！！！"></a>KKT条件！！！！！</h1><p>&emsp;&emsp;我先给出KKT条件：<br>&emsp;&emsp;对于具有等式和不等式约束的一般优化问题：<br>&emsp;&emsp;<img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu94wrl0aj207x02k746.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;KKT条件给出了判断<strong>X*</strong>是否是最优解的必要条件：<br>&emsp;&emsp;<img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmu94z9hz2j20cw04nwem.jpg" alt="此处输入图片的描述"></p>
+<h2 id="不等式约束优化问题"><a href="#不等式约束优化问题" class="headerlink" title="不等式约束优化问题"></a>不等式约束优化问题</h2><p>&emsp;&emsp;我们先给出其主要思想：转化的思想——将不等式约束条件变成等式约束条件.具体做法：<strong>引入松弛变量</strong>.松弛变量也是优化变量，也需要<strong>一视同仁求偏导.</strong><br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu9qs81wdj20k00a8mxa.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;具体来说，我们先看一个一元函数的例子：<br>&emsp;&emsp;&emsp;&emsp;<strong>min f(x)</strong><br>&emsp;&emsp;<strong>s.t. g1(x) = a - x ≤ 0</strong><br>&emsp;&emsp;&emsp;&emsp;<strong>g2(x) = x - b ≤ 0</strong><br>&emsp;&emsp;（注：优化问题中，我们必须求得一个确定的值，因此不妨令所有的不等式均取到等号，即≤的情况.）<br>&emsp;&emsp;对于约束<strong>g1和g2</strong>,我们分别引入两个松弛变量<strong>a₁²和b₁²</strong>,得到<strong>h1(x,a₁) = g1 + a₁² = 0和h2(x,b₁) = g2 + b₁² = 0</strong>,这里直接加上平方项<strong>a₁²和b₁²</strong>而非<strong>a₁和b₁</strong>,是因为<strong>g1和g2</strong>这两个不等式的左边必须加上一个正数（或者0）才能使不等式变成等式。若只加上<strong>a₁和b₁</strong>,又会引入新的约束a₁≥0,b₁≥0.这岂不是很爆炸！！！<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmua4u75oxj20j4039t9u.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;由此我们将不等式约束转化为了等式约束，并得到了拉格朗日函数<br>L（x,a₁,b₁,u₁,u₂) = f(x) + u₁(a - x + a₁²) + u₂(x - b + b₁²)<br>&emsp;&emsp;我们再按照等式约束优化问题对齐求解，联立方程组：<br><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmubpsfd0oj20d9072dhm.jpg" alt="此处输入图片的描述"><br>（注：这里的u₁ ≥ 0,u₂ ≥ 0先承认，等会再解释，实际上对于不等式约束前的乘子，我们要求其大于等于0）<br>得出方程组后，便开始手动解，先看第3行的两个式子 <strong>u₁a₁ = 0 和 u₂b₁ = 0</strong>比较简单，我们就从他们入手。<br>对于<strong>u₁a₁ = 0</strong>,我们有两种情况:<br>情形1: <strong>u₁ = 0,a₁ ≠ 0:</strong><br>此时由于乘子<strong>u₁ = 0</strong>,<strong>因此g1与其相乘为0，可以理解为约束g1不起作用，且有g1(x) = a - x &lt; 0 (因为a₁ ≠ 0 , 所以他的平方一定是大于0的）</strong><br><br><br>情形2：<strong>u₁ ≥ 0 , a₁ = 0</strong><br><strong>此时，g1(x) = a - x = 0 且 u1 &gt; 0 (因为a₁ = 0 为了 a - x + a₁² = 0 ， 所以 a - x必须等于0），可以理解为约束g1起作用了，且有g1(x) = 0</strong></p>
+<p><strong>合并两种情况的：u1g1 = 0 且在约束起作用时,u₁ &gt; 0,g1(x) = 0;约束不起作用时u1 = 0,g1(x) &lt; 0</strong><br><strong>同样的，分析u₂b₁ = 0,可得出约束g2起作用和不起作用的情形，并分析得到u₂g₂ = 0</strong><br>由此，方程组（极值必要条件）转化为：<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubpstwbhj207l033748.jpg" alt="此处输入图片的描述"><br>这是一元一次的情形，类似的，对于多远多次不等式约束问题<br><strong>min f(x)<br>s.t.g_j(x) ≤ 0 ( j = 1,2,````,m)</strong><br>我们有<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubptawonj20bh03j3yk.jpg" alt="此处输入图片的描述"><br>上式便称为不等式约束优化问题的KKT（Karush-Kuhn-Tucker）条件u_j称为KKT乘子，且约束起作用时u_j＞0,g_j(x) = 0;约束不起作用时u_j = 0,g_j(x) &lt; 0.</p>
+<h1 id="总结：同时包含等式和不等式约束的一般优化问题"><a href="#总结：同时包含等式和不等式约束的一般优化问题" class="headerlink" title="总结：同时包含等式和不等式约束的一般优化问题"></a>总结：同时包含等式和不等式约束的一般优化问题</h1><p><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmuhrzcvsbj20dw083weu.jpg" alt="此处输入图片的描述"><br><strong>注意，对于等式约束的Lagrange乘子，并没有非负的要求！以后求其极值点，不必再引入松弛变量，直接使用KKT条件判断！</strong></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/12/2017-12-12-bias-var/" rel="next" title="偏差与方差的总结">
+                <i class="fa fa-chevron-left"></i> 偏差与方差的总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -444,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自我介绍"><span class="nav-number">1.</span> <span class="nav-text">自我介绍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我们为什么在SVM中要用到拉格朗日和KKT条件！！！"><span class="nav-number">1.</span> <span class="nav-text">我们为什么在SVM中要用到拉格朗日和KKT条件！！！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拉格朗日乘子法！！！"><span class="nav-number">2.</span> <span class="nav-text">拉格朗日乘子法！！！</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KKT条件！！！！！"><span class="nav-number">3.</span> <span class="nav-text">KKT条件！！！！！</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式约束优化问题"><span class="nav-number">3.1.</span> <span class="nav-text">不等式约束优化问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结：同时包含等式和不等式约束的一般优化问题"><span class="nav-number">4.</span> <span class="nav-text">总结：同时包含等式和不等式约束的一般优化问题</span></a></li></ol></div>
             
 
           </div>
@@ -580,10 +747,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
