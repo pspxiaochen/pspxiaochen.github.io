@@ -410,9 +410,8 @@
       
 
       
-        <p>#峰度（Kurtosis）</p>
-<p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
-<p>#偏度（Skewness）<br>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
+        <h1 id="峰度（Kurtosis）"><a href="#峰度（Kurtosis）" class="headerlink" title="峰度（Kurtosis）"></a>峰度（Kurtosis）</h1><p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
+<h1 id="偏度（Skewness）"><a href="#偏度（Skewness）" class="headerlink" title="偏度（Skewness）"></a>偏度（Skewness）</h1><p>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
 
       
     </div>
@@ -507,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -583,6 +591,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#峰度（Kurtosis）"><span class="nav-number">1.</span> <span class="nav-text">峰度（Kurtosis）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#偏度（Skewness）"><span class="nav-number">2.</span> <span class="nav-text">偏度（Skewness）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1084,26 +1108,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

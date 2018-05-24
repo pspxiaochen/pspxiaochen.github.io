@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="教程,hexo,node,git," />
+  <meta name="keywords" content="hexo,教程,node,git," />
 
 
 
@@ -95,7 +95,7 @@
 
 
 <meta name="description" content="记录博客搭建过程和感受">
-<meta name="keywords" content="教程,hexo,node,git">
+<meta name="keywords" content="hexo,教程,node,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一篇post：庆祝博客搭建成功">
 <meta property="og:url" content="https://pspxiaochen.github.io/2017/11/17/2017-11-20-first-post/index.html">
@@ -407,8 +407,12 @@
       
 
       
-        <p>&emsp;&emsp;&ensp;我听中文音乐很少，先放一首比较喜欢的中文歌曲… &emsp; 《平凡之路》—朴树</p>
-<center><br><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28815250&auto=0&height=66"></iframe><br><br><br><br></center>
+        <p>&emsp;&emsp;&ensp;我听中文音乐很少，先放一首比较喜欢的中文歌曲… &emsp; 《平凡之路》—-朴树</p>
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28815250&auto=0&height=66"></iframe>
+
+<br>
+</center>
 
 <hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;&ensp;一直想搭建自己的博客，但是一直没实践，只怪自己太懒。这次终于下定决心去实践，不过像我等小白来来回回折腾了好几天，本来想省点事直接在github上小改一下，谁知道老是出问题，一提交就收到Page build failure邮件，头疼的我差点放弃，最后狠下心来在本地安装了jekyll，一边调试一边修改，总算调通了，然后push到github，刷新主页，-_-，404找不到页面！妈呀，搜了好久解决办法，最后按照网上说的bundle update升级到了和github一样的最新版，这次报错了：MethedError：not find methed to_liquid for…想了半天，当前’github-pages’包的最新版是155,我把Gemfile中的’github-pages’改成了’github-pages’, ‘~&gt; 154’，也就是从默认的当前最新版本155降到了154,运行bundel exec jekyll serve，完美通过。。。我就郁闷了，原来这个jekyll-next主题已经不适用最新版的github-pages了。那怎么办呢，直接用hexo+next吧，索性静态页面就静态到底吧。</p>
@@ -515,9 +519,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/教程/" rel="tag"># 教程</a>
-          
             <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
           
             <a href="/tags/node/" rel="tag"># node</a>
           
@@ -1196,26 +1200,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

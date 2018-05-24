@@ -8,7 +8,7 @@
       <content type="html"><![CDATA[<p>&emsp;&emsp;最近不太顺啊，各种碰壁，看来学习确实容不得半点虚假，会就是会，不会就是不会。现在决定再认认真真复习一遍机器学习和数据结构，再来巩固一下自己的知识体系，只希望这次可以别忘的太快。</p>
 <h1 id="我们为什么要使用梯度下降。"><a href="#我们为什么要使用梯度下降。" class="headerlink" title="我们为什么要使用梯度下降。"></a>我们为什么要使用梯度下降。</h1><p>&emsp;&emsp;因为机器学习总的来说是一个优化问题。我们有一个想要优化的函数，比如说损失函数，我们总是希望可以让损失函数变得越来越小。那怎么才能使损失函数变得原来越小呢？损失函数中有一些未知的参数，我们只要不停更新这个参数，就可以让损失函数越来越小。直到损失函数等于0或者不再发生变化为止。所以说梯度下降是用来更新一些未知参数的，而这些参数会使损失函数越来越小。</p>
 <h1 id="梯度下降是怎么来的呢？"><a href="#梯度下降是怎么来的呢？" class="headerlink" title="梯度下降是怎么来的呢？"></a>梯度下降是怎么来的呢？</h1><p>&emsp;&emsp;首先我们来看一元函数的泰勒展开，以便于更好的理解多元函数的泰勒展开。如果一个一元函数n阶可导，它的泰勒展开公式为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1frm73g6o3yj20x602uaac.jpg" alt="泰勒公式"><br>&emsp;&emsp;如果在某一点处的导数值大于0（+），则函数在此处是增函数，加大x的值函数会增加，减小x的值函数会减小。相反的，如果在某一点处导数值小于0（-），则函数是减函数，增加x的值函数值会减小（+），减小x的值函数会增加。因此我们可以得出一个结论：<strong>如果x的变化很小，并且变化值与导数值反号，则函数值下降。</strong>对于一元函数，x的变化只有两个方向，要么朝左，要么朝右。</p>
-<p>&emsp;&emsp;下面我们把这一结论推广到多元函数的情况。多元函数f(x)在x点处的泰勒展开为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1frm7e3gn0zj20mk028t8s.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;这里我们忽略了二次以及更高的项。其中一次项是梯度向量▽f(x)与自变量的增量△X的內积，这等价于一元函数的一次项f’(X0)(X-X0)。这样，函数的增量与自变量的增量△X、函数梯度的关系可以表示为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1frm7r65pc0j20mu02iq31.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;如果△X足够小，在X的某一领域内，则我们可以忽略二次及以上的项，有：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1frm7taxkn3j20mi02ejrf.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;这里的情况比较复杂，△X是一个向量，有无穷多种方向，该往哪个方向走呢？如果能保证上面约等式的右边恒小于0，则有：<strong>f(x+△x) &lt; f(x)</strong>，即函数值递减，这就是下山的正确方向。如果这句话还不能理解，我们可以再换一种方式理解。假如x是我们想要更新的参数,f(x)是我们刚开始需要优化的损失函数,我们很希望可以让f(x)越来越小，那怎么才能够让其越来越小呢。就如我一开始说的那样我们要不停的更新里面的参数,而x就是我们要更新的那个参数。用数学表达式就是<strong>min(f(x+△x)）</strong>，如果<strong>f(x+△x) &lt; f(x)</strong>恒成立，那就是说，我们的优化函数一直再减小，那么可以理解为一定会找到一个完美的结果，是不是想想就有点小开心呢，但是往往不会有那么好的事情的，就和人生一样。<br>&emsp;&emsp;再接上面，那我们怎么样才能保证约等式的右边恒小于0呢，因为有：<br>&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1frm8akufs2j20mw02adfv.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;在这里，||·||表示向量的模，θ是向量▽f(x)和△x的夹角。因为向量的模一定大于等于0，所以说如果cosθ &lt;= 0,则能保证约等式的右边恒小于0。也就是选择合适的增量△x，就能保证函数数值下降，要达到这种效果，只要保证梯度和△x的夹角的余弦值小于等于0就行。由于cosθ &gt;= -1，当θ = π时，cosθ有极小值-1，此时梯度和△x反向，夹角为180度，因此当向量△X的模大小一定时，当：△X = - ▽f(x),也就是在梯度相反的方向函数值下降最快。此时有cosθ = -1。<strong>重点来了：那我们为什么要让△X = - ▽f(x)呢，让它等于别的不可以吗？这一块我考虑了好半天，最后我只能这么解释一下。如果我们想让约等式的右边小于等于0恒成立，怎么办！！怎么样才能保证最靠谱呢？那我不如让△X = - ▽f(x)算了，一个平方的值带负号是一定小于等于0的。这也太靠谱了吧！！我觉得这么取得意义就在这里，仅此而已。</strong><br>&emsp;&emsp;也就是说只要梯度不为0，往梯度的反方向走函数值一定是下降的。直接用△X = - ▽f(x)可能会有问题，因为x+△x可能会超出x的领域范围之外，此时是不能忽略泰勒展开中的二次及以上的项的，因此步伐不能太大，一般设△x = -α▽f(x)。其中α为一个接近于0的正数，称为步长，由人工设定。<br>&emsp;&emsp;从初始点X_0开始，使用此迭代公式：X_k+1 = X_k - α▽f(x).<br>&emsp;&emsp;只要没有到达梯度为0的点，则函数值会沿着序列X<em>k递减，最终会收敛到梯度为0的点，这就是梯度下降法。迭代终止的条件是函数的梯度值为0（实际是接近于0），此时认为已经达到了极值点。注意我们找到的是梯度为0的点，这不一定就是极值点。梯度下降法只需要计算函数在某些点处的梯度，实现简单，计算量小。<br>&emsp;&emsp;再写一套比较直观的公式推导，看完有点原来如此，so easy的感觉~~<br>&emsp;&emsp;$f(x\</em>{k+1}) = f(x_k + x_{k+1} - f_x) = f(x_k) + ▽f(x_k)(x_{k+1} - x_k)$<br>&emsp;&emsp;$▽f(x_k)$即为函数f在$x<em>k$处的梯度。<br>&emsp;&emsp;为了使$f(x\</em>{k+1}) &lt; f(x_k)$,则需要$▽f(x_k)(x_{k+1} - x_k)&lt;0$<br>&emsp;&emsp;则只需要使$x_{k+1}=x_k - \gamma▽f(x_k)$即可。<br>&emsp;&emsp;上式便是梯度下降的迭代公式，其中$\gamma$为学习速率。这样看是不是很清楚了呢。。。</p>
+<p>&emsp;&emsp;下面我们把这一结论推广到多元函数的情况。多元函数f(x)在x点处的泰勒展开为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1frm7e3gn0zj20mk028t8s.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;这里我们忽略了二次以及更高的项。其中一次项是梯度向量▽f(x)与自变量的增量△X的內积，这等价于一元函数的一次项f’(X0)(X-X0)。这样，函数的增量与自变量的增量△X、函数梯度的关系可以表示为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1frm7r65pc0j20mu02iq31.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;如果△X足够小，在X的某一领域内，则我们可以忽略二次及以上的项，有：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1frm7taxkn3j20mi02ejrf.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;这里的情况比较复杂，△X是一个向量，有无穷多种方向，该往哪个方向走呢？如果能保证上面约等式的右边恒小于0，则有：<strong>f(x+△x) &lt; f(x)</strong>，即函数值递减，这就是下山的正确方向。如果这句话还不能理解，我们可以再换一种方式理解。假如x是我们想要更新的参数,f(x)是我们刚开始需要优化的损失函数,我们很希望可以让f(x)越来越小，那怎么才能够让其越来越小呢。就如我一开始说的那样我们要不停的更新里面的参数,而x就是我们要更新的那个参数。用数学表达式就是<strong>min(f(x+△x)）</strong>，如果<strong>f(x+△x) &lt; f(x)</strong>恒成立，那就是说，我们的优化函数一直再减小，那么可以理解为一定会找到一个完美的结果，是不是想想就有点小开心呢，但是往往不会有那么好的事情的，就和人生一样。<br>&emsp;&emsp;再接上面，那我们怎么样才能保证约等式的右边恒小于0呢，因为有：<br>&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1frm8akufs2j20mw02adfv.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;在这里，||·||表示向量的模，θ是向量▽f(x)和△x的夹角。因为向量的模一定大于等于0，所以说如果cosθ &lt;= 0,则能保证约等式的右边恒小于0。也就是选择合适的增量△x，就能保证函数数值下降，要达到这种效果，只要保证梯度和△x的夹角的余弦值小于等于0就行。由于cosθ &gt;= -1，当θ = π时，cosθ有极小值-1，此时梯度和△x反向，夹角为180度，因此当向量△X的模大小一定时，当：△X = - ▽f(x),也就是在梯度相反的方向函数值下降最快。此时有cosθ = -1。<strong>重点来了：那我们为什么要让△X = - ▽f(x)呢，让它等于别的不可以吗？这一块我考虑了好半天，最后我只能这么解释一下。如果我们想让约等式的右边小于等于0恒成立，怎么办！！怎么样才能保证最靠谱呢？那我不如让△X = - ▽f(x)算了，一个平方的值带负号是一定小于等于0的。这也太靠谱了吧！！我觉得这么取得意义就在这里，仅此而已。</strong><br>&emsp;&emsp;也就是说只要梯度不为0，往梯度的反方向走函数值一定是下降的。直接用△X = - ▽f(x)可能会有问题，因为x+△x可能会超出x的领域范围之外，此时是不能忽略泰勒展开中的二次及以上的项的，因此步伐不能太大，一般设△x = -α▽f(x)。其中α为一个接近于0的正数，称为步长，由人工设定。<br>&emsp;&emsp;从初始点X_0开始，使用此迭代公式：X_k+1 = X_k - α▽f(x).<br>&emsp;&emsp;只要没有到达梯度为0的点，则函数值会沿着序列X_k递减，最终会收敛到梯度为0的点，这就是梯度下降法。迭代终止的条件是函数的梯度值为0（实际是接近于0），此时认为已经达到了极值点。注意我们找到的是梯度为0的点，这不一定就是极值点。梯度下降法只需要计算函数在某些点处的梯度，实现简单，计算量小。<br>&emsp;&emsp;再写一套比较直观的公式推导，看完有点原来如此，so easy的感觉~~<br>&emsp;&emsp;$f(x_{k+1}) = f(x_k + x_{k+1} - f_x) = f(x_k) + ▽f(x_k)(x_{k+1} - x_k)$<br>&emsp;&emsp;$▽f(x_k)$即为函数f在$x_k$处的梯度。<br>&emsp;&emsp;为了使$f(x_{k+1}) &lt; f(x_k)$,则需要$▽f(x_k)(x_{k+1} - x_k)&lt;0$<br>&emsp;&emsp;则只需要使$x_{k+1}=x_k - \gamma▽f(x_k)$即可。<br>&emsp;&emsp;上式便是梯度下降的迭代公式，其中$\gamma$为学习速率。这样看是不是很清楚了呢。。。</p>
 ]]></content>
       
         <categories>
@@ -107,9 +107,8 @@
     <entry>
       <title><![CDATA[峰度（Kurtosis）和偏度（Skewness）]]></title>
       <url>/2017/11/28/2017-11-28-Kurtosis/</url>
-      <content type="html"><![CDATA[<p>#峰度（Kurtosis）</p>
-<p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
-<p>#偏度（Skewness）<br>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
+      <content type="html"><![CDATA[<h1 id="峰度（Kurtosis）"><a href="#峰度（Kurtosis）" class="headerlink" title="峰度（Kurtosis）"></a>峰度（Kurtosis）</h1><p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
+<h1 id="偏度（Skewness）"><a href="#偏度（Skewness）" class="headerlink" title="偏度（Skewness）"></a>偏度（Skewness）</h1><p>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
 ]]></content>
       
         <categories>
@@ -130,14 +129,15 @@
     <entry>
       <title><![CDATA[Hexo博客撰写之：MarkDown语法介绍]]></title>
       <url>/2017/11/18/2017-11-17-test/</url>
-      <content type="html"><![CDATA[<p>#前言<br>搭建好了hexo，接下来的就是写博客了， hexo 支持用 markdown 写博客，markdown 语法很简单，本文给出一些基本的 markdown 语法，结合 hexo 教你如何在 hexo 下用 markdown 撰写博客。</p>
-<p>#hexo博客头部<br>    hexo 博客的 markdown 头部有固定的格式，如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客撰写之：MarkDown语法介绍</span><br><span class="line">date: 2017-11-17 09:12:00</span><br><span class="line">categories:</span><br><span class="line">  - 其他</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - markdown</span><br><span class="line">description: 本文介绍如何在hexo搭建的博客下用markdown写文章,以及一些markdown的基本语法．</span><br><span class="line">photos:</span><br><span class="line">  - https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=62597ff6ba51f819e5280b18bbdd2188/908fa0ec08fa513d7ddc9503376d55fbb3fbd9fd.jpg</span><br></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建好了hexo，接下来的就是写博客了， hexo 支持用 markdown 写博客，markdown 语法很简单，本文给出一些基本的 markdown 语法，结合 hexo 教你如何在 hexo 下用 markdown 撰写博客。</p>
+<h1 id="hexo博客头部"><a href="#hexo博客头部" class="headerlink" title="hexo博客头部"></a>hexo博客头部</h1><pre><code>hexo 博客的 markdown 头部有固定的格式，如下所示：
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客撰写之：MarkDown语法介绍</span><br><span class="line">date: 2017-11-17 09:12:00</span><br><span class="line">categories:</span><br><span class="line">  - 其他</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - markdown</span><br><span class="line">description: 本文介绍如何在hexo搭建的博客下用markdown写文章,以及一些markdown的基本语法．</span><br><span class="line">photos:</span><br><span class="line">  - https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=62597ff6ba51f819e5280b18bbdd2188/908fa0ec08fa513d7ddc9503376d55fbb3fbd9fd.jpg</span><br></pre></td></tr></table></figure>
 <p>顾名思义，我们很容易看懂这个头部信息．<br>我们写新博客的时候只需要复制这些内容，然后对相应的内容进行修改，但不要修改格式．</p>
-<p>#hexo博客正文<br>    hexo 博客正文就是正常的 markdown 了，下面就介绍一些基本的 markdown 语法．</p>
-<p>##基本的markdown语法</p>
-<ul>
+<h1 id="hexo博客正文"><a href="#hexo博客正文" class="headerlink" title="hexo博客正文"></a>hexo博客正文</h1><pre><code>hexo 博客正文就是正常的 markdown 了，下面就介绍一些基本的 markdown 语法．
+</code></pre><h2 id="基本的markdown语法"><a href="#基本的markdown语法" class="headerlink" title="基本的markdown语法"></a>基本的markdown语法</h2><ul>
 <li>标题<br>通过在行首插入 1 到 6 个 # ，来定义 1 到 6 阶 标题：</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -160,11 +160,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><p>段落和换行</p>
 <p>  在 Markdown 中段落由一行或者多行文本组成，相邻的两行文字会被视为同一段落，如果存在空行则被视为不同段落( Markdown 对空行的定义是看起来是空行就是空行，即使空行中存在 空格 TAB 回车 等不可见字符，同样会被视为空行)。</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -187,6 +189,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><p>缩进</p>
 <p>输入法中文全角状态下输入两个空格即可实现缩进．输入两个<code>&amp;emsp;</code>或<code>&amp;ensp;</code>也可以实现空格缩进．</p>
@@ -194,6 +197,7 @@
 <li><p>强调</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -220,9 +224,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>连接和图片</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -241,21 +247,23 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>音频和视频<br>可以直接使用html的 <audio> 和　<video> 标签嵌入　音频　和　视频．比如以下视频标签：<br><br><br>Markdown:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;center&gt;</span><br><span class="line"> &lt;video width=320 height=200      src=<span class="string">'http://tb-video.bdstatic.com/tieba-smallvideo/32_054ab95c5e7edd7a22c913fd1d1d8a5c.mp4'</span>  controls=<span class="string">'controls'</span> &gt; </span><br><span class="line"> 您的浏览器不支持 video 标签。 </span><br><span class="line">&lt;/video&gt;</span><br><span class="line">&lt;/center&gt;</span><br></pre></td></tr></table></figure>
 </video></audio></li>
 </ul>
 <ul>
 <li><p>列表</p>
-<pre><code>无序列表用 - 引领列表内容，
-有序列表用　数字　引领列表内容，
-需要指出的是：有序列表的数字即便不按照顺序排列，结果仍是有序的。
+<pre><code> 无序列表用 - 引领列表内容，
+ 有序列表用　数字　引领列表内容，
+ 需要指出的是：有序列表的数字即便不按照顺序排列，结果仍是有序的。
 </code></pre></li>
 </ul>
 <ul>
-<li>下划线和特殊符号<pre><code>由于 Markdown 使用一些特殊符号进行标记，当我们想要在文档中使用这些特殊符号并防止被 Markdown 转换的时候，可以使用 \ (转义符) 将这些特殊符号进行转义。
+<li>下划线和特殊符号<pre><code> 由于 Markdown 使用一些特殊符号进行标记，当我们想要在文档中使用这些特殊符号并防止被 Markdown 转换的时候，可以使用 \ (转义符) 将这些特殊符号进行转义。
 </code></pre></li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -265,8 +273,8 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">在一行中用三个以上的减号来建立一个分隔线<br>—</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">在一行中用三个以上的减号来建立一个分隔线<br>—-</td>
+<td style="text-align:center">—-</td>
 </tr>
 <tr>
 <td style="text-align:center">可以利用反斜杠(转义字符)来插入一些在语法中有特殊意义的符号<br><code>\*Hi\*</code></td>
@@ -274,11 +282,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li><p>代码</p>
 <p>1 行内代码<br>&emsp;行内代码可以使用反引号来标记(反引号一般位于键盘左上角，要用英文．</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -297,13 +307,15 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>2 多行代码<br>&emsp;多行代码使用 3 个反引号来标记(反引号一般位于键盘左上角，要用英文) ，在第一个 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Markdown:</span><br><span class="line">``` javascript</span><br><span class="line">    ```javascript</span><br><span class="line">    // 我是注释</span><br><span class="line">    var a = 5 ;</span><br><span class="line">    console.log(a)</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">预览：</span><br><span class="line">```javascript</span><br><span class="line">// 我是注释</span><br><span class="line">var a = 5 ;</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>表格<br><strong>Markdown:</strong></li>
 </ul>
-<p>| 默认 | 靠右 | 居中 | 靠左 |<br>| —- | —: | :–: | :— |<br>| 内容 | 内容 | 内容 | 内容 |<br>| 内容 | 内容 | 条目 | 内容 |</p>
+<p>| 默认 | 靠右 | 居中 | 靠左 |<br>| —— | —-: | :—: | :—- |<br>| 内容 | 内容 | 内容 | 内容 |<br>| 内容 | 内容 | 条目 | 内容 |</p>
 <p><strong>预览</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -328,6 +340,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <hr>
 <p>OK先到这里,基本语法就是这样，以后如果学到新的好用语法了，我会继续推送的^_^</p>
 ]]></content>
@@ -341,9 +354,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -352,8 +365,12 @@
     <entry>
       <title><![CDATA[第一篇post：庆祝博客搭建成功]]></title>
       <url>/2017/11/17/2017-11-20-first-post/</url>
-      <content type="html"><![CDATA[<p>&emsp;&emsp;&ensp;我听中文音乐很少，先放一首比较喜欢的中文歌曲… &emsp; 《平凡之路》—朴树</p>
-<center><br><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28815250&auto=0&height=66"></iframe><br><br><br><br></center>
+      <content type="html"><![CDATA[<p>&emsp;&emsp;&ensp;我听中文音乐很少，先放一首比较喜欢的中文歌曲… &emsp; 《平凡之路》—-朴树</p>
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28815250&auto=0&height=66"></iframe>
+
+<br>
+</center>
 
 <hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;&ensp;一直想搭建自己的博客，但是一直没实践，只怪自己太懒。这次终于下定决心去实践，不过像我等小白来来回回折腾了好几天，本来想省点事直接在github上小改一下，谁知道老是出问题，一提交就收到Page build failure邮件，头疼的我差点放弃，最后狠下心来在本地安装了jekyll，一边调试一边修改，总算调通了，然后push到github，刷新主页，-_-，404找不到页面！妈呀，搜了好久解决办法，最后按照网上说的bundle update升级到了和github一样的最新版，这次报错了：MethedError：not find methed to_liquid for…想了半天，当前’github-pages’包的最新版是155,我把Gemfile中的’github-pages’改成了’github-pages’, ‘~&gt; 154’，也就是从默认的当前最新版本155降到了154,运行bundel exec jekyll serve，完美通过。。。我就郁闷了，原来这个jekyll-next主题已经不适用最新版的github-pages了。那怎么办呢，直接用hexo+next吧，索性静态页面就静态到底吧。</p>
@@ -454,9 +471,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
