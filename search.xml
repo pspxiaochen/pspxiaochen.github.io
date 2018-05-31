@@ -3,15 +3,9 @@
   
     
     <entry>
-      <title></title>
-      <url>/2018/05/31/bys/</url>
-      <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=" "></a><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script></h2><p>title: 朴素贝叶斯之了断心结。<br>date: 2018-05-30 21:27:00<br>categories:</p>
-<ul>
-<li>机器学习<br>tags:</li>
-<li>贝叶斯<br>description: 今天就要和围绕我两年之久的心结做个了断！！！！</li>
-</ul>
-<hr>
-<p>&emsp;&emsp; 为什么说贝叶斯一直是我的心结呢。这说来就话长了，当初考研时，想都没想就选择了相对简单的专硕（现在看来其实也并不简单），而我们学习的专硕是不考概率论的，所以基本上我的概率论体系还停留在高中阶段。那你又要问了，难道一个计算机科班出身的，本科就没学过概率论么，说到这里我就想起来我的概率论老师上课操着一口湖南口音，声音很小，150个人的大教室，而我在最后一排和舍友疯狂的搓着3DS，咳咳。说远了。今天我一定用最通俗理解的方法把朴素贝叶斯里的每一个知识点都梳理一遍，算是对自己有一个交代。</p>
+      <title><![CDATA[朴素贝叶斯之了断心结。]]></title>
+      <url>/2018/05/30/bys/</url>
+      <content type="html"><![CDATA[<p>&emsp;&emsp; 为什么说贝叶斯一直是我的心结呢。这说来就话长了，当初考研时，想都没想就选择了相对简单的专硕（现在看来其实也并不简单），而我们学习的专硕是不考概率论的，所以基本上我的概率论体系还停留在高中阶段。那你又要问了，难道一个计算机科班出身的，本科就没学过概率论么，说到这里我就想起来我的概率论老师上课操着一口湖南口音，声音很小，150个人的大教室，而我在最后一排和舍友疯狂的搓着3DS，咳咳。说远了。今天我一定用最通俗理解的方法把朴素贝叶斯里的每一个知识点都梳理一遍，算是对自己有一个交代。</p>
 <h1 id="如果没什么概率论基础的话先推荐一篇文章"><a href="#如果没什么概率论基础的话先推荐一篇文章" class="headerlink" title="如果没什么概率论基础的话先推荐一篇文章"></a>如果没什么概率论基础的话先推荐一篇文章</h1><p><a href="https://www.jianshu.com/p/b570b1ba92bb" target="_blank" rel="noopener">应该如何理解概率分布函数和概率密度函数？</a></p>
 <h1 id="生成式模型和判别式模型。"><a href="#生成式模型和判别式模型。" class="headerlink" title="生成式模型和判别式模型。"></a>生成式模型和判别式模型。</h1><p>&emsp;&emsp;在讲贝叶斯之前我觉得我有理由先说一下什么是生成式模型而什么是判别式模型。在《统计学习方法》书中明确写道：<strong>监督学习方法又可以分为生成方法和判别方法，所学到的模型分别称为生成模型和判别模型。</strong></p>
 <h2 id="生成式模型："><a href="#生成式模型：" class="headerlink" title="生成式模型："></a>生成式模型：</h2><p>&emsp;&emsp;生成方法由数据学习联合概率分布P(X,Y),然后求出条件概率分布P（Y|X）作为预测模型，即生成模型 P（Y|X）= P(X,Y) / P(X),这样的方法之所以称为生成方法，是因为模型表示了给定输入X产生输出Y的生成关系。我们今天的主角朴素贝叶斯就是生成模型，常见的还有隐马尔科夫模型。<br>&emsp;&emsp;生成方法的特点：生成方法可以还原出联合概率分布P（X,Y），而判别方法则不能。生成方法的学习收敛速度更快，即当样本容量增加的时候，学到的模型可以更快的收敛于真实模型。</p>
@@ -36,6 +30,18 @@
 <p>最后在推荐2篇文章，里面写的十分详细。<br><a href="http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/" target="_blank" rel="noopener">数学之美番外篇：平凡而又神奇的贝叶斯方法</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_one.html" target="_blank" rel="noopener">贝叶斯推断及其互联网应用（一）：定理简介</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 贝叶斯 </tag>
+            
+        </tags>
         
     </entry>
     
@@ -391,9 +397,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -508,9 +514,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
