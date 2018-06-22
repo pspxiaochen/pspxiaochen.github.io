@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="KNN," />
 
 
 
@@ -95,17 +95,18 @@
 
 
 
-<meta name="description" content="title: K近邻法(KNN)之不再遗忘。date: 2018-06-22 21:27:00categories:  机器学习tags: KNNdescription: 今天开始整理！   K近邻算法的基本&amp;emsp;&amp;emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分">
+<meta name="description" content="今天开始整理！">
+<meta name="keywords" content="KNN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="发条晨的博客">
+<meta property="og:title" content="K近邻法(KNN)之不再遗忘。">
 <meta property="og:url" content="https://pspxiaochen.github.io/2018/06/22/KNN/index.html">
 <meta property="og:site_name" content="发条晨的博客">
-<meta property="og:description" content="title: K近邻法(KNN)之不再遗忘。date: 2018-06-22 21:27:00categories:  机器学习tags: KNNdescription: 今天开始整理！   K近邻算法的基本&amp;emsp;&amp;emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中">
+<meta property="og:description" content="今天开始整理！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-22T10:05:47.498Z">
+<meta property="og:updated_time" content="2018-06-22T11:11:51.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="发条晨的博客">
-<meta name="twitter:description" content="title: K近邻法(KNN)之不再遗忘。date: 2018-06-22 21:27:00categories:  机器学习tags: KNNdescription: 今天开始整理！   K近邻算法的基本&amp;emsp;&amp;emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中">
+<meta name="twitter:title" content="K近邻法(KNN)之不再遗忘。">
+<meta name="twitter:description" content="今天开始整理！">
 
 
 
@@ -140,7 +141,7 @@
 
 
 
-  <title> | 发条晨的博客</title>
+  <title>K近邻法(KNN)之不再遗忘。 | 发条晨的博客</title>
   
 
 
@@ -319,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">K近邻法(KNN)之不再遗忘。</h1>
         
 
         <div class="post-meta">
@@ -331,7 +332,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T18:05:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T21:27:00+08:00">
                 2018-06-22
               </time>
             
@@ -347,13 +348,35 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-22T18:05:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-22T19:11:51+08:00">
                 2018-06-22
               </time>
             
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -366,6 +389,10 @@
 
           
 
+          
+              <div class="post-description">
+                  今天开始整理！
+              </div>
           
 
         </div>
@@ -381,13 +408,7 @@
       
 
       
-        <h2 id=""><a href="#" class="headerlink" title=" "></a><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script></h2><p>title: K近邻法(KNN)之不再遗忘。<br>date: 2018-06-22 21:27:00<br>categories:</p>
-<ul>
-<li>机器学习<br>tags:</li>
-<li>KNN<br>description: 今天开始整理！</li>
-</ul>
-<hr>
-<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
+        <h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
 <h2 id="基本过程："><a href="#基本过程：" class="headerlink" title="基本过程："></a>基本过程：</h2><p>&emsp;&emsp; 输入：训练数据集T和实例特征向量x.<br>&emsp;&emsp; 输出：实例x所属的类y.<br>&emsp;&emsp; 过程：（1）根据给定的距离度量，在训练集T中找到与x最近的k个点，涵盖着k个点的集合记作N。<br>&emsp;&emsp;&emsp;&emsp; &emsp;（2）在N中根据分类决策规则决定x的类别y,比如可以将N中类别最多的类别就定义为x的类别。</p>
 <h2 id="特殊情况："><a href="#特殊情况：" class="headerlink" title="特殊情况："></a>特殊情况：</h2><p>&emsp;&emsp; 当k = 1的情形，称为最近邻算法。对于输入的实例点x，他的分类结果就是距离他最近的训练数据中的点。<br>&emsp;&emsp; 可以看出k近邻算法没有显式的学习过程。</p>
 <h1 id="K近邻模型的三个基本要素"><a href="#K近邻模型的三个基本要素" class="headerlink" title="K近邻模型的三个基本要素"></a>K近邻模型的三个基本要素</h1><p><strong>三个基本要素分别是：距离度量、K值的选择、分类决策规则。</strong></p>
@@ -419,6 +440,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/KNN/" rel="tag"># KNN</a>
+          
+        </div>
       
 
       
@@ -536,7 +563,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -584,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K近邻算法的基本"><span class="nav-number"></span> <span class="nav-text">K近邻算法的基本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本过程："><span class="nav-number">1.</span> <span class="nav-text">基本过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊情况："><span class="nav-number">2.</span> <span class="nav-text">特殊情况：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K近邻模型的三个基本要素"><span class="nav-number"></span> <span class="nav-text">K近邻模型的三个基本要素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#距离度量："><span class="nav-number">1.</span> <span class="nav-text">距离度量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K值的选择："><span class="nav-number">2.</span> <span class="nav-text">K值的选择：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策规则"><span class="nav-number">3.</span> <span class="nav-text">分类决策规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KNN的优缺点"><span class="nav-number"></span> <span class="nav-text">KNN的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点："><span class="nav-number">2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪代码"><span class="nav-number"></span> <span class="nav-text">伪代码</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#K近邻算法的基本"><span class="nav-number">1.</span> <span class="nav-text">K近邻算法的基本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本过程："><span class="nav-number">1.1.</span> <span class="nav-text">基本过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊情况："><span class="nav-number">1.2.</span> <span class="nav-text">特殊情况：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K近邻模型的三个基本要素"><span class="nav-number">2.</span> <span class="nav-text">K近邻模型的三个基本要素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#距离度量："><span class="nav-number">2.1.</span> <span class="nav-text">距离度量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K值的选择："><span class="nav-number">2.2.</span> <span class="nav-text">K值的选择：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类决策规则"><span class="nav-number">2.3.</span> <span class="nav-text">分类决策规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KNN的优缺点"><span class="nav-number">3.</span> <span class="nav-text">KNN的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点："><span class="nav-number">3.2.</span> <span class="nav-text">缺点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪代码"><span class="nav-number">4.</span> <span class="nav-text">伪代码</span></a></li></ol></div>
             
 
           </div>
@@ -1091,6 +1118,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

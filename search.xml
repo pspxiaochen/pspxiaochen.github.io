@@ -3,15 +3,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[K近邻法(KNN)之不再遗忘。]]></title>
       <url>/2018/06/22/KNN/</url>
-      <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=" "></a><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script></h2><p>title: K近邻法(KNN)之不再遗忘。<br>date: 2018-06-22 21:27:00<br>categories:</p>
-<ul>
-<li>机器学习<br>tags:</li>
-<li>KNN<br>description: 今天开始整理！</li>
-</ul>
-<hr>
-<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
+      <content type="html"><![CDATA[<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
 <h2 id="基本过程："><a href="#基本过程：" class="headerlink" title="基本过程："></a>基本过程：</h2><p>&emsp;&emsp; 输入：训练数据集T和实例特征向量x.<br>&emsp;&emsp; 输出：实例x所属的类y.<br>&emsp;&emsp; 过程：（1）根据给定的距离度量，在训练集T中找到与x最近的k个点，涵盖着k个点的集合记作N。<br>&emsp;&emsp;&emsp;&emsp; &emsp;（2）在N中根据分类决策规则决定x的类别y,比如可以将N中类别最多的类别就定义为x的类别。</p>
 <h2 id="特殊情况："><a href="#特殊情况：" class="headerlink" title="特殊情况："></a>特殊情况：</h2><p>&emsp;&emsp; 当k = 1的情形，称为最近邻算法。对于输入的实例点x，他的分类结果就是距离他最近的训练数据中的点。<br>&emsp;&emsp; 可以看出k近邻算法没有显式的学习过程。</p>
 <h1 id="K近邻模型的三个基本要素"><a href="#K近邻模型的三个基本要素" class="headerlink" title="K近邻模型的三个基本要素"></a>K近邻模型的三个基本要素</h1><p><strong>三个基本要素分别是：距离度量、K值的选择、分类决策规则。</strong></p>
@@ -31,6 +25,18 @@
 </ol>
 ]]></content>
       
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> KNN </tag>
+            
+        </tags>
         
     </entry>
     
