@@ -3,6 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[该死的牛客网输入。]]></title>
+      <url>/2018/06/23/code_input/</url>
+      <content type="html"><![CDATA[<h1 id="Python各种输入的方法。"><a href="#Python各种输入的方法。" class="headerlink" title="Python各种输入的方法。"></a>Python各种输入的方法。</h1><h2 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h2><p>&emsp;&emsp;<br>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">7 15 9 5</span><br></pre></td></tr></table></figure></p>
+<p>可以看到 第一行的输入的数是第二行输入数字的个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">line = sys.stdin.readline()</span><br><span class="line">n = int(line) <span class="comment">#读进来的都是str类型，需要转换成int类型</span></span><br><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br></pre></td></tr></table></figure></p>
+<p>在这里我们主要看一下第4行代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line"><span class="comment">#这一行的输出是[7,15,9,5]</span></span><br><span class="line"><span class="comment">#我们现在把他拆解一下，如果写成这样</span></span><br><span class="line">nums = sys.stdin.readline().split()</span><br><span class="line"><span class="comment">#现在这一行的输出变成了['7','15','9','5'],和之前的区别是现在list里每一个元素都是一个字符。</span></span><br><span class="line"><span class="comment">#如果再改成这样</span></span><br><span class="line">nums = sys.stdin.readline()</span><br><span class="line"><span class="comment">#现在的输出就变成了7 15 9 5，注意这是一个str，比如nums[3]，就会输出5，当然5也是一个字符。</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h2><p>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 4</span><br><span class="line">3332</span><br><span class="line">3233</span><br><span class="line">3332</span><br><span class="line">2323</span><br></pre></td></tr></table></figure></p>
+<p>可以看到第一行的第一个4控制接下来输入的行数，第一行的第二个4控制接下来每一行的输入的元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">m, n = [int(x) <span class="keyword">for</span> x <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line">nums = [[int(x) <span class="keyword">for</span> x <span class="keyword">in</span> sys.stdin.readline().strip()] <span class="keyword">for</span> i <span class="keyword">in</span> range(m)]</span><br><span class="line"><span class="comment">#重点看一下第3行的代码,相当于用了2层for循环</span></span><br><span class="line"><span class="comment">#外循环是运行m次int(x) for x in sys.stdin.readline().strip()，内循环是将每一行输入进来的str转换成int类型</span></span><br><span class="line"><span class="comment">#这一行将来的输出是一个二维数组</span></span><br><span class="line">[[3, 3, 3, 2], [3, 2, 3, 3],[3, 3, 3, 2],[2, 3, 2, 3]]</span><br></pre></td></tr></table></figure></p>
+<p>目前还没看到别的不同的例子，如果今后碰到再补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> code </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 笔试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[K近邻法(KNN)之不再遗忘。]]></title>
       <url>/2018/06/22/KNN/</url>
       <content type="html"><![CDATA[<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
@@ -435,9 +461,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -552,9 +578,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
