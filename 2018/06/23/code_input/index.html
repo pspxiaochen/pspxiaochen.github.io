@@ -23,17 +23,6 @@
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
   <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-  <script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-  </script>
-
 
 
 
@@ -107,7 +96,16 @@
 
 
 
-
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 <meta name="description" content="之前一直刷的是leetcode，前几天做了XX服的笔试题，我的天，第一道编程题的输入都让我弄了好久，难受。这次我总结一下Python的输入，以备将来笔试用。">
 <meta name="keywords" content="笔试">
 <meta property="og:type" content="article">
