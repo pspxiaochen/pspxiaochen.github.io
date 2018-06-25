@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="偏差,方差," />
+  <meta name="keywords" content="测试," />
 
 
 
@@ -96,21 +96,18 @@
 
 
 
-<meta name="description" content="自己对偏差或者方差的一些理解。">
-<meta name="keywords" content="偏差,方差">
+<meta name="description" content="这是一个天大的秘密！！！">
+<meta name="keywords" content="测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="偏差与方差的总结">
-<meta property="og:url" content="https://pspxiaochen.github.io/2017/12/12/2017-12-12-bias-var/index.html">
+<meta property="og:title" content="这是一个天大的秘密！！！">
+<meta property="og:url" content="https://pspxiaochen.github.io/2018/06/23/bigs/index.html">
 <meta property="og:site_name" content="发条晨">
-<meta property="og:description" content="自己对偏差或者方差的一些理解。">
+<meta property="og:description" content="这是一个天大的秘密！！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg">
-<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmtztpugfsj20fe0blq9x.jpg">
-<meta property="og:updated_time" content="2017-12-26T03:11:52.843Z">
+<meta property="og:updated_time" content="2018-06-25T03:31:41.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="偏差与方差的总结">
-<meta name="twitter:description" content="自己对偏差或者方差的一些理解。">
-<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg">
+<meta name="twitter:title" content="这是一个天大的秘密！！！">
+<meta name="twitter:description" content="这是一个天大的秘密！！！">
 
 
 
@@ -139,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.github.io/2017/12/12/2017-12-12-bias-var/"/>
+  <link rel="canonical" href="https://pspxiaochen.github.io/2018/06/23/bigs/"/>
 
 
 
 
 
-  <title>偏差与方差的总结 | 发条晨</title>
+  <title>这是一个天大的秘密！！！ | 发条晨</title>
   
 
 
@@ -307,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.github.io/2017/12/12/2017-12-12-bias-var/">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.github.io/2018/06/23/bigs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pspxiaochen">
@@ -324,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">偏差与方差的总结</h1>
+          <h1 class="post-title" itemprop="name headline">这是一个天大的秘密！！！</h1>
         
 
         <div class="post-meta">
@@ -336,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T21:27:00+08:00">
-                2017-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T21:27:00+08:00">
+                2018-06-23
               </time>
             
 
@@ -352,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-26T11:11:52+08:00">
-                2017-12-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-25T11:31:41+08:00">
+                2018-06-25
               </time>
             
           </span>
@@ -371,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
                   </a>
                 </span>
 
@@ -395,7 +392,7 @@
 
           
               <div class="post-description">
-                  自己对偏差或者方差的一些理解。
+                  这是一个天大的秘密！！！
               </div>
           
 
@@ -412,9 +409,7 @@
       
 
       
-        <p>&emsp;&emsp;今天开始重新仔细学习西瓜书（机器学习），今天看完了第一章，第一章基本都是一些概念的东西，公式也比较少，希望可以坚持把这本书看完。</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>&emsp;&emsp;根据各种公式推导得知，泛化误差 = 偏差 + 方差 +噪声<br>&emsp;&emsp;而偏差（bias）度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力。方差(Variance)度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg" alt="此处输入图片的描述"></p>
-<h1 id="偏差与方差的关系"><a href="#偏差与方差的关系" class="headerlink" title="偏差与方差的关系"></a>偏差与方差的关系</h1><p>&emsp;&emsp;偏差与方差是有冲突的。给定学习任务，假定我们能控制学习算法的训练程度，则在训练不足时，模型的拟合能力不够强，训练数据的扰动不足以使模型产生显著变化，此时偏差主导了泛化错误率；随着训练程度的加深，模型的拟合能力逐渐增强，训练数据发生的扰动渐渐能被模型学习到，方差逐渐主导了泛化错误率；在训练程度充足后，模型的拟合能力已经非常强，训练数据发生的轻微扰动都会导致模型发生显著变化，若训练数据自身的，非全局性的特性被模型学习到了，则将发生过拟合。<br><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmtztpugfsj20fe0blq9x.jpg" alt="此处输入图片的描述"></p>
+        <p>其实什么都没有。</p>
 
       
     </div>
@@ -430,6 +425,35 @@
 	<div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/06/23/bigs/">这是一个天大的秘密！！！</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
+  <p><span>发布时间:</span>2018年06月23日 - 21:06</p>
+  <p><span>最后更新:</span>2018年06月25日 - 11:06</p>
+  <p><span>原始链接:</span><a href="/2018/06/23/bigs/" title="这是一个天大的秘密！！！">https://pspxiaochen.github.io/2018/06/23/bigs/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.github.io/2018/06/23/bigs/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
 
       
     </div>
@@ -473,9 +497,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/偏差/" rel="tag"><i class="fa fa-tag"></i> 偏差</a>
-          
-            <a href="/tags/方差/" rel="tag"><i class="fa fa-tag"></i> 方差</a>
+            <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
           
         </div>
       
@@ -488,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/07/2017-12-07-add/" rel="next" title="Sum of Two Integers（使用位运算实现）">
-                <i class="fa fa-chevron-left"></i> Sum of Two Integers（使用位运算实现）
+              <a href="/2018/06/22/KNN/" rel="next" title="K近邻法(KNN)之不再遗忘。">
+                <i class="fa fa-chevron-left"></i> K近邻法(KNN)之不再遗忘。
               </a>
             
           </div>
@@ -498,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/26/lagrange and kkt/" rel="prev" title="从拉格朗日乘子法再到KKT条件的理解">
-                从拉格朗日乘子法再到KKT条件的理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/23/code_input/" rel="prev" title="该死的牛客网输入。">
+                该死的牛客网输入。 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,17 +576,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -639,22 +652,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#偏差与方差的关系"><span class="nav-number">2.</span> <span class="nav-text">偏差与方差的关系</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -1173,6 +1170,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

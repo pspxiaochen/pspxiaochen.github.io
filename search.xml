@@ -29,6 +29,27 @@
     </entry>
     
     <entry>
+      <title><![CDATA[这是一个天大的秘密！！！]]></title>
+      <url>/2018/06/23/bigs/</url>
+      <content type="html"><![CDATA[<p>其实什么都没有。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> code </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[K近邻法(KNN)之不再遗忘。]]></title>
       <url>/2018/06/22/KNN/</url>
       <content type="html"><![CDATA[<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
