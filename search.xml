@@ -3,8 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[kd树-第一次面试的痛]]></title>
+      <url>/2018/06/26/kd-tree/</url>
+      <content type="html"><![CDATA[<h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p>
+<h1 id="构建KD树"><a href="#构建KD树" class="headerlink" title="构建KD树"></a>构建KD树</h1><p>输入：K维空间数据集，样本数为N。$x_i = (x_i^{(1)},x_i^{(2)},x_i^{(3)}….x_i^{(k)})^T$<br>输出：KD树<br>&emsp;&emsp;(1)开始：构造根节点，根节点包含了K维空间的超矩形区域。<br>&emsp;&emsp;选择$x^{(1)}$作为第一个切分的维度，找到$x^{(1)}$坐标的中位数为切分点，将数据集一分为二，大于$x_i^{(1)}$的中位数在右，小于在左。切分由通过切分点并与坐标轴$x^{(1)}$垂直的超平面实现。<br>&emsp;&emsp;<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(2)重复切分操作，再将$x^{(2)}$作为切分的维度，并在之前已经一分为二的左边和右边分别找到$x^{(2)}$维度的中位数，接着分别切分到左右两边。<br>&emsp;&emsp;(3)一直重复切分操作,对深度为j的节点,选择$x^{(l)}$为切分的坐标轴，l=j(mod)k +1,以该结点的区域中所有实例的$x^{(l)}$坐标的中位数为切分点，将该结点对应的超平面矩形区域切分为两个子区域。<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(4)直到两个子区域没有实例存在时停止。从而形成kd数的区域划分。</p>
+<h1 id="搜索kd树"><a href="#搜索kd树" class="headerlink" title="搜索kd树"></a>搜索kd树</h1><p>&emsp;&emsp;下面介绍如何利用kd树进行k近邻搜索。利用kd树可以省去大部分数据点的搜索，从而减少搜索的计算量。<br>输入：（1）已经构造好的kd树（2）目标点x（想找到距离x最近的点）<br>输出： x的最近邻<br>&emsp;&emsp;（1）在kd树种找出包含目标点x的叶节点：从根节点出发，递归的向下访问kd树。若目标点x当前维（用哪个维度分的就用哪个维度）的坐标小于切分点的坐标，则移动到左子节点，否则移动到右子节点。直到找到子节点为叶节点为止。<br>&emsp;&emsp;（2）以次叶节点为‘当前最近点’<br>&emsp;&emsp;（3）<strong>递归</strong>（刚才一路下来的那些点都要进行接来下来的操作）地向上回退，在每个结点都进行以下操作：<br>&emsp;&emsp;&emsp;&emsp;a:如果该结点保存的实例点比当前最近点的距离（用选定的公式计算比如欧氏距离）目标点更近，则以该实例点为‘当前最近点’。<br>&emsp;&emsp;&emsp;&emsp;b:检查目前结点的另一子结点对应的区域是否以目标点为球心、以目标点与‘当前最近点’间的距离为半径的超球体相交。<br>&emsp;&emsp;&emsp;&emsp;若相交：可能在另一个子结点对应的区域内存在距离目标点更近的点，移动到另一个子结点，接着递归的向下搜索<br>&emsp;&emsp;&emsp;&emsp;如果不想交：向上回退。<br>&emsp;&emsp;（4）当退回到根节点时，搜索结束。最后的‘当前最近点’即为x的最近邻点。</p>
+<p>&emsp;&emsp;kd数搜索的评论计算复杂度是O(logN),N是训练实例数.kd树更适用于训练实例数远大于空间维数时的k近邻搜索。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> kd树 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[该死的牛客网输入。]]></title>
-      <url>/2018/06/26/code_input/</url>
+      <url>/2018/06/25/code_input/</url>
       <content type="html"><![CDATA[<h1 id="Python各种输入的方法。"><a href="#Python各种输入的方法。" class="headerlink" title="Python各种输入的方法。"></a>Python各种输入的方法。</h1><h2 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h2><p>&emsp;&emsp;<br>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">7 15 9 5</span><br></pre></td></tr></table></figure></p>
 <p>可以看到 第一行的输入的数是第二行输入数字的个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">line = sys.stdin.readline()</span><br><span class="line">n = int(line) <span class="comment">#读进来的都是str类型，需要转换成int类型</span></span><br><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br></pre></td></tr></table></figure></p>
 <p>在这里我们主要看一下第4行代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line"><span class="comment">#这一行的输出是[7,15,9,5]</span></span><br><span class="line"><span class="comment">#我们现在把他拆解一下，如果写成这样</span></span><br><span class="line">nums = sys.stdin.readline().split()</span><br><span class="line"><span class="comment">#现在这一行的输出变成了['7','15','9','5'],和之前的区别是现在list里每一个元素都是一个字符。</span></span><br><span class="line"><span class="comment">#如果再改成这样</span></span><br><span class="line">nums = sys.stdin.readline()</span><br><span class="line"><span class="comment">#现在的输出就变成了7 15 9 5，注意这是一个str，比如nums[3]，就会输出5，当然5也是一个字符。</span></span><br></pre></td></tr></table></figure></p>
@@ -23,30 +47,6 @@
         <tags>
             
             <tag> 笔试 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[kd树-第一次面试的痛]]></title>
-      <url>/2018/06/23/kd-tree/</url>
-      <content type="html"><![CDATA[<h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p>
-<h1 id="构建KD树"><a href="#构建KD树" class="headerlink" title="构建KD树"></a>构建KD树</h1><p>输入：K维空间数据集，样本数为N。$x_i = (x_i^{(1)},x_i^{(2)},x_i^{(3)}….x_i^{(k)})^T$<br>输出：KD树<br>&emsp;&emsp;(1)开始：构造根节点，根节点包含了K维空间的超矩形区域。<br>&emsp;&emsp;选择$x^{(1)}$作为第一个切分的维度，找到$x^{(1)}$坐标的中位数为切分点，将数据集一分为二，大于$x_i^{(1)}$的中位数在右，小于在左。切分由通过切分点并与坐标轴$x^{(1)}$垂直的超平面实现。<br>&emsp;&emsp;<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(2)重复切分操作，再将$x^{(2)}$作为切分的维度，并在之前已经一分为二的左边和右边分别找到$x^{(2)}$维度的中位数，接着分别切分到左右两边。<br>&emsp;&emsp;(3)一直重复切分操作,对深度为j的节点,选择$x^{(l)}$为切分的坐标轴，l=j(mod)k +1,以该结点的区域中所有实例的$x^{(l)}$坐标的中位数为切分点，将该结点对应的超平面矩形区域切分为两个子区域。<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(4)直到两个子区域没有实例存在时停止。从而形成kd数的区域划分。</p>
-<h1 id="搜索kd树"><a href="#搜索kd树" class="headerlink" title="搜索kd树"></a>搜索kd树</h1><p>&emsp;&emsp;下面介绍如何利用kd树进行k近邻搜索。利用kd树可以省去大部分数据点的搜索，从而减少搜索的计算量。<br>输入：（1）已经构造好的kd树（2）目标点x（想找到距离x最近的点）<br>输出： x的最近邻<br>&emsp;&emsp;（1）在kd树种找出包含目标点x的叶节点：从根节点出发，递归的向下访问kd树。若目标点x当前维（用哪个维度分的就用哪个维度）的坐标小于切分点的坐标，则移动到左子节点，否则移动到右子节点。直到找到子节点为叶节点为止。<br>&emsp;&emsp;（2）以次叶节点为‘当前最近点’<br>&emsp;&emsp;（3）<strong>递归</strong>（刚才一路下来的那些点都要进行接来下来的操作）地向上回退，在每个结点都进行以下操作：<br>&emsp;&emsp;&emsp;&emsp;a:如果该结点保存的实例点比当前最近点的距离（用选定的公式计算比如欧氏距离）目标点更近，则以该实例点为‘当前最近点’。<br>&emsp;&emsp;&emsp;&emsp;b:检查目前结点的另一子结点对应的区域是否以目标点为球心、以目标点与‘当前最近点’间的距离为半径的超球体相交。<br>&emsp;&emsp;&emsp;&emsp;若相交：可能在另一个子结点对应的区域内存在距离目标点更近的点，移动到另一个子结点，接着递归的向下搜索<br>&emsp;&emsp;&emsp;&emsp;如果不想交：向上回退。<br>&emsp;&emsp;（4）当退回到根节点时，搜索结束。最后的‘当前最近点’即为x的最近邻点。</p>
-<p>&emsp;&emsp;kd数搜索的评论计算复杂度是O(logN),N是训练实例数.kd树更适用于训练实例数远大于空间维数时的k近邻搜索。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> kd树 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 机器学习 </tag>
             
         </tags>
         

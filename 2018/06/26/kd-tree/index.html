@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="笔试," />
+  <meta name="keywords" content="kd树," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="之前一直刷的是leetcode，前几天做了XX服的笔试题，我的天，第一道编程题的输入都让我弄了好久，难受。这次我总结一下Python的输入，以备将来笔试用。">
-<meta name="keywords" content="笔试">
+<meta name="description" content="记得第一次面试的时候，面试官问了我一道题，n个向量，怎么找到每个向量距离最近的向量，我想了好久，无奈只想到了两两计算这种垃圾方法，最近看统计学习方法的时候，看到了kd树，马上想起来原来可以用KD树来做。哎，现在写一篇记录一下。">
+<meta name="keywords" content="kd树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="该死的牛客网输入。">
-<meta property="og:url" content="https://pspxiaochen.github.io/2018/06/26/code_input/index.html">
+<meta property="og:title" content="kd树-第一次面试的痛">
+<meta property="og:url" content="https://pspxiaochen.github.io/2018/06/26/kd-tree/index.html">
 <meta property="og:site_name" content="发条晨">
-<meta property="og:description" content="之前一直刷的是leetcode，前几天做了XX服的笔试题，我的天，第一道编程题的输入都让我弄了好久，难受。这次我总结一下Python的输入，以备将来笔试用。">
+<meta property="og:description" content="记得第一次面试的时候，面试官问了我一道题，n个向量，怎么找到每个向量距离最近的向量，我想了好久，无奈只想到了两两计算这种垃圾方法，最近看统计学习方法的时候，看到了kd树，马上想起来原来可以用KD树来做。哎，现在写一篇记录一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T12:40:49.513Z">
+<meta property="og:updated_time" content="2018-06-26T15:56:58.412Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="该死的牛客网输入。">
-<meta name="twitter:description" content="之前一直刷的是leetcode，前几天做了XX服的笔试题，我的天，第一道编程题的输入都让我弄了好久，难受。这次我总结一下Python的输入，以备将来笔试用。">
+<meta name="twitter:title" content="kd树-第一次面试的痛">
+<meta name="twitter:description" content="记得第一次面试的时候，面试官问了我一道题，n个向量，怎么找到每个向量距离最近的向量，我想了好久，无奈只想到了两两计算这种垃圾方法，最近看统计学习方法的时候，看到了kd树，马上想起来原来可以用KD树来做。哎，现在写一篇记录一下。">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.github.io/2018/06/26/code_input/"/>
+  <link rel="canonical" href="https://pspxiaochen.github.io/2018/06/26/kd-tree/"/>
 
 
 
 
 
-  <title>该死的牛客网输入。 | 发条晨</title>
+  <title>kd树-第一次面试的痛 | 发条晨</title>
   
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.github.io/2018/06/26/code_input/">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.github.io/2018/06/26/kd-tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pspxiaochen">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">该死的牛客网输入。</h1>
+          <h1 class="post-title" itemprop="name headline">kd树-第一次面试的痛</h1>
         
 
         <div class="post-meta">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-26T20:40:49+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-26T23:56:58+08:00">
                 2018-06-26
               </time>
             
@@ -366,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">code</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -390,7 +390,7 @@
 
           
               <div class="post-description">
-                  之前一直刷的是leetcode，前几天做了XX服的笔试题，我的天，第一道编程题的输入都让我弄了好久，难受。这次我总结一下Python的输入，以备将来笔试用。
+                  记得第一次面试的时候，面试官问了我一道题，n个向量，怎么找到每个向量距离最近的向量，我想了好久，无奈只想到了两两计算这种垃圾方法，最近看统计学习方法的时候，看到了kd树，马上想起来原来可以用KD树来做。哎，现在写一篇记录一下。
               </div>
           
 
@@ -407,12 +407,10 @@
       
 
       
-        <h1 id="Python各种输入的方法。"><a href="#Python各种输入的方法。" class="headerlink" title="Python各种输入的方法。"></a>Python各种输入的方法。</h1><h2 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h2><p>&emsp;&emsp;<br>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">7 15 9 5</span><br></pre></td></tr></table></figure></p>
-<p>可以看到 第一行的输入的数是第二行输入数字的个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">line = sys.stdin.readline()</span><br><span class="line">n = int(line) <span class="comment">#读进来的都是str类型，需要转换成int类型</span></span><br><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br></pre></td></tr></table></figure></p>
-<p>在这里我们主要看一下第4行代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line"><span class="comment">#这一行的输出是[7,15,9,5]</span></span><br><span class="line"><span class="comment">#我们现在把他拆解一下，如果写成这样</span></span><br><span class="line">nums = sys.stdin.readline().split()</span><br><span class="line"><span class="comment">#现在这一行的输出变成了['7','15','9','5'],和之前的区别是现在list里每一个元素都是一个字符。</span></span><br><span class="line"><span class="comment">#如果再改成这样</span></span><br><span class="line">nums = sys.stdin.readline()</span><br><span class="line"><span class="comment">#现在的输出就变成了7 15 9 5，注意这是一个str，比如nums[3]，就会输出5，当然5也是一个字符。</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h2><p>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 4</span><br><span class="line">3332</span><br><span class="line">3233</span><br><span class="line">3332</span><br><span class="line">2323</span><br></pre></td></tr></table></figure></p>
-<p>可以看到第一行的第一个4控制接下来输入的行数，第一行的第二个4控制接下来每一行的输入的元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">m, n = [int(x) <span class="keyword">for</span> x <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line">nums = [[int(x) <span class="keyword">for</span> x <span class="keyword">in</span> sys.stdin.readline().strip()] <span class="keyword">for</span> i <span class="keyword">in</span> range(m)]</span><br><span class="line"><span class="comment">#重点看一下第3行的代码,相当于用了2层for循环</span></span><br><span class="line"><span class="comment">#外循环是运行m次int(x) for x in sys.stdin.readline().strip()，内循环是将每一行输入进来的str转换成int类型</span></span><br><span class="line"><span class="comment">#这一行将来的输出是一个二维数组</span></span><br><span class="line">[[3, 3, 3, 2], [3, 2, 3, 3],[3, 3, 3, 2],[2, 3, 2, 3]]</span><br></pre></td></tr></table></figure></p>
-<p>目前还没看到别的不同的例子，如果今后碰到再补充。</p>
+        <h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p>
+<h1 id="构建KD树"><a href="#构建KD树" class="headerlink" title="构建KD树"></a>构建KD树</h1><p>输入：K维空间数据集，样本数为N。$x_i = (x_i^{(1)},x_i^{(2)},x_i^{(3)}….x_i^{(k)})^T$<br>输出：KD树<br>&emsp;&emsp;(1)开始：构造根节点，根节点包含了K维空间的超矩形区域。<br>&emsp;&emsp;选择$x^{(1)}$作为第一个切分的维度，找到$x^{(1)}$坐标的中位数为切分点，将数据集一分为二，大于$x_i^{(1)}$的中位数在右，小于在左。切分由通过切分点并与坐标轴$x^{(1)}$垂直的超平面实现。<br>&emsp;&emsp;<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(2)重复切分操作，再将$x^{(2)}$作为切分的维度，并在之前已经一分为二的左边和右边分别找到$x^{(2)}$维度的中位数，接着分别切分到左右两边。<br>&emsp;&emsp;(3)一直重复切分操作,对深度为j的节点,选择$x^{(l)}$为切分的坐标轴，l=j(mod)k +1,以该结点的区域中所有实例的$x^{(l)}$坐标的中位数为切分点，将该结点对应的超平面矩形区域切分为两个子区域。<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(4)直到两个子区域没有实例存在时停止。从而形成kd数的区域划分。</p>
+<h1 id="搜索kd树"><a href="#搜索kd树" class="headerlink" title="搜索kd树"></a>搜索kd树</h1><p>&emsp;&emsp;下面介绍如何利用kd树进行k近邻搜索。利用kd树可以省去大部分数据点的搜索，从而减少搜索的计算量。<br>输入：（1）已经构造好的kd树（2）目标点x（想找到距离x最近的点）<br>输出： x的最近邻<br>&emsp;&emsp;（1）在kd树种找出包含目标点x的叶节点：从根节点出发，递归的向下访问kd树。若目标点x当前维（用哪个维度分的就用哪个维度）的坐标小于切分点的坐标，则移动到左子节点，否则移动到右子节点。直到找到子节点为叶节点为止。<br>&emsp;&emsp;（2）以次叶节点为‘当前最近点’<br>&emsp;&emsp;（3）<strong>递归</strong>（刚才一路下来的那些点都要进行接来下来的操作）地向上回退，在每个结点都进行以下操作：<br>&emsp;&emsp;&emsp;&emsp;a:如果该结点保存的实例点比当前最近点的距离（用选定的公式计算比如欧氏距离）目标点更近，则以该实例点为‘当前最近点’。<br>&emsp;&emsp;&emsp;&emsp;b:检查目前结点的另一子结点对应的区域是否以目标点为球心、以目标点与‘当前最近点’间的距离为半径的超球体相交。<br>&emsp;&emsp;&emsp;&emsp;若相交：可能在另一个子结点对应的区域内存在距离目标点更近的点，移动到另一个子结点，接着递归的向下搜索<br>&emsp;&emsp;&emsp;&emsp;如果不想交：向上回退。<br>&emsp;&emsp;（4）当退回到根节点时，搜索结束。最后的‘当前最近点’即为x的最近邻点。</p>
+<p>&emsp;&emsp;kd数搜索的评论计算复杂度是O(logN),N是训练实例数.kd树更适用于训练实例数远大于空间维数时的k近邻搜索。</p>
 
       
     </div>
@@ -434,12 +432,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/06/26/code_input/">该死的牛客网输入。</a></p>
+  <p><span>本文标题:</span><a href="/2018/06/26/kd-tree/">kd树-第一次面试的痛</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
   <p><span>发布时间:</span>2018年06月26日 - 21:06</p>
-  <p><span>最后更新:</span>2018年06月26日 - 20:06</p>
-  <p><span>原始链接:</span><a href="/2018/06/26/code_input/" title="该死的牛客网输入。">https://pspxiaochen.github.io/2018/06/26/code_input/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.github.io/2018/06/26/code_input/"  aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2018年06月26日 - 23:06</p>
+  <p><span>原始链接:</span><a href="/2018/06/26/kd-tree/" title="kd树-第一次面试的痛">https://pspxiaochen.github.io/2018/06/26/kd-tree/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.github.io/2018/06/26/kd-tree/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -500,7 +498,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔试/" rel="tag"><i class="fa fa-tag"></i> 笔试</a>
+            <a href="/tags/kd树/" rel="tag"><i class="fa fa-tag"></i> kd树</a>
           
         </div>
       
@@ -513,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/23/kd-tree/" rel="next" title="kd树-第一次面试的痛">
-                <i class="fa fa-chevron-left"></i> kd树-第一次面试的痛
+              <a href="/2018/06/25/code_input/" rel="next" title="该死的牛客网输入。">
+                <i class="fa fa-chevron-left"></i> 该死的牛客网输入。
               </a>
             
           </div>
@@ -611,7 +609,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -670,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python各种输入的方法。"><span class="nav-number">1.</span> <span class="nav-text">Python各种输入的方法。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例一"><span class="nav-number">1.1.</span> <span class="nav-text">例一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例二"><span class="nav-number">1.2.</span> <span class="nav-text">例二</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是KD树"><span class="nav-number">1.</span> <span class="nav-text">什么是KD树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建KD树"><span class="nav-number">2.</span> <span class="nav-text">构建KD树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索kd树"><span class="nav-number">3.</span> <span class="nav-text">搜索kd树</span></a></li></ol></div>
             
 
           </div>
