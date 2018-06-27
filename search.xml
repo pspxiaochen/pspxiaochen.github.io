@@ -3,20 +3,6 @@
   
     
     <entry>
-      <title></title>
-      <url>/2018/06/27/rem%20&amp;%20mod/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: %和mod傻傻分不清楚<br>date: 2018-06-27 17:27:00<br>categories:</p>
-<ul>
-<li>机器学习<br>mathjax: true<br>copyright: true<br>tags:</li>
-<li>取模 取余<br>description:之前一直傻傻分不清，这次做个笔记。<br>&emsp;&emsp;通常情况下取模运算(mod)和求余(rem)运算被混为一谈，因为在大多数的编程语言里，都用’%’符号表示取模或者求余运算。在这里要提醒大家要十分注意当前环境下’%’运算符的具体意义，因为在有负数存在的情况下，两者的结果是不一样的。<br>&emsp;&emsp;假设有整数a和b，取模或者求余运算的方法都是（1）c=a/b (2)r=a-c*b<br>&emsp;&emsp;求模运算和求余运算在第一步不同,取余运算在计算商值向0方向舍弃小数位,取模运算在计算商值向负无穷方向舍弃小数位.<br>&emsp;&emsp;在C中 %是取余，mod是取模。<br>&emsp;&emsp;在Python中%就是取模。<br>例子：<br>如果a=3 b=-4<br>3/(-4)等于-0.75<br>在取余运算时候商值向0方向舍弃小数位为0<br>在取模运算时商值向负无穷方向舍弃小数位为-1<br>所以<br>3rem(-4) = 3<br>3mod(-4) = -1<br>希望这次可以记住。</li>
-</ul>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[kd树-第一次面试的痛]]></title>
       <url>/2018/06/26/kd-tree/</url>
       <content type="html"><![CDATA[<h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p>
