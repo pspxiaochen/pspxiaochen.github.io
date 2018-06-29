@@ -3,14 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[cross_validation]]></title>
-      <url>/2018/06/29/cross-validation/</url>
-      <content type="html"></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[求余和取模傻傻分不清]]></title>
       <url>/2018/06/27/rem&amp;mod/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;通常情况下取模运算(mod)和求余(rem)运算被混为一谈，因为在大多数的编程语言里，都用’%’符号表示取模或者求余运算。在这里要提醒大家要十分注意当前环境下’%’运算符的具体意义，因为在有负数存在的情况下，两者的结果是不一样的。<br>&emsp;&emsp;假设有整数a和b，取模或者求余运算的方法都是（1）c=a/b (2)r=a-c*b<br>&emsp;&emsp;求模运算和求余运算在第一步不同,取余运算在计算商值向0方向舍弃小数位,取模运算在计算商值向负无穷方向舍弃小数位.<br>&emsp;&emsp;在C中 %是取余，mod是取模。<br>&emsp;&emsp;在Python中%就是取模。</p>
@@ -518,9 +510,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -635,9 +627,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
