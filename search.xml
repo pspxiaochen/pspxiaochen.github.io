@@ -3,20 +3,6 @@
   
     
     <entry>
-      <title></title>
-      <url>/2018/06/29/birthday/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 25周岁生日<br>date: 2018-06-29 17:27:00<br>categories:</p>
-<ul>
-<li>life<br>tags:</li>
-<li>birthday<br>mathjax: false<br>copyright:true<br>description: 祝我生日快乐。<br>今天是25岁生日，祝我生日快乐，下午卖了一下午的鞋子，真是讽刺。</li>
-</ul>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[机器学习之交叉验证]]></title>
       <url>/2018/06/29/cross-validation/</url>
       <content type="html"><![CDATA[<h1 id="交叉验证的基本思想"><a href="#交叉验证的基本思想" class="headerlink" title="交叉验证的基本思想"></a>交叉验证的基本思想</h1><p>&emsp;&emsp; 交叉验证的基本想法是重复的使用数据；把给定数据进行切分，将切分的数据集组合为训练集与测试集，再次基础上反复地进行训练、测试、以及模型选择。</p>
