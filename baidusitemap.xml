@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/costfunction/</loc>
+    <lastmod>2018-07-03T09:50:51.074Z</lastmod>
+    <data>
+        <display>
+        <title>线性回归与最小二乘法</title>
+        <pubTime>2018-07-03T04:27:00.000Z</pubTime>
+        
+        <tag>线性回归</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/birthday/</loc>
+    <lastmod>2018-06-30T04:31:13.138Z</lastmod>
+    <data>
+        <display>
+        <title>25周岁生日</title>
+        <pubTime>2018-06-29T11:27:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="life" url="https://pspxiaochen.club/categories/life/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/cross-validation/</loc>
+    <lastmod>2018-06-29T03:32:36.146Z</lastmod>
+    <data>
+        <display>
+        <title>机器学习之交叉验证</title>
+        <pubTime>2018-06-29T02:27:00.000Z</pubTime>
+        
+        <tag>交叉验证</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/rem&mod/</loc>
+    <lastmod>2018-06-27T12:21:38.761Z</lastmod>
+    <data>
+        <display>
+        <title>求余和取模傻傻分不清</title>
+        <pubTime>2018-06-27T13:27:00.000Z</pubTime>
+        
+        <tag>mod</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔试" url="https://pspxiaochen.club/categories/%E7%AC%94%E8%AF%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/kd-tree/</loc>
+    <lastmod>2018-06-27T02:54:08.510Z</lastmod>
+    <data>
+        <display>
+        <title>kd树-第一次面试的痛</title>
+        <pubTime>2018-06-26T13:27:00.000Z</pubTime>
+        
+        <tag>kd树</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://pspxiaochen.club/code_input/</loc>
+    <lastmod>2018-06-26T15:57:20.237Z</lastmod>
+    <data>
+        <display>
+        <title>该死的牛客网输入。</title>
+        <pubTime>2018-06-25T13:27:00.000Z</pubTime>
+        
+        <tag>笔试</tag>
+         
+         
+           
+             
+              <breadCrumb title="code" url="https://pspxiaochen.club/categories/code/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/bys/</loc>
+    <lastmod>2018-06-25T03:37:41.161Z</lastmod>
+    <data>
+        <display>
+        <title>朴素贝叶斯之了断心结。</title>
+        <pubTime>2018-05-30T13:27:00.000Z</pubTime>
+        
+        <tag>贝叶斯</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/KNN/</loc>
+    <lastmod>2018-06-23T01:52:15.078Z</lastmod>
+    <data>
+        <display>
+        <title>K近邻法(KNN)之不再遗忘。</title>
+        <pubTime>2018-06-22T13:27:00.000Z</pubTime>
+        
+        <tag>KNN</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/2018-05-24-GD/</loc>
+    <lastmod>2018-05-24T08:48:51.268Z</lastmod>
+    <data>
+        <display>
+        <title>我自己理解的梯度下降的原理</title>
+        <pubTime>2018-05-23T13:27:00.000Z</pubTime>
+        
+        <tag>梯度下降</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/lagrange%20and%20kkt/</loc>
+    <lastmod>2017-12-26T13:31:10.714Z</lastmod>
+    <data>
+        <display>
+        <title>从拉格朗日乘子法再到KKT条件的理解</title>
+        <pubTime>2017-12-26T13:27:00.000Z</pubTime>
+        
+        <tag>SVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/2017-12-12-bias-var/</loc>
+    <lastmod>2017-12-26T03:11:52.843Z</lastmod>
+    <data>
+        <display>
+        <title>偏差与方差的总结</title>
+        <pubTime>2017-12-12T13:27:00.000Z</pubTime>
+        
+        <tag>偏差</tag>
+         
+        <tag>方差</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/2017-12-07-add/</loc>
+    <lastmod>2017-12-07T08:37:43.607Z</lastmod>
+    <data>
+        <display>
+        <title>Sum of Two Integers（使用位运算实现）</title>
+        <pubTime>2017-12-07T08:27:00.000Z</pubTime>
+        
+        <tag>位运算</tag>
+         
+        <tag>异或</tag>
+         
+         
+           
+             
+              <breadCrumb title="刷题" url="https://pspxiaochen.club/categories/%E5%88%B7%E9%A2%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/2017-11-28-Kurtosis/</loc>
+    <lastmod>2017-11-28T13:24:18.674Z</lastmod>
+    <data>
+        <display>
+        <title>峰度（Kurtosis）和偏度（Skewness）</title>
+        <pubTime>2017-11-28T11:12:00.000Z</pubTime>
+        
+        <tag>Kurtosis</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他" url="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/2017-11-17-test/</loc>
+    <lastmod>2017-11-20T08:03:16.896Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客撰写之：MarkDown语法介绍</title>
+        <pubTime>2017-11-17T16:00:00.000Z</pubTime>
+        
+        <tag>markdown</tag>
+         
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他" url="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+  <url>
+    <loc>https://pspxiaochen.club/2017-11-20-first-post/</loc>
+    <lastmod>2017-11-20T02:30:36.777Z</lastmod>
+    <data>
+        <display>
+        <title>第一篇post：庆祝博客搭建成功</title>
+        <pubTime>2017-11-16T16:00:00.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>教程</tag>
+         
+        <tag>node</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他" url="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+</urlset>

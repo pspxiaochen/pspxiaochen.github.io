@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[线性回归与最小二乘法]]></title>
-      <url>/2018/07/03/costfunction/</url>
+      <url>/costfunction/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;我们假设正确的结果y和我们的预测的输出函数有如下关系：</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$</p>
 <p>在这里$\theta^Tx^{(i)}$为我们的预测函数，$\epsilon^{(i)}$是和真实值的误差。<br>因为每个样本都是独立的，因此误差直接也是独立的。所以我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布，记作$\epsilon^{(i)}\sim N(0,\sigma^2)$,而高斯分布的概率密度函数为：</p>
@@ -33,7 +33,7 @@
     
     <entry>
       <title><![CDATA[25周岁生日]]></title>
-      <url>/2018/06/29/birthday/</url>
+      <url>/birthday/</url>
       <content type="html"><![CDATA[<h1 id="今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。"><a href="#今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。" class="headerlink" title="今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。"></a>今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。</h1>]]></content>
       
         <categories>
@@ -47,7 +47,7 @@
     
     <entry>
       <title><![CDATA[机器学习之交叉验证]]></title>
-      <url>/2018/06/29/cross-validation/</url>
+      <url>/cross-validation/</url>
       <content type="html"><![CDATA[<h1 id="交叉验证的基本思想"><a href="#交叉验证的基本思想" class="headerlink" title="交叉验证的基本思想"></a>交叉验证的基本思想</h1><p>&emsp;&emsp; 交叉验证的基本想法是重复的使用数据；把给定数据进行切分，将切分的数据集组合为训练集与测试集，再次基础上反复地进行训练、测试、以及模型选择。</p>
 <h2 id="简单的交叉验证"><a href="#简单的交叉验证" class="headerlink" title="简单的交叉验证"></a>简单的交叉验证</h2><p>1、首先随机得将已给数据分为两部分，一部分作为训练集，一部分作为测试集。（一般是73分）<br>2、然后用训练集在各种条件下（比如不同的参数）训练模型，从而得到不同的模型；<br>3、在测试集上评价各个模型的测试误差，选出测试误差最小的模型。<br>优点：由于测试集和训练集是分开的，就避免了过拟合现象</p>
 <h2 id="k折交叉验证"><a href="#k折交叉验证" class="headerlink" title="k折交叉验证"></a>k折交叉验证</h2><p>1.首先将训练数据平均切分成k份，每一份互不相交且大小一样。<br>2.用k-1个子集进行训练模型，用余下的那一个作为预测。<br>3.将2这一过程对可能的k种选择重复进行。<br>4.最后选出k次测评中测试误差最小的。、<br>优点：这个方法充分利用了所有样本。但计算比较繁琐，需要训练k次，测试k次。</p>
@@ -71,7 +71,7 @@
     
     <entry>
       <title><![CDATA[求余和取模傻傻分不清]]></title>
-      <url>/2018/06/27/rem&amp;mod/</url>
+      <url>/rem&amp;mod/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;通常情况下取模运算(mod)和求余(rem)运算被混为一谈，因为在大多数的编程语言里，都用’%’符号表示取模或者求余运算。在这里要提醒大家要十分注意当前环境下’%’运算符的具体意义，因为在有负数存在的情况下，两者的结果是不一样的。<br>&emsp;&emsp;假设有整数a和b，取模或者求余运算的方法都是（1）c=a/b (2)r=a-c*b<br>&emsp;&emsp;求模运算和求余运算在第一步不同,取余运算在计算商值向0方向舍弃小数位,取模运算在计算商值向负无穷方向舍弃小数位.<br>&emsp;&emsp;在C中 %是取余，mod是取模。<br>&emsp;&emsp;在Python中%就是取模。</p>
 <h1 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h1><p>如果a=3 b=-4<br>3/(-4)等于-0.75<br>在取余运算时候商值向0方向舍弃小数位为0<br>在取模运算时商值向负无穷方向舍弃小数位为-1<br>所以<br>3rem(-4) = 3<br>3mod(-4) = -1<br>希望这次可以记住。</p>
 ]]></content>
@@ -93,7 +93,7 @@
     
     <entry>
       <title><![CDATA[kd树-第一次面试的痛]]></title>
-      <url>/2018/06/26/kd-tree/</url>
+      <url>/kd-tree/</url>
       <content type="html"><![CDATA[<h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p>
 <h1 id="构建KD树"><a href="#构建KD树" class="headerlink" title="构建KD树"></a>构建KD树</h1><p>输入：K维空间数据集，样本数为N。$x_i = (x_i^{(1)},x_i^{(2)},x_i^{(3)}….x_i^{(k)})^T$<br>输出：KD树<br>&emsp;&emsp;(1)开始：构造根节点，根节点包含了K维空间的超矩形区域。<br>&emsp;&emsp;选择$x^{(1)}$作为第一个切分的维度，找到$x^{(1)}$坐标的中位数为切分点，将数据集一分为二，大于$x_i^{(1)}$的中位数在右，小于在左。切分由通过切分点并与坐标轴$x^{(1)}$垂直的超平面实现。<br>&emsp;&emsp;<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(2)重复切分操作，再将$x^{(2)}$作为切分的维度，并在之前已经一分为二的左边和右边分别找到$x^{(2)}$维度的中位数，接着分别切分到左右两边。<br>&emsp;&emsp;(3)一直重复切分操作,对深度为j的节点,选择$x^{(l)}$为切分的坐标轴，l=j(mod)k +1,以该结点的区域中所有实例的$x^{(l)}$坐标的中位数为切分点，将该结点对应的超平面矩形区域切分为两个子区域。<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(4)直到两个子区域没有实例存在时停止。从而形成kd数的区域划分。</p>
 <h1 id="搜索kd树（最近邻）"><a href="#搜索kd树（最近邻）" class="headerlink" title="搜索kd树（最近邻）"></a>搜索kd树（最近邻）</h1><p>&emsp;&emsp;下面介绍如何利用kd树进行最近邻搜索。利用kd树可以省去大部分数据点的搜索，从而减少搜索的计算量。<br>输入：（1）已经构造好的kd树（2）目标点x（想找到距离x最近的点）<br>输出： x的最近邻<br>&emsp;&emsp;（1）在kd树种找出包含目标点x的叶节点：从根节点出发，递归的向下访问kd树。若目标点x当前维（用哪个维度分的就用哪个维度）的坐标小于切分点的坐标，则移动到左子节点，否则移动到右子节点。直到找到子节点为叶节点为止。<br>&emsp;&emsp;（2）以次叶节点为‘当前最近点’<br>&emsp;&emsp;（3）<strong>递归</strong>（刚才一路下来的那些点都要进行接来下来的操作）地向上回退，在每个结点都进行以下操作：<br>&emsp;&emsp;&emsp;&emsp;a:如果该结点保存的实例点比当前最近点的距离（用选定的公式计算比如欧氏距离）目标点更近，则以该实例点为‘当前最近点’。<br>&emsp;&emsp;&emsp;&emsp;b:检查目前结点的另一子结点对应的区域是否以目标点为球心、以目标点与‘当前最近点’间的距离为半径的超球体相交。<br>&emsp;&emsp;&emsp;&emsp;若相交：可能在另一个子结点对应的区域内存在距离目标点更近的点，移动到另一个子结点，接着递归的向下搜索<br>&emsp;&emsp;&emsp;&emsp;如果不想交：向上回退。<br>&emsp;&emsp;（4）当退回到根节点时，搜索结束。最后的‘当前最近点’即为x的最近邻点。</p>
@@ -120,7 +120,7 @@
     
     <entry>
       <title><![CDATA[该死的牛客网输入。]]></title>
-      <url>/2018/06/25/code_input/</url>
+      <url>/code_input/</url>
       <content type="html"><![CDATA[<h1 id="Python各种输入的方法。"><a href="#Python各种输入的方法。" class="headerlink" title="Python各种输入的方法。"></a>Python各种输入的方法。</h1><h2 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h2><p>&emsp;&emsp;<br>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">7 15 9 5</span><br></pre></td></tr></table></figure></p>
 <p>可以看到 第一行的输入的数是第二行输入数字的个数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">line = sys.stdin.readline()</span><br><span class="line">n = int(line) <span class="comment">#读进来的都是str类型，需要转换成int类型</span></span><br><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br></pre></td></tr></table></figure></p>
 <p>在这里我们主要看一下第4行代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nums = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> sys.stdin.readline().split()]</span><br><span class="line"><span class="comment">#这一行的输出是[7,15,9,5]</span></span><br><span class="line"><span class="comment">#我们现在把他拆解一下，如果写成这样</span></span><br><span class="line">nums = sys.stdin.readline().split()</span><br><span class="line"><span class="comment">#现在这一行的输出变成了['7','15','9','5'],和之前的区别是现在list里每一个元素都是一个字符。</span></span><br><span class="line"><span class="comment">#如果再改成这样</span></span><br><span class="line">nums = sys.stdin.readline()</span><br><span class="line"><span class="comment">#现在的输出就变成了7 15 9 5，注意这是一个str，比如nums[3]，就会输出5，当然5也是一个字符。</span></span><br></pre></td></tr></table></figure></p>
@@ -146,7 +146,7 @@
     
     <entry>
       <title><![CDATA[K近邻法(KNN)之不再遗忘。]]></title>
-      <url>/2018/06/22/KNN/</url>
+      <url>/KNN/</url>
       <content type="html"><![CDATA[<h1 id="K近邻算法的基本"><a href="#K近邻算法的基本" class="headerlink" title="K近邻算法的基本"></a>K近邻算法的基本</h1><p>&emsp;&emsp; k近邻法(k-nearest neighbor,KNN)是一种可以做分类也可以做回归的方法。是一种比较简单的方法，给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最近的K个实例，这K个实例的多数属于某个类，就把该输入实例分到这个类。</p>
 <h2 id="基本过程："><a href="#基本过程：" class="headerlink" title="基本过程："></a>基本过程：</h2><p>&emsp;&emsp; 输入：训练数据集T和实例特征向量x.<br>&emsp;&emsp; 输出：实例x所属的类y.<br>&emsp;&emsp; 过程：（1）根据给定的距离度量，在训练集T中找到与x最近的k个点，涵盖着k个点的集合记作N。<br>&emsp;&emsp;&emsp;&emsp; &emsp;（2）在N中根据分类决策规则决定x的类别y,比如可以将N中类别最多的类别就定义为x的类别。</p>
 <h2 id="特殊情况："><a href="#特殊情况：" class="headerlink" title="特殊情况："></a>特殊情况：</h2><p>&emsp;&emsp; 当k = 1的情形，称为最近邻算法。对于输入的实例点x，他的分类结果就是距离他最近的训练数据中的点。<br>&emsp;&emsp; 可以看出k近邻算法没有显式的学习过程。</p>
@@ -184,7 +184,7 @@
     
     <entry>
       <title><![CDATA[朴素贝叶斯之了断心结。]]></title>
-      <url>/2018/05/30/bys/</url>
+      <url>/bys/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp; 为什么说贝叶斯一直是我的心结呢。这说来就话长了，当初考研时，想都没想就选择了相对简单的专硕（现在看来其实也并不简单），而我们学习的专硕是不考概率论的，所以基本上我的概率论体系还停留在高中阶段。那你又要问了，难道一个计算机科班出身的，本科就没学过概率论么，说到这里我就想起来我的概率论老师上课操着一口湖南口音，声音很小，150个人的大教室，而我在最后一排和舍友疯狂的搓着3DS，咳咳。说远了。今天我一定用最通俗理解的方法把朴素贝叶斯里的每一个知识点都梳理一遍，算是对自己有一个交代。</p>
 <h1 id="如果没什么概率论基础的话先推荐一篇文章"><a href="#如果没什么概率论基础的话先推荐一篇文章" class="headerlink" title="如果没什么概率论基础的话先推荐一篇文章"></a>如果没什么概率论基础的话先推荐一篇文章</h1><p><a href="https://www.jianshu.com/p/b570b1ba92bb" target="_blank" rel="noopener">应该如何理解概率分布函数和概率密度函数？</a></p>
 <h1 id="生成式模型和判别式模型。"><a href="#生成式模型和判别式模型。" class="headerlink" title="生成式模型和判别式模型。"></a>生成式模型和判别式模型。</h1><p>&emsp;&emsp;在讲贝叶斯之前我觉得我有理由先说一下什么是生成式模型而什么是判别式模型。在《统计学习方法》书中明确写道：<strong>监督学习方法又可以分为生成方法和判别方法，所学到的模型分别称为生成模型和判别模型。</strong></p>
@@ -227,7 +227,7 @@
     
     <entry>
       <title><![CDATA[我自己理解的梯度下降的原理]]></title>
-      <url>/2018/05/23/2018-05-24-GD/</url>
+      <url>/2018-05-24-GD/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;最近不太顺啊，各种碰壁，看来学习确实容不得半点虚假，会就是会，不会就是不会。现在决定再认认真真复习一遍机器学习和数据结构，再来巩固一下自己的知识体系，只希望这次可以别忘的太快。</p>
 <h1 id="我们为什么要使用梯度下降。"><a href="#我们为什么要使用梯度下降。" class="headerlink" title="我们为什么要使用梯度下降。"></a>我们为什么要使用梯度下降。</h1><p>&emsp;&emsp;因为机器学习总的来说是一个优化问题。我们有一个想要优化的函数，比如说损失函数，我们总是希望可以让损失函数变得越来越小。那怎么才能使损失函数变得原来越小呢？损失函数中有一些未知的参数，我们只要不停更新这个参数，就可以让损失函数越来越小。直到损失函数等于0或者不再发生变化为止。所以说梯度下降是用来更新一些未知参数的，而这些参数会使损失函数越来越小。</p>
 <h1 id="梯度下降是怎么来的呢？"><a href="#梯度下降是怎么来的呢？" class="headerlink" title="梯度下降是怎么来的呢？"></a>梯度下降是怎么来的呢？</h1><p>&emsp;&emsp;首先我们来看一元函数的泰勒展开，以便于更好的理解多元函数的泰勒展开。如果一个一元函数n阶可导，它的泰勒展开公式为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1frm73g6o3yj20x602uaac.jpg" alt="泰勒公式"><br>&emsp;&emsp;如果在某一点处的导数值大于0（+），则函数在此处是增函数，加大x的值函数会增加，减小x的值函数会减小。相反的，如果在某一点处导数值小于0（-），则函数是减函数，增加x的值函数值会减小（+），减小x的值函数会增加。因此我们可以得出一个结论：<strong>如果x的变化很小，并且变化值与导数值反号，则函数值下降。</strong>对于一元函数，x的变化只有两个方向，要么朝左，要么朝右。</p>
@@ -251,7 +251,7 @@
     
     <entry>
       <title><![CDATA[从拉格朗日乘子法再到KKT条件的理解]]></title>
-      <url>/2017/12/26/lagrange%20and%20kkt/</url>
+      <url>/lagrange%20and%20kkt/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;西瓜书看了有一阵子了，终于看到了SVM，遥想研一看SVM的时候。。我操 这是什么。。这又是什么。。论高中数学的重要性的，出来混都是要还的。只好一点一点补齐SVM中用到的各种知识点。今天先扯一扯自己对拉格朗日乘子法和KKT条件的理解，希望这篇文章写完之后，能让我对这2个臭逼玩意能有更好的理解，那么现在开始。</p>
 <h1 id="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"><a href="#我们为什么在SVM中要用到拉格朗日和KKT条件！！！" class="headerlink" title="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"></a>我们为什么在SVM中要用到拉格朗日和KKT条件！！！</h1><p>&emsp;&emsp;因为在SVM中我们要计算一个有约束条件的极值问题，而拉格朗日乘子法和KKT条件是非常重要的两个求取方法。<br><br><br>&emsp;&emsp;对于等式约束的优化问题（就是限制的那个式子是个等式 s.t h(x) = 0 类似这种），可以应用拉格朗日乘子法去求取最优值。<br>&emsp;&emsp;如果含有不等式约束，可以应用KKT条件去求取最优值。<br>&emsp;&emsp;这两种方法求得的结果只是必要条件，只有当是凸函数（二次导数大于0为凸）的情况下，才能保证是充分必要条件。而KKT条件是拉格朗日乘子法的泛化。<br>&emsp;&emsp;下面我就针对这两个玩意，谈一谈我的理解。</p>
 <h1 id="拉格朗日乘子法！！！"><a href="#拉格朗日乘子法！！！" class="headerlink" title="拉格朗日乘子法！！！"></a>拉格朗日乘子法！！！</h1><p>&emsp;&emsp;拉格朗日乘子法在考研的数学二中就用到过，当时只知道要那么用，那么用就能解决条件极值的问题，但是真心不知道为什么，这次先把为什么可以用拉格朗日说一下。<br>&emsp;&emsp;想象一下，目标函数f(x,y)是一座山的高度，约束g(x,y)=C是镶嵌在山上的一条曲线如下图。（渣画技看看就好了）<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu7qn45b7j20k00akt8o.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;你为了找到曲线上的最低点，就从最低的等高线（0那条）开始网上数。数到第三条，等高线终于和曲线有交点了（如上图所示）。因为比这条等高线低的地方都不在约束范围内，所以这肯定是这条约束曲线的最低点了。<br><br><br>&emsp;&emsp;而且约束曲线在这里不可能和等高线相交，一定是相切。因为如果是相交的话，如下图所示，那么曲线一定会有一部分在B区域，但是B区域比等高线低，这是不可能的。假设g(x)与等高线相交，交点就是同时满足等式约束条件和目标函数的可行域的值，但肯定不是最优值，因为相交意味着肯定还存在其它的等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小，只有到等高线与目标函数的曲线相切的时候，可能取得最优值。<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu88xe79yj209004yjr6.jpg" alt="此处输入图片的描述"><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu88uoupyj208c060747.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;两条曲线相切，意味着他们在这点的法线平行，也就是法向量只差一个任意的常数乘子（取为-λ）：<br>&emsp;&emsp;<strong>∇f（x, y) = -λ(∇g(x,y)-C)</strong> 把这个式子的右边移动到左边，就得到<strong>∇（f(x,y)+λ(g(x,y)-C)=0</strong><br>&emsp;&emsp; 在看看这个式子，你又能想起来什么呢？高中数学。。。这个就是<strong>f(x,y)+λ(g(x,y)-C)</strong>没有约束情况下极值点的充分条件吧。。（令其导数等于0，求极值点。。。高中用的就是这个套路。。哎）所以证明了拉格朗日乘子法确实可以解决这类问题，拉格朗日确实牛逼。。高中数学也应该好好学 哎。难受啊。<br>&emsp;&emsp;那拉格朗日乘子法到底是怎么用的呢？简单的再说一下就是 <strong>把等式约束hi(x)用一个系数与f(x)写为一个式子，称为拉格朗日函数，而系数称为拉格朗日乘子。通过拉格朗日函数对各个变量求导，令其为零，可以求得候选值集合，然后验证求得最优值。</strong><br><br></p>
@@ -278,7 +278,7 @@
     
     <entry>
       <title><![CDATA[偏差与方差的总结]]></title>
-      <url>/2017/12/12/2017-12-12-bias-var/</url>
+      <url>/2017-12-12-bias-var/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;今天开始重新仔细学习西瓜书（机器学习），今天看完了第一章，第一章基本都是一些概念的东西，公式也比较少，希望可以坚持把这本书看完。</p>
 <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>&emsp;&emsp;根据各种公式推导得知，泛化误差 = 偏差 + 方差 +噪声<br>&emsp;&emsp;而偏差（bias）度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力。方差(Variance)度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg" alt="此处输入图片的描述"></p>
 <h1 id="偏差与方差的关系"><a href="#偏差与方差的关系" class="headerlink" title="偏差与方差的关系"></a>偏差与方差的关系</h1><p>&emsp;&emsp;偏差与方差是有冲突的。给定学习任务，假定我们能控制学习算法的训练程度，则在训练不足时，模型的拟合能力不够强，训练数据的扰动不足以使模型产生显著变化，此时偏差主导了泛化错误率；随着训练程度的加深，模型的拟合能力逐渐增强，训练数据发生的扰动渐渐能被模型学习到，方差逐渐主导了泛化错误率；在训练程度充足后，模型的拟合能力已经非常强，训练数据发生的轻微扰动都会导致模型发生显著变化，若训练数据自身的，非全局性的特性被模型学习到了，则将发生过拟合。<br><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmtztpugfsj20fe0blq9x.jpg" alt="此处输入图片的描述"></p>
@@ -303,7 +303,7 @@
     
     <entry>
       <title><![CDATA[Sum of Two Integers（使用位运算实现）]]></title>
-      <url>/2017/12/07/2017-12-07-add/</url>
+      <url>/2017-12-07-add/</url>
       <content type="html"><![CDATA[<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>&emsp;&emsp;两个数的加法分为两步，对应位相加和进位。<br><br><br>&emsp;&emsp;举个简单的例子：997+24<br><img src="http://images2015.cnblogs.com/blog/920491/201607/920491-20160712110859998-340357180.png" alt="此处输入图片的描述"></p>
 <p>  &emsp;&emsp;我们平时计算时是将对应位相加和进位同时计算，其实可以保留下进位，只计算对应位相加，保留进位的位置（值）。接下来，将进位向左移动一位，将上一步的结果与移位后的进位值进行对应位相加，直到没有进位结束。<br>  &emsp;&emsp;对于二进制数的而言，对应位相加就可以使用异或（xor）操作，计算进位就可以使用与（and）操作，在下一步进行对应位相加前，对进位数使用移位操作（&lt;&lt;）。<br>  <br><br>&emsp;&emsp;这样就非常好理解下面的实现代码。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int getSum(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        int c = a ^ b;</span><br><span class="line">        b = (a &amp; b) &lt;&lt; 1;</span><br><span class="line">        a = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> a;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -329,7 +329,7 @@
     
     <entry>
       <title><![CDATA[峰度（Kurtosis）和偏度（Skewness）]]></title>
-      <url>/2017/11/28/2017-11-28-Kurtosis/</url>
+      <url>/2017-11-28-Kurtosis/</url>
       <content type="html"><![CDATA[<h1 id="峰度（Kurtosis）"><a href="#峰度（Kurtosis）" class="headerlink" title="峰度（Kurtosis）"></a>峰度（Kurtosis）</h1><p>&emsp;&emsp;峰度是描述总体中所有取值分布形态陡缓程度的统计量。这个统计量需要与正态分布相比较，峰度为0表示该总体数据分布与正态分布的陡缓程度相同；峰度大于0表示该总体数据分布与正态分布相比较为陡峭，为尖顶峰；峰度小于0表示该总体数据分布与正态分布相比较为平坦，为平顶峰。峰度的绝对值数值越大表示其分布形态的陡缓程度与正态分布的差异程度越大。<br>&emsp;&emsp;峰度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161046770.jpg" alt="此处输入图片的描述"><br><br></p>
 <h1 id="偏度（Skewness）"><a href="#偏度（Skewness）" class="headerlink" title="偏度（Skewness）"></a>偏度（Skewness）</h1><p>&emsp;&emsp;偏度与峰度类似，它也是描述数据分布形态的统计量，其描述的是某总体取值分布的对称性。这个统计量同样需要与正态分布相比较，偏度为0表示其数据分布形态与正态分布的偏斜程度相同；偏度大于0表示其数据分布形态与正态分布相比为正偏或右偏，即有一条长尾巴拖在右边，数据右端有较多的极端值；偏度小于0表示其数据分布形态与正态分布相比为负偏或左偏，即有一条长尾拖在左边，数据左端有较多的极端值。偏度的绝对值数值越大表示其分布形态的偏斜程度越大。<br>&emsp;&emsp;偏度的具体计算公式为：<br>&emsp;&emsp;<img src="http://images.51cto.com/files/uploadimg/20100408/161111811.jpg" alt="此处输入图片的描述"></p>
 ]]></content>
@@ -351,7 +351,7 @@
     
     <entry>
       <title><![CDATA[Hexo博客撰写之：MarkDown语法介绍]]></title>
-      <url>/2017/11/18/2017-11-17-test/</url>
+      <url>/2017-11-17-test/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>搭建好了hexo，接下来的就是写博客了， hexo 支持用 markdown 写博客，markdown 语法很简单，本文给出一些基本的 markdown 语法，结合 hexo 教你如何在 hexo 下用 markdown 撰写博客。</p>
 <h1 id="hexo博客头部"><a href="#hexo博客头部" class="headerlink" title="hexo博客头部"></a>hexo博客头部</h1><pre><code>hexo 博客的 markdown 头部有固定的格式，如下所示：
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo博客撰写之：MarkDown语法介绍</span><br><span class="line">date: 2017-11-17 09:12:00</span><br><span class="line">categories:</span><br><span class="line">  - 其他</span><br><span class="line">tags:</span><br><span class="line">  - hexo</span><br><span class="line">  - markdown</span><br><span class="line">description: 本文介绍如何在hexo搭建的博客下用markdown写文章,以及一些markdown的基本语法．</span><br><span class="line">photos:</span><br><span class="line">  - https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=62597ff6ba51f819e5280b18bbdd2188/908fa0ec08fa513d7ddc9503376d55fbb3fbd9fd.jpg</span><br></pre></td></tr></table></figure>
@@ -587,7 +587,7 @@
     
     <entry>
       <title><![CDATA[第一篇post：庆祝博客搭建成功]]></title>
-      <url>/2017/11/17/2017-11-20-first-post/</url>
+      <url>/2017-11-20-first-post/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;&ensp;我听中文音乐很少，先放一首比较喜欢的中文歌曲… &emsp; 《平凡之路》—-朴树</p>
 <center>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28815250&auto=0&height=66"></iframe>
