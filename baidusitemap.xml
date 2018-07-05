@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://pspxiaochen.club/2018-05-24-GD/</loc>
-    <lastmod>2018-07-05T09:35:08.150Z</lastmod>
+    <lastmod>2018-07-05T09:38:04.650Z</lastmod>
     <data>
         <display>
         <title>我自己理解的梯度下降的原理</title>
@@ -274,9 +274,9 @@
         <title>Hexo博客撰写之：MarkDown语法介绍</title>
         <pubTime>2017-11-17T16:00:00.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
         <tag>markdown</tag>
+         
+        <tag>hexo</tag>
          
          
            
@@ -299,9 +299,9 @@
         <title>第一篇post：庆祝博客搭建成功</title>
         <pubTime>2017-11-16T16:00:00.000Z</pubTime>
         
-        <tag>教程</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>教程</tag>
          
         <tag>node</tag>
          
