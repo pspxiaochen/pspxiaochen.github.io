@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pspxiaochen.club/"/>
-  <updated>2018-07-05T09:33:12.695Z</updated>
+  <updated>2018-07-05T09:52:39.552Z</updated>
   <id>https://pspxiaochen.club/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>这是一个天大的秘密</title>
+    <link href="https://pspxiaochen.club/test/"/>
+    <id>https://pspxiaochen.club/test/</id>
+    <published>2018-07-05T04:27:00.000Z</published>
+    <updated>2018-07-05T09:52:39.552Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实什么都没有，这只是一个测试而已。</p>]]></content>
+    
+    <summary type="html">
+    
+      这个秘密只能我一个人知道，任何人都不应该知道。
+    
+    </summary>
+    
+      <category term="life" scheme="https://pspxiaochen.club/categories/life/"/>
+    
+    
+      <category term="秘密" scheme="https://pspxiaochen.club/tags/%E7%A7%98%E5%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>线性回归与最小二乘法</title>
@@ -322,9 +344,9 @@
       <category term="其他" scheme="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="markdown" scheme="https://pspxiaochen.club/tags/markdown/"/>
-    
       <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
+    
+      <category term="markdown" scheme="https://pspxiaochen.club/tags/markdown/"/>
     
   </entry>
   
@@ -346,9 +368,9 @@
       <category term="其他" scheme="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
-    
       <category term="教程" scheme="https://pspxiaochen.club/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
     
       <category term="node" scheme="https://pspxiaochen.club/tags/node/"/>
     

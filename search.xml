@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[这是一个天大的秘密]]></title>
+      <url>/test/</url>
+      <content type="html"><![CDATA[<p>其实什么都没有，这只是一个测试而已。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> life </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 秘密 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[线性回归与最小二乘法]]></title>
       <url>/costfunction/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;我们假设正确的结果y和我们的预测的输出函数有如下关系：</p>
@@ -577,9 +598,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -694,9 +715,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             

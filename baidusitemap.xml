@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://pspxiaochen.club/test/</loc>
+    <lastmod>2018-07-05T09:52:39.552Z</lastmod>
+    <data>
+        <display>
+        <title>这是一个天大的秘密</title>
+        <pubTime>2018-07-05T04:27:00.000Z</pubTime>
+        
+        <tag>秘密</tag>
+         
+         
+           
+             
+              <breadCrumb title="life" url="https://pspxiaochen.club/categories/life/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://pspxiaochen.club/2018-05-24-GD/</loc>
     <lastmod>2018-07-05T09:38:04.650Z</lastmod>
     <data>
@@ -274,9 +294,9 @@
         <title>Hexo博客撰写之：MarkDown语法介绍</title>
         <pubTime>2017-11-17T16:00:00.000Z</pubTime>
         
-        <tag>markdown</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>markdown</tag>
          
          
            
@@ -299,9 +319,9 @@
         <title>第一篇post：庆祝博客搭建成功</title>
         <pubTime>2017-11-16T16:00:00.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
         <tag>教程</tag>
+         
+        <tag>hexo</tag>
          
         <tag>node</tag>
          
