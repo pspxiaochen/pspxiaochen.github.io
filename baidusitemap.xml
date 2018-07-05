@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://pspxiaochen.club/2018-05-24-GD/</loc>
+    <lastmod>2018-07-05T09:35:08.150Z</lastmod>
+    <data>
+        <display>
+        <title>我自己理解的梯度下降的原理</title>
+        <pubTime>2018-05-23T13:27:00.000Z</pubTime>
+        
+        <tag>梯度下降</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://pspxiaochen.club/costfunction/</loc>
-    <lastmod>2018-07-03T09:50:51.074Z</lastmod>
+    <lastmod>2018-07-05T09:33:12.695Z</lastmod>
     <data>
         <display>
         <title>线性回归与最小二乘法</title>
@@ -163,26 +183,6 @@
 
     
   <url>
-    <loc>https://pspxiaochen.club/2018-05-24-GD/</loc>
-    <lastmod>2018-05-24T08:48:51.268Z</lastmod>
-    <data>
-        <display>
-        <title>我自己理解的梯度下降的原理</title>
-        <pubTime>2018-05-23T13:27:00.000Z</pubTime>
-        
-        <tag>梯度下降</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://pspxiaochen.club/lagrange%20and%20kkt/</loc>
     <lastmod>2017-12-26T13:31:10.714Z</lastmod>
     <data>
@@ -274,9 +274,9 @@
         <title>Hexo博客撰写之：MarkDown语法介绍</title>
         <pubTime>2017-11-17T16:00:00.000Z</pubTime>
         
-        <tag>markdown</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>markdown</tag>
          
          
            
@@ -299,9 +299,9 @@
         <title>第一篇post：庆祝博客搭建成功</title>
         <pubTime>2017-11-16T16:00:00.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
         <tag>教程</tag>
+         
+        <tag>hexo</tag>
          
         <tag>node</tag>
          
