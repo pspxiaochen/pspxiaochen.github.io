@@ -31,14 +31,14 @@
 <p>在这里$\theta^Tx^{(i)}$为我们的预测函数，$\epsilon^{(i)}$是和真实值的误差。<br>因为每个样本都是独立的，因此误差直接也是独立的。所以我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布，记作$\epsilon^{(i)}\sim N(0,\sigma^2)$,而高斯分布的概率密度函数为：</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$<br>&emsp;&emsp;将误差带入上面的式子得：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(\epsilon^{(i)})=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})$</p>
 <p>因为我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布。所以还可以假设$y^{(i)}$是服从期望是里$\theta^Tx^{(i)}$，方差为$\sigma^2$的高斯分布，在给定 x(i)且参数为 θ的情况下，记作：$y^{(i)}\sim N(\theta^Tx^{(i)},\sigma^2)$,所以我们可以将上面的式子改写为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p>
-<p>因为在我们的样本中，y(i) 已经给定了，我们需要找到一个参数 θ，使得我们最有可能去得到 y(i)的分布。我们想要估计其中的未知参数θ。由此我们可以想到一个非常常用的参数估计方法—极大似然估计。<br>关于极大似然估计我推荐知乎的2篇文章，讲的浅显易懂。<br><a href="https://zhuanlan.zhihu.com/p/32568242" target="_blank" rel="noopener">似然函数与极大似然估计</a><br><a href="https://zhuanlan.zhihu.com/p/26614750" target="_blank" rel="noopener">一文搞懂极大似然估计</a></p>
+<p>因为在我们的样本中，y(i) 已经给定了，我们需要找到一个参数 θ，使得我们最有可能去得到 y(i)的分布。我们想要估计其中的未知参数θ。由此我们可以想到一个非常常用的参数估计方法—极大似然估计。<br>关于极大似然估计我推荐知乎的2篇文章，讲的浅显易懂。<br><a href="https://zhuanlan.zhihu.com/p/32568242" rel="external nofollow noopener noreferrer" target="_blank">似然函数与极大似然估计</a><br><a href="https://zhuanlan.zhihu.com/p/26614750" rel="external nofollow noopener noreferrer" target="_blank">一文搞懂极大似然估计</a></p>
 <p>接着刚才，我们使用极大似然估计后可写成：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^mP(y^{(i)}|x^{(i)};\theta) $</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^m\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p>
 <p>因为是极大似然估计，所以我们希望$L(\theta)$要尽可能的大。所以我们对上面的式子取对数，因为对数不改变函数的单调性。</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\sum_{i=1}^m log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}+\sum_{i=1}^m -\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}$</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}-\sum_{i=1}^m \frac{1}{2\sigma^2}*(y^{(i)}-\theta^Tx^{(i)})^2$</p>
-<p>为了使$L(\theta)$要尽可能的大，我们就需要让$J(\theta)=\frac{1}{2}*(y^{(i)}-\theta^Tx^{(i)})^2$尽量的小，所以就有了平方损失函数，可以看到是一模一样的。J(θ) 即为此线性回归的cost function。由此我们可以非常自然地推导出为什么线性回归中的cost function是使用最小二乘法。<br>接下来就是求解过程，常用的就是梯度下降，如果想知道为什么用梯度下降，请看这篇<br><a href="https://www.pspxiaochen.club/2018-05-24-GD/" target="_blank" rel="noopener">我自己理解的梯度下降原理</a></p>
+<p>为了使$L(\theta)$要尽可能的大，我们就需要让$J(\theta)=\frac{1}{2}*(y^{(i)}-\theta^Tx^{(i)})^2$尽量的小，所以就有了平方损失函数，可以看到是一模一样的。J(θ) 即为此线性回归的cost function。由此我们可以非常自然地推导出为什么线性回归中的cost function是使用最小二乘法。<br>接下来就是求解过程，常用的就是梯度下降，如果想知道为什么用梯度下降，请看这篇<br><a href="https://www.pspxiaochen.club/2018-05-24-GD/" rel="external nofollow noopener noreferrer" target="_blank">我自己理解的梯度下降原理</a></p>
 ]]></content>
       
         <categories>
@@ -125,7 +125,7 @@
 <p>&emsp;&emsp;kd数搜索的评论计算复杂度是O(logN),N是训练实例数.kd树更适用于训练实例数远大于空间维数时的k近邻搜索。</p>
 <h1 id="搜索kd树-（K近邻）"><a href="#搜索kd树-（K近邻）" class="headerlink" title="搜索kd树*（K近邻）"></a>搜索kd树*（K近邻）</h1><p>输入：给定一个已经构建好的kd树，需要寻找的点P，需要寻找几个近邻K。<br>输出：L列表，L列表里有K个空位，每个空位装的是近邻点。</p>
 <p>&emsp;&emsp;（1）根据切分的维度对比同维度下P的坐标值向下搜索。（也就是说，如果树的节点是照 $x_r=a$ 进行切分，并且 p 的 r 坐标小于 a，则向左枝进行搜索；反之则走右枝）。<br>&emsp;&emsp;（2）当到达叶子结点时，将其标记为访问过。如果L列表中不足k个点，则将当前结点的坐标加入到L列表。如果L列表不为空并且当前结点与P的距离小于L中所存放结点的最大距离，则用当前结点替换掉L中离P最远的结点。<br>&emsp;&emsp;（3）如果当前的结点不是整棵树最顶端的结点，执行a操作；反之，输出L列表。<br>&emsp;&emsp;&emsp;&emsp;a:向上爬一个结点。如果当前（向上爬过之后的）结点没有被访问过，将其标记为访问过，然后执行b和c操作；如果当前结点被访问过，再次执行a.<br>&emsp;&emsp;&emsp;&emsp;b:如果此时L列表中不足k个点，则将结点加入到L；如果L中已经满k个点，并且当前结点与P的距离小于 L列表中最远的距离的点，则用结点替换掉L中距离P最远的点。<br>&emsp;&emsp;&emsp;&emsp;c:计算p和当前结点切分线的距离（作垂线）。如果该距离大于等于L列表中距离最远的点并且L列表中已经有k个点，则在当前结点的另外一边（没访问过的那边）不会有更近的点，接着执行（3）；如果该距离小于L列表中距离最远的点或者L列表中不足k个点，则切分线另一边可能有更近的点，因此在当前结点的另外一边可能有更近的点，因此在当前结点的另外一边从（1）开始重新执行。</p>
-<p>大概过成就是这样，下面有一个链接，链接里有距离寻找K近邻的例子。<br><a href="https://zhuanlan.zhihu.com/p/23966698" target="_blank" rel="noopener">搜索kd数k近邻搜索样例</a></p>
+<p>大概过成就是这样，下面有一个链接，链接里有距离寻找K近邻的例子。<br><a href="https://zhuanlan.zhihu.com/p/23966698" rel="external nofollow noopener noreferrer" target="_blank">搜索kd数k近邻搜索样例</a></p>
 ]]></content>
       
         <categories>
@@ -211,7 +211,7 @@
       <title><![CDATA[朴素贝叶斯之了断心结。]]></title>
       <url>/bys/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp; 为什么说贝叶斯一直是我的心结呢。这说来就话长了，当初考研时，想都没想就选择了相对简单的专硕（现在看来其实也并不简单），而我们学习的专硕是不考概率论的，所以基本上我的概率论体系还停留在高中阶段。那你又要问了，难道一个计算机科班出身的，本科就没学过概率论么，说到这里我就想起来我的概率论老师上课操着一口湖南口音，声音很小，150个人的大教室，而我在最后一排和舍友疯狂的搓着3DS，咳咳。说远了。今天我一定用最通俗理解的方法把朴素贝叶斯里的每一个知识点都梳理一遍，算是对自己有一个交代。</p>
-<h1 id="如果没什么概率论基础的话先推荐一篇文章"><a href="#如果没什么概率论基础的话先推荐一篇文章" class="headerlink" title="如果没什么概率论基础的话先推荐一篇文章"></a>如果没什么概率论基础的话先推荐一篇文章</h1><p><a href="https://www.jianshu.com/p/b570b1ba92bb" target="_blank" rel="noopener">应该如何理解概率分布函数和概率密度函数？</a></p>
+<h1 id="如果没什么概率论基础的话先推荐一篇文章"><a href="#如果没什么概率论基础的话先推荐一篇文章" class="headerlink" title="如果没什么概率论基础的话先推荐一篇文章"></a>如果没什么概率论基础的话先推荐一篇文章</h1><p><a href="https://www.jianshu.com/p/b570b1ba92bb" rel="external nofollow noopener noreferrer" target="_blank">应该如何理解概率分布函数和概率密度函数？</a></p>
 <h1 id="生成式模型和判别式模型。"><a href="#生成式模型和判别式模型。" class="headerlink" title="生成式模型和判别式模型。"></a>生成式模型和判别式模型。</h1><p>&emsp;&emsp;在讲贝叶斯之前我觉得我有理由先说一下什么是生成式模型而什么是判别式模型。在《统计学习方法》书中明确写道：<strong>监督学习方法又可以分为生成方法和判别方法，所学到的模型分别称为生成模型和判别模型。</strong></p>
 <h2 id="生成式模型："><a href="#生成式模型：" class="headerlink" title="生成式模型："></a>生成式模型：</h2><p>&emsp;&emsp;生成方法由数据学习联合概率分布P(X,Y),然后求出条件概率分布P（Y|X）作为预测模型，即生成模型 P（Y|X）= P(X,Y) / P(X),这样的方法之所以称为生成方法，是因为模型表示了给定输入X产生输出Y的生成关系。我们今天的主角朴素贝叶斯就是生成模型，常见的还有隐马尔科夫模型。<br>&emsp;&emsp;生成方法的特点：生成方法可以还原出联合概率分布P（X,Y），而判别方法则不能。生成方法的学习收敛速度更快，即当样本容量增加的时候，学到的模型可以更快的收敛于真实模型。</p>
 <h2 id="判别式模型："><a href="#判别式模型：" class="headerlink" title="判别式模型："></a>判别式模型：</h2><p>&emsp;&emsp;判别方法由数据直接学习决策函数f(X)或者条件概率分布P（Y|X）作为预测的模型。判别方法关系的是对给定的输入X，应该预测什么样的输入出Y。<br>&emsp;&emsp;判别方法的特点：判别方法直接学习的是条件概率P（Y|X）或者决策函数F（X），直接面对预测，往往学习的准确率更高。由于直接学习P（Y|X）或者F（X），可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习问题。</p>
@@ -232,7 +232,7 @@
 <p>假设我们的损失函数是0-1损失函数：<br>&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fruanmcwi7j20h802zt8o.jpg" alt="此处输入图片的描述"><br>设X和Y服从联合分布P(X,Y).那么期望风险就可以表示为：$R_{exp}(f) = E[L(Y,f(x))]$<br>接着推公式得到：<br>$R_{exp}(f) = E[L(Y,f(x))]$<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fruavgwi8ij209h04x3yr.jpg" alt="此处输入图片的描述"><br>可以看出最后变成了条件期望。<br>&emsp;&emsp;这就是期望风险，期望风险表示的是全局的概念，表示的是决策函数对所有的样本<x,y>预测能力的大小，而经验风险则是局部的概念，仅仅表示决策函数对训练数据集里样本的预测能力。理想的模型（决策）函数应该是让所有的样本的损失函数最小的（也即期望风险最小化），但是期望风险函数往往是不可得到的，即上式中，X与Y的联合分布函数不容易得到。现在我们已经清楚了期望风险是全局的，理想情况下应该是让期望风险最小化，但是呢，期望风险函数又不是那么容易得到的。怎么办呢？那就用局部最优的代替全局最优这个思想吧。这就是经验风险最小化的理论基础。<br>&emsp;&emsp;为了使条件期望最小化，只需要对X=x每一个都极小化：<br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1frubc6ht1vj20ui0ba763.jpg" alt="此处输入图片的描述"></x,y></p>
 <p>根据期望风险最小化准则就得到了后验概率最大化准则。</p>
 <p>总的来说 朴素贝叶斯就是把朴素的思想（条件独立性）带入到贝叶斯公式之中，来得到朴素贝叶斯分类器。中间需要计算先验概率和条件概率，然后通过极大似然估计可以估计这些参数。</p>
-<p>最后在推荐2篇文章，里面写的十分详细。<br><a href="http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/" target="_blank" rel="noopener">数学之美番外篇：平凡而又神奇的贝叶斯方法</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_one.html" target="_blank" rel="noopener">贝叶斯推断及其互联网应用（一）：定理简介</a></p>
+<p>最后在推荐2篇文章，里面写的十分详细。<br><a href="http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/" rel="external nofollow noopener noreferrer" target="_blank">数学之美番外篇：平凡而又神奇的贝叶斯方法</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/bayesian_inference_part_one.html" rel="external nofollow noopener noreferrer" target="_blank">贝叶斯推断及其互联网应用（一）：定理简介</a></p>
 ]]></content>
       
         <categories>
@@ -487,7 +487,7 @@
 <tbody>
 <tr>
 <td style="text-align:center"><code>[百度一下](http://www.baidu.com)</code></td>
-<td style="text-align:center"><a href="http://www.baidu.com" target="_blank" rel="noopener">百度一下</a></td>
+<td style="text-align:center"><a href="http://www.baidu.com" rel="external nofollow noopener noreferrer" target="_blank">百度一下</a></td>
 </tr>
 <tr>
 <td style="text-align:center"><code>![joker](https://timgsa.baidu.com/timg?image&amp;quality=80</code><br><code>&amp;size=b9999_10000&amp;sec=1511008391023&amp;di=1ff315398f4671c899</code><br><code>dc706aa34693de&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.duitang.com%2</code><br><code>Fuploads%2Fi</code><br><code>tem%2F201203%2F17%2F20120317230833_kvzj3.thumb.700_0.jpeg)</code></td>
@@ -679,7 +679,7 @@
 </li>
 </ul>
 <h2 id="修改next主题配置文件-spaceJmmy-blog-template-themes-next-config-yml："><a href="#修改next主题配置文件-spaceJmmy-blog-template-themes-next-config-yml：" class="headerlink" title="修改next主题配置文件 spaceJmmy-blog-template/themes/next/_config.yml："></a>修改next主题配置文件 spaceJmmy-blog-template/themes/next/_config.yml：</h2><ul>
-<li>修改 github 社交信息，将我的 GitHub 链接 <a href="https://github.com/spaceJmmy" target="_blank" rel="noopener">https://github.com/spaceJmmy</a> 改成你自己的链接：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  <span class="comment">#LinkLabel: Link</span></span><br><span class="line">  GitHub: https://github.com/spaceJmmy</span><br></pre></td></tr></table></figure>
+<li>修改 github 社交信息，将我的 GitHub 链接 <a href="https://github.com/spaceJmmy" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/spaceJmmy</a> 改成你自己的链接：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">social:</span><br><span class="line">  <span class="comment">#LinkLabel: Link</span></span><br><span class="line">  GitHub: https://github.com/spaceJmmy</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="更换站点图标和用户头像："><a href="#更换站点图标和用户头像：" class="headerlink" title="更换站点图标和用户头像："></a>更换站点图标和用户头像：</h2><ul>
@@ -690,7 +690,7 @@
 </ul>
 <h2 id="修改关于页面："><a href="#修改关于页面：" class="headerlink" title="修改关于页面："></a>修改关于页面：</h2><p>  修改文件夹 spaceJmmy-blog-template/source/about 下的 index.md 文件，改为你自己的 关于 页面。</p>
 <h2 id="测试配置是否成功"><a href="#测试配置是否成功" class="headerlink" title="测试配置是否成功"></a>测试配置是否成功</h2><p>  在git bash中输入以下命令：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean </span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
-<p>  浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> ，如果成功的话，你会发现你的博客已经呈现出你的信息了，吼吼，狂欢吧…… 不过，先别急，先把网站部署备份了再说：</p>
+<p>  浏览器打开 <a href="http://localhost:4000/" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:4000/</a> ，如果成功的话，你会发现你的博客已经呈现出你的信息了，吼吼，狂欢吧…… 不过，先别急，先把网站部署备份了再说：</p>
 <hr>
 <p>  OK，接下来部署备份你的网站，这时候在 bash 终端 Ctrl+C 停止服务器运行，然后输入：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
 <p>  你会发现静态网站已经 push 到你 repo 的 master 分支了。浏览器打开 your-github-username.github.io 就能看到你的博客了，哈哈……<br>  继续，备份博客源码之前需要先删除当前目录下的 .git 文件夹，然后 bash　输入：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo b</span><br></pre></td></tr></table></figure></p>
