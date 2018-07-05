@@ -31,10 +31,9 @@
 <p>在这里$\theta^Tx^{(i)}$为我们的预测函数，$\epsilon^{(i)}$是和真实值的误差。<br>因为每个样本都是独立的，因此误差直接也是独立的。所以我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布，记作$\epsilon^{(i)}\sim N(0,\sigma^2)$,而高斯分布的概率密度函数为：</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$<br>&emsp;&emsp;将误差带入上面的式子得：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(\epsilon^{(i)})=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})$</p>
 <p>因为我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布。所以还可以假设$y^{(i)}$是服从期望是里$\theta^Tx^{(i)}$，方差为$\sigma^2$的高斯分布，在给定 x(i)且参数为 θ的情况下，记作：$y^{(i)}\sim N(\theta^Tx^{(i)},\sigma^2)$,所以我们可以将上面的式子改写为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p>
-<p>因为在我们的样本中，y(i) 已经给定了，我们需要找到一个参数 θ，使得我们最有可能去得到 y(i)的分布。我们想要估计其中的未知参数θ。由此我们可以想到一个非常常用的参数估计方法—极大似然轨迹。<br>关于极大似然估计我推荐知乎的2片文章，讲的浅显易懂。<br><a href="https://zhuanlan.zhihu.com/p/32568242" target="_blank" rel="noopener">似然函数与极大似然估计</a><br><a href="https://zhuanlan.zhihu.com/p/26614750" target="_blank" rel="noopener">一文搞懂极大似然估计</a></p>
+<p>因为在我们的样本中，y(i) 已经给定了，我们需要找到一个参数 θ，使得我们最有可能去得到 y(i)的分布。我们想要估计其中的未知参数θ。由此我们可以想到一个非常常用的参数估计方法—极大似然估计。<br>关于极大似然估计我推荐知乎的2篇文章，讲的浅显易懂。<br><a href="https://zhuanlan.zhihu.com/p/32568242" target="_blank" rel="noopener">似然函数与极大似然估计</a><br><a href="https://zhuanlan.zhihu.com/p/26614750" target="_blank" rel="noopener">一文搞懂极大似然估计</a></p>
 <p>接着刚才，我们使用极大似然估计后可写成：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^mP(y^{(i)}|x^{(i)};\theta) $</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^m\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$<br>因为是极大似然估计，所以我们希望$L(\theta)$要尽可能的大。所以我们对上面的式子取对数，因为对数不改变函数的单调性。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\sum_{i=1}^m log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}+\sum_{i=1}^m -\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}$<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}-\sum_{i=1}^m \frac{1}{2\sigma^2}*(y^{(i)}-\theta^Tx^{(i)})^2$</p>
-<p>为了使$L(\theta)$要尽可能的大，我们就需要让$J(\theta)=\frac{1}{2}*(y^{(i)}-\theta^Tx^{(i)})^2$尽量的小，所以就有了平方损失函数，可以看到是一模一样的。J(θ) 即为此线性回归的cost function。由此我们可以非常自然地推导出为什么线性回归中的cost function是使用最小二乘法。<br>接下来就是求解过程，常用的就是梯度下降，如果想知道为什么用梯度下降，请看这篇<br><a href="https://www.pspxiaochen.club/2018-05-24-GD/" target="_blank" rel="noopener">我自己理解的梯度下降原理</a></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^m\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$<br>因为是极大似然估计，所以我们希望$L(\theta)$要尽可能的大。所以我们对上面的式子取对数，因为对数不改变函数的单调性。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\sum_{i=1}^m log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; $=mlog\frac{1}{\sqrt{2\pi}\sigma}+\sum_{i=1}^m -\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}$<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; $=mlog\frac{1}{\sqrt{2\pi}\sigma}-\sum_{i=1}^m \frac{1}{2\sigma^2}<em>(y^{(i)}-\theta^Tx^{(i)})^2$<br>为了使$L(\theta)$要尽可能的大，我们就需要让$J(\theta)=\frac{1}{2}</em>(y^{(i)}-\theta^Tx^{(i)})^2$尽量的小，所以就有了平方损失函数，可以看到是一模一样的。J(θ) 即为此线性回归的cost function。由此我们可以非常自然地推导出为什么线性回归中的cost function是使用最小二乘法。<br>接下来就是求解过程，常用的就是梯度下降，如果想知道为什么用梯度下降，请看这篇<br><a href="https://www.pspxiaochen.club/2018-05-24-GD/" target="_blank" rel="noopener">我自己理解的梯度下降原理</a></p>
 ]]></content>
       
         <categories>
@@ -598,9 +597,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -715,9 +714,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
