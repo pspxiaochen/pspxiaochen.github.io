@@ -3,6 +3,14 @@
   
     
     <entry>
+      <title><![CDATA[hashing]]></title>
+      <url>/hashing/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[这是一个天大的秘密]]></title>
       <url>/test/</url>
       <content type="html"><![CDATA[<p>其实什么都没有，这只是一个测试而已。</p>
@@ -602,9 +610,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -719,9 +727,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
