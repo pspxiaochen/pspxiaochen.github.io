@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pspxiaochen.club/about/index.html</loc>
+    
+    <lastmod>2018-07-07T09:34:15.497Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pspxiaochen.club/hash/</loc>
     
     <lastmod>2018-07-07T09:12:28.091Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>https://pspxiaochen.club/2017-11-17-test/</loc>
     
     <lastmod>2017-11-20T08:03:16.896Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pspxiaochen.club/about/index.html</loc>
-    
-    <lastmod>2017-11-20T07:39:44.771Z</lastmod>
     
   </url>
   
