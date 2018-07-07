@@ -6,10 +6,10 @@
       <title></title>
       <url>/hashing/</url>
       <content type="html"><![CDATA[<hr>
-<p>title: hashing<br>categories:</p>
+<p>title: 哈希表的一些简单总结<br>date: 2018-07-06 21:20:59<br>categories:</p>
 <ul>
 <li>数据结构<br>tags:</li>
-<li>hash<br>mathjax: true<br>copyright: ture<br>date: 2018-07-06 21:20:59<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
+<li>hash<br>mathjax: true<br>copyright: ture<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
 </ul>
 <hr>
 ]]></content>
