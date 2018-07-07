@@ -3,15 +3,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[哈希表的一些总结]]></title>
       <url>/hash/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 哈希表的一些总结<br>date: 2018-07-07 12:27:00<br>categories:</p>
-<ul>
-<li>数据结构<br>mathjax: true<br>copyright: true<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
-</ul>
-<hr>
-<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p>
+      <content type="html"><![CDATA[<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p>
 <h1 id="散列冲突"><a href="#散列冲突" class="headerlink" title="散列冲突"></a>散列冲突</h1><p>&emsp;&emsp;如果当一个元素被插入时另一个元素已经存在（散列值相同），那么就产生一个冲突，这个冲突需要消除。我讲介绍其中最简单的2种方法：分离链接法和开放地址法。</p>
 <h2 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h2><p>&emsp;&emsp;解决冲突的第一种方法通常叫做分离链接法，其做法是将散列到同一个值的所有元素保留到一个表中。为了方法起见，这些表都有表头。也就是数组里存了一个链表，为了以后删除元素方便，每个链表都有一个表头。如下图所示：<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1ft1ciiz3n2j20u014076v.jpg" alt="此处输入图片的描述"></p>
 <p>&emsp;&emsp;分离链接法的缺点是需要指针，由于给新单元分配地址需要时间，一次这就导致算法的速度多少有些慢，同时算法实际上还要求对另一种数据结构的实现。</p>
@@ -21,6 +15,12 @@
 <h3 id="双散列"><a href="#双散列" class="headerlink" title="双散列"></a>双散列</h3><p>&emsp;&emsp;对于双散列，一种流行的选择是$F(i)=i * hash(x)$.这个方法如果hash函数选择的不好将会是灾难性的。比如X=99，hash(x) = x mod 9.因此，函数一定不要算得0.</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 数据结构 </category>
+            
+        </categories>
+        
         
     </entry>
     
