@@ -3,17 +3,22 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[哈希表的一些总结]]></title>
       <url>/hashing/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: 哈希表的一些简单总结<br>date: 2018-07-06 21:20:59<br>categories:</p>
-<ul>
-<li>数据结构<br>tags:</li>
-<li>hash<br>mathjax: true<br>copyright: ture<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
-</ul>
-<hr>
-]]></content>
+      <content type="html"></content>
       
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hashing </tag>
+            
+        </tags>
         
     </entry>
     
@@ -617,9 +622,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -734,9 +739,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             
