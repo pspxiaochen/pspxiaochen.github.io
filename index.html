@@ -330,7 +330,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/hashing/" itemprop="url">哈希表的一些总结</a></h1>
+                <a class="post-title-link" href="/hashing/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T14:34:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T16:45:54+08:00">
                 2018-07-07
               </time>
             
@@ -358,34 +358,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-07T14:36:03+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-07T16:46:48+08:00">
                 2018-07-07
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -415,14 +393,24 @@
 
       
         
-          今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hashing/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <hr>
+<p>title: 哈希表的一些总结<br>categories:</p>
+<ul>
+<li>数据结构<br>tags:</li>
+<li>hash<br>mathjax: true<br>copyright: ture<br>date: 2018-07-06 21:20:59<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
+</ul>
+<hr>
+<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p>
+<h1 id="散列冲突"><a href="#散列冲突" class="headerlink" title="散列冲突"></a>散列冲突</h1><p>&emsp;&emsp;如果当一个元素被插入时另一个元素已经存在（散列值相同），那么就产生一个冲突，这个冲突需要消除。我讲介绍其中最简单的2种方法：分离链接法和开放地址法。</p>
+<h2 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h2><p>&emsp;&emsp;解决冲突的第一种方法通常叫做分离链接法，其做法是将散列到同一个值的所有元素保留到一个表中。为了方法起见，这些表都有表头。也就是数组里存了一个链表，为了以后删除元素方便，每个链表都有一个表头。如下图所示：<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1ft1ciiz3n2j20u014076v.jpg" alt="此处输入图片的描述"></p>
+<p>&emsp;&emsp;分离链接法的缺点是需要指针，由于给新单元分配地址需要时间，一次这就导致算法的速度多少有些慢，同时算法实际上还要求对另一种数据结构的实现。</p>
+<h2 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h2><p>&emsp;&emsp;开放定址散列法是另外一种不同链表解决冲突的方法。在这个方法中，如果有冲突发生，那么就要尝试选择另外的单元，直到找出空的单元为止。更一般的，单元$h_0(X),h_1(X),h_2(X)$等等，相继被试选，其中$h_i(X)=(Hash(X)+F(i))$ mod TableSize 函数F是冲突解决方法。 一般来说，对开放定址散列算法来说，装填因子应该低于$\lambda$=0.5。接下来介绍3个通常解决冲突的方法。</p>
+<h3 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h3><p>&emsp;&emsp;在线性探测法中，函数F是i的线性函数，典型情形是F(i)=i。这相当于逐个探测每个单元（必要时可以绕回）以查找出一个空单元。 如果表可以有多于一半被填满的话，那么线性探测就不是一个好办法。</p>
+<h3 id="平方探测法"><a href="#平方探测法" class="headerlink" title="平方探测法"></a>平方探测法</h3><p>&emsp;&emsp;平方探测法是消除线性探测中一次聚集问题的冲突解决方法。平方探测就是冲突函数为二次函数的探测方法。流行的选择是$F(i)=i^2$<br>&emsp;&emsp;对于线性探测，让元素几乎填满散列表并不是一个好的主意，因此测试表的性能会降低。对于平方探测情况甚至更糟：一旦表被填满超过一半，当表的大小不是质数时甚至在表被填满一半之前，就不能保证一次找到一个空单元了。这是因为最多有表的一半可以用作解决冲突的备选位置。<br>&emsp;&emsp;对于这种情况，我们可以使用<strong>再散列</strong>,就是建立另外一个大约两倍大的表（并且使用一个相关的新散列函数），扫描这个那个原始散列表，计算每个（未删除的）元素的新散列值并将其插入到新表。<br>&emsp;&emsp;在散列可以用平方探测以多种方法实现。一种做法是只要表满到一半就再散列。另一种极端的方法是只有当插入失败时才再散列。第三种是当表到达某一个装填因子时进行再散列。由于随着装填因子的增加表的性能的确有下降，因此第三种可能是最好的策略。</p>
+<h3 id="双散列"><a href="#双散列" class="headerlink" title="双散列"></a>双散列</h3><p>&emsp;&emsp;对于双散列，一种流行的选择是$F(i)=i * hash(x)$.这个方法如果hash函数选择的不好将会是灾难性的。比如X=99，hash(x) = x mod 9.因此，函数一定不要算得0.</p>
+
+          
         
       
     </div>
@@ -1998,7 +1986,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2093,7 +2081,7 @@
 	
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共15.0k字</span>
+  <span class="post-count">博客全站共16.2k字</span>
 </div>
         
 
