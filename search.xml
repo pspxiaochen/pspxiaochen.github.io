@@ -9,7 +9,7 @@
 <p>title: 哈希表的一些总结<br>categories:</p>
 <ul>
 <li>数据结构<br>tags:</li>
-<li>hash<br>mathjax: true<br>copyright: ture<br>date: 2018-07-07 16:54:25<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
+<li>hash<br>mathjax: true<br>copyright: true<br>date: 2018-07-07 16:54:25<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
 </ul>
 <hr>
 <h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p>
@@ -625,9 +625,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -742,9 +742,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             

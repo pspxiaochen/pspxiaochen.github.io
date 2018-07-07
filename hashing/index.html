@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: turedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp">
+<meta name="description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: truedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="发条晨">
 <meta property="og:url" content="https://pspxiaochen.club/hashing/index.html">
 <meta property="og:site_name" content="发条晨">
-<meta property="og:description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: turedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp;emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记">
+<meta property="og:description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: truedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp;emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1ft1ciiz3n2j20u014076v.jpg">
-<meta property="og:updated_time" content="2018-07-07T08:55:12.821Z">
+<meta property="og:updated_time" content="2018-07-07T08:58:00.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="发条晨">
-<meta name="twitter:description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: turedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp;emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记">
+<meta name="twitter:description" content="title: 哈希表的一些总结categories:  数据结构tags: hashmathjax: truecopyright: truedate: 2018-07-07 16:54:25description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。   散列表&amp;emsp;&amp;emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记">
 <meta name="twitter:image" content="http://wx3.sinaimg.cn/mw690/72fdc620ly1ft1ciiz3n2j20u014076v.jpg">
 
 
@@ -360,7 +360,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-07T16:55:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-07T16:58:00+08:00">
                 2018-07-07
               </time>
             
@@ -398,7 +398,7 @@
 <p>title: 哈希表的一些总结<br>categories:</p>
 <ul>
 <li>数据结构<br>tags:</li>
-<li>hash<br>mathjax: true<br>copyright: ture<br>date: 2018-07-07 16:54:25<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
+<li>hash<br>mathjax: true<br>copyright: true<br>date: 2018-07-07 16:54:25<br>description: 今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。</li>
 </ul>
 <hr>
 <h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p>
