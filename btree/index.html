@@ -95,13 +95,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="发条晨">
-<meta property="og:url" content="https://pspxiaochen.club/tags/markdown/index.html">
+<meta name="description" content="考研的时候复习到B树，当时感觉好难，时间不怎么够了，就放弃了。前几天复习了一下B树，现在总结一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于B树的一些简单的总结">
+<meta property="og:url" content="https://pspxiaochen.club/btree/index.html">
 <meta property="og:site_name" content="发条晨">
+<meta property="og:description" content="考研的时候复习到B树，当时感觉好难，时间不怎么够了，就放弃了。前几天复习了一下B树，现在总结一下。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1ft3elepdnuj20jv08t0t8.jpg">
+<meta property="og:updated_time" content="2018-07-09T02:50:14.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="发条晨">
+<meta name="twitter:title" content="关于B树的一些简单的总结">
+<meta name="twitter:description" content="考研的时候复习到B树，当时感觉好难，时间不怎么够了，就放弃了。前几天复习了一下B树，现在总结一下。">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1ft3elepdnuj20jv08t0t8.jpg">
 
 
 
@@ -143,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.club/tags/markdown/">
+  <link rel="canonical" href="https://pspxiaochen.club/btree/">
 
 
 
 
 
-  <title>标签: markdown | 发条晨</title>
+  <title>关于B树的一些简单的总结 | 发条晨</title>
   
 
 
@@ -169,7 +175,7 @@
   
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
     <a href="https://github.com/pspxiaochen" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -295,52 +301,258 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>markdown<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.club/btree/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pspxiaochen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="发条晨">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017-11-17-test/" itemprop="url">
-              
-                <span itemprop="name">Hexo博客撰写之：MarkDown语法介绍</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">关于B树的一些简单的总结</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-11-18T00:00:00+08:00" content="2017-11-18">
-          11-18
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T09:16:51+08:00">
+                2018-07-09
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-09T10:50:14+08:00">
+                2018-07-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  考研的时候复习到B树，当时感觉好难，时间不怎么够了，就放弃了。前几天复习了一下B树，现在总结一下。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>&emsp;&emsp;先说一下，B-树，B树，是一个东西。B树和普通的平衡二叉树不同的是B树属于多叉树又名平衡多路查找树（查找的路径不只有2条），数据库索引技术里大量使用了B树。</p>
+<h1 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h1><p>&emsp;&emsp;（1）树中的每个节点最多拥有m个子节点且m&gt;=2,空树除外（m阶代表一个树的节点最多有多少条查找路径，m阶=m路，当m=2则是平衡二叉树，当m=3时叫3阶B树）<br>&emsp;&emsp;（2）除了根节点以外，每个节点的关键字数量大于等于 ceil(m/2)-1个 (ceil向上取整的函数)，小于等于m-1个，非根节点关键字必须大于等于2。（关键字在节点中）<br>&emsp;&emsp;（3）所有叶子节点均在同一层，叶子节点除了包含了关键字和关键字记录的指针外也有只想其他子节点的指针，只不过其地址都为null.<br>&emsp;&emsp;（4）如果一个非叶子节点有N个子节点，则该结点的关键字个数等于N-1。（有3个子节点说明有3条路径，可以理解成2个关键字把一条数轴分成了3段，这每一段代表一条路径）。<br>&emsp;&emsp;（5）所有节点关键字是按递增次序排列，并遵循左小右大原则。</p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1ft3elepdnuj20jv08t0t8.jpg" alt="此处输入图片的描述"></p>
+<h2 id="查找流程"><a href="#查找流程" class="headerlink" title="查找流程"></a>查找流程</h2><p> 如上图我要从上图中找到E字母<br> （1）获取根节点的关键字进行比较，当前根节点关键字为M，E要小于M（26个字母顺序），所以往找到指向左边的子节点（二分法规则，左小右大，左边放小于当前节点值的子节点、右边放大于当前节点值的子节点）；</p>
+<p>（2）拿到关键字D和G，D&lt;E&lt;G 所以直接找到D和G中间的节点；</p>
+<p>（3）拿到E和F，因为E=E 所以直接返回关键字和指针信息（如果树结构里面没有包含所要查找的节点则返回null）；</p>
+<h2 id="插入规则"><a href="#插入规则" class="headerlink" title="插入规则"></a>插入规则</h2><p>（1）当前是要组成一个5路查找树，那么此时m=5,关键字数必须大于等于ceil（5/2）-1小于等于5-1（关键字数小于cei(5/2) -1就要进行节点合并，大于5-1就要进行节点拆分,非根节点关键字数&gt;=2）；<br>（2）满足节点本身比左边节点大，比右边节点小的排序规则;</p>
+<h2 id="删除规则"><a href="#删除规则" class="headerlink" title="删除规则"></a>删除规则</h2><p>（1）当前是要组成一个5路查找树，那么此时m=5,关键字数必须大于等于cei(5/2)-1，小于等于5-1，非根节点关键字数大于2；</p>
+<p>（2）满足节点本身比左边节点大，比右边节点小的排序规则;</p>
+<p>（3）关键字数小于二时先从子节点取，取中间值往父节点放，子节点没有符合条件时就向向父节点取；</p>
+<p>基本的东西就这些，如果还需要进一步的学习，可以看这篇文章<br><a href="https://blog.csdn.net/v_JULY_v/article/details/6530142/" rel="external nofollow noopener noreferrer" target="_blank">从B树、B+树、B*树谈到R 树</a></p>
+
+      
+    </div>
+    
+    
+    
+	
+   <div>
+      <div>  <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>  </div>
+   </div>
+    
+	
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/btree/">关于B树的一些简单的总结</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
+  <p><span>发布时间:</span>2018年07月09日 - 09:07</p>
+  <p><span>原始链接:</span><a href="/btree/" title="关于B树的一些简单的总结">https://pspxiaochen.club/btree/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.club/btree/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
 
 
       
     </div>
+	
+    
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果对你有帮助，方便的话麻烦给我的午饭加一颗卤蛋</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="pspxiaochen WeChat Pay">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="pspxiaochen Alipay">
+        <p>支付宝支付</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hash/" rel="next" title="哈希表的一些总结">
+                <i class="fa fa-chevron-left"></i> 哈希表的一些总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -348,6 +560,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzU1Mi8xNDA4NA=="></div>
+    
+  </div>
+
 
         </div>
         
@@ -368,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="pspxiaochen">
           <p class="site-author-name" itemprop="name">pspxiaochen</p>
@@ -449,6 +676,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#规则"><span class="nav-number">2.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找流程"><span class="nav-number">3.1.</span> <span class="nav-text">查找流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入规则"><span class="nav-number">3.2.</span> <span class="nav-text">插入规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除规则"><span class="nav-number">3.3.</span> <span class="nav-text">删除规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -590,10 +833,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -622,6 +865,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
