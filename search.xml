@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title><![CDATA[红黑树的一些简单介绍]]></title>
+      <url>/rb-tree/</url>
+      <content type="html"><![CDATA[<p>红-黑树是基于二叉搜索树的，如果对二叉搜索树不了解，可以先看看：<br><a href="https://blog.csdn.net/eson_15/article/details/51138663" rel="external nofollow noopener noreferrer" target="_blank">二叉搜索树</a></p>
+<h1 id="红黑树的主要规则："><a href="#红黑树的主要规则：" class="headerlink" title="红黑树的主要规则："></a>红黑树的主要规则：</h1><p>1.每个节点不是红色就是黑色。<br>2.根节点一定是黑色的。<br>3.如果一个节点是红色的，那么它的两个子节点都必须是黑色的。（反之不一定）<br>4.从根节点到每个叶子节点或者空子节点的路径，都必须包含相同数目的黑色节点。</p>
+<p>补充：红黑树没有AVL树那么平衡。它有它自己的平衡方法，满足了上面4条就叫平衡了。<br>      如果添加或者删除节点之后打破了平衡，那么通过改变节点颜色，左旋，右旋可以使红黑树恢复平衡。</p>
+<p>具体的看这个链接里的讲解：<a href="https://blog.csdn.net/eson_15/article/details/51144079" rel="external nofollow noopener noreferrer" target="_blank">红黑树</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据结构 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[二叉搜索树的删除]]></title>
       <url>/search-tree/</url>
       <content type="html"><![CDATA[<h1 id="三种情况："><a href="#三种情况：" class="headerlink" title="三种情况："></a>三种情况：</h1><p>&emsp;&emsp;删除节点时二叉搜索树中最复杂的操作，但是删除节点在很多树的应用中又非常重要，所以详细研究并总结下特点。删除节点要从查找要删的节点开始入手，首先找到节点，这个要删除的节点可能有三种情况需要考虑：<br>1.该节点是叶子结点，没有孩子结点了。<br>2.该节点有一个孩子节点。<br>3.该节点有两个孩子节点。</p>
@@ -670,9 +688,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> markdown </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
         
@@ -787,9 +805,9 @@
         
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> 教程 </tag>
             
             <tag> node </tag>
             

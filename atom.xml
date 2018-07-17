@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pspxiaochen.club/"/>
-  <updated>2018-07-14T05:35:36.591Z</updated>
+  <updated>2018-07-17T09:40:05.548Z</updated>
   <id>https://pspxiaochen.club/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红黑树的一些简单介绍</title>
+    <link href="https://pspxiaochen.club/rb-tree/"/>
+    <id>https://pspxiaochen.club/rb-tree/</id>
+    <published>2018-07-16T10:03:07.000Z</published>
+    <updated>2018-07-17T09:40:05.548Z</updated>
+    
+    <content type="html"><![CDATA[<p>红-黑树是基于二叉搜索树的，如果对二叉搜索树不了解，可以先看看：<br><a href="https://blog.csdn.net/eson_15/article/details/51138663" rel="external nofollow noopener noreferrer" target="_blank">二叉搜索树</a></p><h1 id="红黑树的主要规则："><a href="#红黑树的主要规则：" class="headerlink" title="红黑树的主要规则："></a>红黑树的主要规则：</h1><p>1.每个节点不是红色就是黑色。<br>2.根节点一定是黑色的。<br>3.如果一个节点是红色的，那么它的两个子节点都必须是黑色的。（反之不一定）<br>4.从根节点到每个叶子节点或者空子节点的路径，都必须包含相同数目的黑色节点。</p><p>补充：红黑树没有AVL树那么平衡。它有它自己的平衡方法，满足了上面4条就叫平衡了。<br>      如果添加或者删除节点之后打破了平衡，那么通过改变节点颜色，左旋，右旋可以使红黑树恢复平衡。</p><p>具体的看这个链接里的讲解：<a href="https://blog.csdn.net/eson_15/article/details/51144079" rel="external nofollow noopener noreferrer" target="_blank">红黑树</a></p>]]></content>
+    
+    <summary type="html">
+    
+      总结一下红黑树，只是总结。。。。
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://pspxiaochen.club/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>二叉搜索树的删除</title>
@@ -404,9 +424,9 @@
       <category term="其他" scheme="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
-    
       <category term="markdown" scheme="https://pspxiaochen.club/tags/markdown/"/>
+    
+      <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
     
   </entry>
   
@@ -428,9 +448,9 @@
       <category term="其他" scheme="https://pspxiaochen.club/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="教程" scheme="https://pspxiaochen.club/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="hexo" scheme="https://pspxiaochen.club/tags/hexo/"/>
+    
+      <category term="教程" scheme="https://pspxiaochen.club/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="node" scheme="https://pspxiaochen.club/tags/node/"/>
     
