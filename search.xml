@@ -3,6 +3,38 @@
   
     
     <entry>
+      <title><![CDATA[学习CNN时候的一些疑惑总结]]></title>
+      <url>/cnn/</url>
+      <content type="html"><![CDATA[<h2 id="如何计算卷积层的输出尺寸："><a href="#如何计算卷积层的输出尺寸：" class="headerlink" title="如何计算卷积层的输出尺寸："></a>如何计算卷积层的输出尺寸：</h2><p>输入矩阵格式：四个维度，依次为：样本数，图像高度，图像宽度，图像通道数（RGB就是3）<br>输出矩阵格式：四个维度，依次是，样本数，图像高度，图像宽度，图像通道数（后3个通道一般会发生变化）<br>权重矩阵（卷积核）格式：同样是四个维度，依次是，卷积核的高度，卷积核的宽度，输入通道数，输出通道数（卷积核个数）</p>
+<p>计算公式是：<br>$height_{out} = (height_{in} - height_{kernel} + 2 <em> padding) / 步长 + 1$<br>$width_{out} = (width_{in} - width_{kernel} + 2 </em> padding) / 步长 + 1$</p>
+<p>具体的细节可以参考链接<a href="https://blog.csdn.net/dcrmg/article/details/79652487" rel="external nofollow noopener noreferrer" target="_blank">CNN中卷积层的计算细节</a></p>
+<h2 id="如何计算池化层的输出尺寸："><a href="#如何计算池化层的输出尺寸：" class="headerlink" title="如何计算池化层的输出尺寸："></a>如何计算池化层的输出尺寸：</h2><p>输入矩阵格式：四个维度，依次为：样本数，图像高度，图像宽度，图像通道数<br>池化窗口的大小：一般取四个维度,依次是[1,height,width,1]因为我们不想在样本和图像通道上做池化，所以这两个维度设为了1。<br>计算公式是：<br>$height_{out} = (height_{in} - height_{filter}) / 步长 + 1$<br>$width_{out} = (width_{in} - width_{filter}) / 步长 + 1$</p>
+<h2 id="关于feature-map的一些理解："><a href="#关于feature-map的一些理解：" class="headerlink" title="关于feature map的一些理解："></a>关于feature map的一些理解：</h2><p>比如有一个32<em>32的RBG图像，这张图片在没有经过卷积之前有3张feature map，卷积核的大小是5</em>5，通道数是200，相当于是有200个卷积核，每个卷积核在原图像卷积得到一个featuremap,200个卷积核产生200个featuremap。</p>
+<h2 id="卷积层的作用："><a href="#卷积层的作用：" class="headerlink" title="卷积层的作用："></a>卷积层的作用：</h2><p>我认为卷积层作用就是提取特征，不同的滤波器有不同的权重，可以提取不同的特征，比如说颜色深浅，图像的轮廓。</p>
+<h2 id="池化层的作用："><a href="#池化层的作用：" class="headerlink" title="池化层的作用："></a>池化层的作用：</h2><ol>
+<li>不变性，更关注是否存在某些特征而不是特征具体的位置。可以看作加了一个很强的先验，让学到的特征要能容忍一些的变化。（包括平移，旋转，尺度。）</li>
+<li>减小下一层输入大小，减小计算量和参数个数</li>
+<li>获得定长输出。（文本分类的时候输入是不定长的，可以通过池化获得定长输出）</li>
+<li>防止过拟合或有可能会带来欠拟合。</li>
+</ol>
+<h2 id="如何理解卷积神经网络中的权值共享？"><a href="#如何理解卷积神经网络中的权值共享？" class="headerlink" title="如何理解卷积神经网络中的权值共享？"></a>如何理解卷积神经网络中的权值共享？</h2><p>所谓的权值共享就是说，给一张图片，用一个滤波器去扫描，filter里面的参数就是权重，这张图的每个位置是被同样的filter扫的，所以权重是一样的，也就叫共享。</p>
+<h2 id="如何理解激活函数："><a href="#如何理解激活函数：" class="headerlink" title="如何理解激活函数："></a>如何理解激活函数：</h2><p>因为线性模型的表达能力不够，引入激活函数是为了添加非线性因素。</p>
+<h2 id="怎么计算CNN的参数个数，连接数个数，复杂度："><a href="#怎么计算CNN的参数个数，连接数个数，复杂度：" class="headerlink" title="怎么计算CNN的参数个数，连接数个数，复杂度："></a>怎么计算CNN的参数个数，连接数个数，复杂度：</h2><p>假设RGB图像的尺寸是32 <em> 32，滤波器的大小是 5 </em> 5，一共有200个滤波器，每个滤波器有1个bias参数，问有多少个训练参数，有多少连接，复杂度是多少？<br>训练参数：滤波器5<em>5</em>3=75,加上一个bias参数，一共是76个，一共有200个滤波器，所有一共有76<em>200=15200个参数。<br>连接个数：经过卷积之后的输出图像大小为 28</em>28，所以连接总数为：28<em>28</em>（5<em>5</em>3+1）*200</p>
+<p>复杂度：时间复杂度即模型的运算次数。<br>单个卷积层的时间复杂度：Time~O(M^2 <em> K^2 </em> Cin * Cout)</p>
+<p>注1：为了简化表达式中的变量个数，这里统一假设输入和卷积核的形状都是正方形。<br>注2：严格来讲每层应该还包含1个Bias参数，这里为了简洁就省略了。<br>M:输出特征图（Feature Map）的尺寸。<br>K:卷积核（Kernel）的尺寸。<br>Cin:输入通道数。<br>Cout:输出通道数。</p>
+<h2 id="全连接层的作用："><a href="#全连接层的作用：" class="headerlink" title="全连接层的作用："></a>全连接层的作用：</h2><p>全连接层之前的东西都是对提取的特征做各种处理，而到了全连接层我相当于对之前提取的特征做了一个全卷积的操作，比如我的全连接层输出是1000，那么这1000代表对1000种特征进行分类（有或者没有）最后在进行最终的分类。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[红黑树的一些简单介绍]]></title>
       <url>/rb-tree/</url>
       <content type="html"><![CDATA[<p>红-黑树是基于二叉搜索树的，如果对二叉搜索树不了解，可以先看看：<br><a href="https://blog.csdn.net/eson_15/article/details/51138663" rel="external nofollow noopener noreferrer" target="_blank">二叉搜索树</a></p>
@@ -688,9 +720,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -805,9 +837,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
