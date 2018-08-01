@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="发条晨">
 <meta property="og:description" content="压力好大，感觉要找不到工作了，不知道现在做的事情有没有意义。。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T10:51:58.324Z">
+<meta property="og:updated_time" content="2018-08-01T01:51:17.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树的整理">
 <meta name="twitter:description" content="压力好大，感觉要找不到工作了，不知道现在做的事情有没有意义。。。">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-31T18:51:58+08:00">
-                2018-07-31
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-01T09:51:17+08:00">
+                2018-08-01
               </time>
             
           </span>
@@ -431,7 +431,7 @@
 <p>信息增益表示得知特征X的信息而使得类Y的信息的不确定性减少的程度。</p>
 <h3 id="信息增益的定义"><a href="#信息增益的定义" class="headerlink" title="信息增益的定义"></a>信息增益的定义</h3><p>特征A对训练数据集D的信息增益g(D,A),定义为集合D的经验熵H(D）与特征A给定条件下D的经验条件熵H(D|A)之差，$g(D,A)=H(D)-H(D|A)$<br>一般地，熵H(Y)与条件熵H(Y|X)之差称为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。<br>信息增益表示由于特征A而使得对数据集D的分类的不确定性减少的程度。<br>H(D|A)小，证明A对D的分类不确定小，所以说A特征可以对D正确的分类，所以说信息增益越大越好。</p>
 <p>设训练数据集为D，|D|表示其样本个数。设一共有K个类别$C_k$ ,   $|C_K|$表示属于类$C_k$的样本个数。设A有n个不同的取值{$a_1,a_2,…,a_n$},根据特征A的取值将D划分为n个子集{$D_1,D_2,…,D_n$},&emsp;&emsp;|$D_i$|为$D_i$的样本个数 记子集$D_i$中属于类$C_k$的样本集合$D_{ik}$,&emsp;&emsp;|$D_{ik}$|为$D_{ik}$的样本个数。</p>
-<p>输入：训练数据集D和特征A：<br>输出：特征A对训练数据集的信息增益g(D,A)<br>先计算数据集D的熵H(D):<br>$H(D) = -\sum_{k=1}^K\frac{|C_k|}{|D|}log\frac{|C_k|}{|D|} $<br>再计算条件熵H(D|a)<br>$H(D|A) = -\sum_{i=1}^n \frac{|D_i|}{|D|}H(D_i) =-\sum_{i=1}^n\frac{|D_i|}{|D|}\sum_{k=1}^K \frac{|D_{ik}|}{|D_i|}log\frac{|D_{ik}|}{|D_i|}$<br>$g(D,A)=H(D)-H(D|A)$</p>
+<p>输入：训练数据集D和特征A：<br>输出：特征A对训练数据集的信息增益g(D,A)<br>先计算数据集D的熵H(D):<br>$H(D) = -\sum_{k=1}^K\frac{|C_k|}{|D|}log\frac{|C_k|}{|D|} $<br>再计算条件熵H(D|a)<br>$H(D|A) = \sum_{i=1}^n \frac{|D_i|}{|D|}H(D_i) =-\sum_{i=1}^n\frac{|D_i|}{|D|}\sum_{k=1}^K \frac{|D_{ik}|}{|D_i|}log\frac{|D_{ik}|}{|D_i|}$<br>$g(D,A)=H(D)-H(D|A)$</p>
 <p><strong>这种选择特征的思路就是ID3算法选择特征的核心思想。</strong></p>
 <h2 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h2><p>公式为：$g_R(D,A)=g(D,A)/IntI(D,A)$</p>
 <p>本来ID3算法计算信息增益好好的，但是C4.5一定要计算信息增益比这是为什么呢？<br>比如我们有10个样本，样本中有1个特征是学号我们把它叫作A，我们知道每个学生的学号都是不一样的，这样我们在计算H(D|A)的时候发现这个值是0，这种情况会导致你会认为这个特征是非常的好的，其实学号这个特征用来切分样本并不是什么好的特征。</p>
