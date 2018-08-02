@@ -95,13 +95,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="发条晨">
-<meta property="og:url" content="https://pspxiaochen.club/archives/index.html">
+<meta name="description" content="提高效率啊。。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树的整理（二）-----剪枝操作">
+<meta property="og:url" content="https://pspxiaochen.club/decision-tree2/index.html">
 <meta property="og:site_name" content="发条晨">
+<meta property="og:description" content="提高效率啊。。。。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.carefree0910.com/posts/c6faa205/p3.png">
+<meta property="og:image" content="http://www.carefree0910.com/posts/1a7aa546/p1.png">
+<meta property="og:image" content="http://www.carefree0910.com/posts/1a7aa546/p2.png">
+<meta property="og:image" content="http://www.carefree0910.com/posts/1a7aa546/p3.png">
+<meta property="og:updated_time" content="2018-08-02T08:26:54.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="发条晨">
+<meta name="twitter:title" content="决策树的整理（二）-----剪枝操作">
+<meta name="twitter:description" content="提高效率啊。。。。">
+<meta name="twitter:image" content="http://www.carefree0910.com/posts/c6faa205/p3.png">
 
 
 
@@ -143,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.club/archives/">
+  <link rel="canonical" href="https://pspxiaochen.club/decision-tree2/">
 
 
 
 
 
-  <title>归档 | 发条晨</title>
+  <title>决策树的整理（二）-----剪枝操作 | 发条晨</title>
   
 
 
@@ -169,7 +178,7 @@
   
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
     <a href="https://github.com/pspxiaochen" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -295,391 +304,269 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.club/decision-tree2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pspxiaochen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="发条晨">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">决策树的整理（二）-----剪枝操作</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T19:34:36+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-02T16:26:54+08:00">
+                2018-08-02
+              </time>
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 23 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/decision-tree2/" itemprop="url">
-              
-                <span itemprop="name">决策树的整理（二）-----剪枝操作</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-08-01T19:34:36+08:00" content="2018-08-01">
-          08-01
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
+              <div class="post-description">
+                  提高效率啊。。。。
+              </div>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/decision-tree/" itemprop="url">
-              
-                <span itemprop="name">决策树的整理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-31T14:26:06+08:00" content="2018-07-31">
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/cnn/" itemprop="url">
-              
-                <span itemprop="name">学习CNN时候的一些疑惑总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-21T11:21:59+08:00" content="2018-07-21">
-          07-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>&emsp;&emsp;决策树生成算法递归地产生决策树，直到不能继续下去为止。这样产生的树往往对训练数据的分类很准确，但是对未知的测试数据的分类却不准确，这就叫过拟合，我们需要对决策树进行简化。这个过程叫做剪枝。</p>
+<h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p>&emsp;&emsp;剪枝从已生成的树上裁掉一些子树或者叶节点，并将其根节点或父节点作为新的叶节点，从而简化分类树模型。</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>&emsp;&emsp;决策树的剪枝往往通过极小化决策树整体的损失函数或代价函数来实现。设树T的叶子结点个数为|T|，t是树T的某个叶子节点，该叶子结点有$N_t$个样本,该叶子结点中k类的样本点有$N_{tk} 个， k = 1,2,3,…K$，$H_t(T)为叶节点t上的经验熵，$ a&gt;=0为参数，则决策树学习的损失函数可以定义为<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$C_a(T)=\sum_{t=1}^{|T|} N_tH_t(T)+a|T|$  <strong>这个T代表了树，不一定非得是跟，也可能是某个节点组成的小树，思维不要僵化。</strong></p>
+<p><strong>这其实是一种添加正则化项的思想。</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;其中，经验熵为$H_t(T)=-\sum_{k}\frac{N_{tk}}{N_t}log\frac{N_tk}{N_t}$    &emsp;&emsp;&emsp;&emsp;叶节点t所有样本中k类的个数/叶节点t的总样本数<br>&emsp;&emsp;在损失函数中，将上式的第一项记作：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$C(T)=\sum_{t=1}^{|T|}N_tH_t(T)=-\sum_{t=1}^{|T|}\sum_{k=1}^{K}N_{tk}log\frac{N_{tk}}{N_t}$<br>这时候有：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$C_a(T)=C(T)+a|T|$<br>&emsp;&emsp;&emsp;&emsp;$C(T)$表示模型对训练数据的预测误差，即模型与训练数据的拟合程度，|T|表示模型复杂度，参数控制两者之间的影响，较大的a促使选择简单的树，较小的a选择复杂的树。a=0意味着只考虑模型与训练数据的拟合程度，不考虑模型的复杂度。<br>&emsp;&emsp;&emsp;&emsp;剪枝就是当a确定时，选择损失函数最小的模型，即损失函数最小的子树。当a确定时，子树越大，往往拟合越好，但是模型复杂度就越高；子树越小则反之，损失函数正好表示了对两者的平衡。</p>
+<p><strong>输入：</strong>树T，参数a<br><strong>输出：</strong>剪枝后的T<br>（1）计算每个结点的经验熵<br>（2）递归的从树的叶子结点向上回缩。<br> &emsp;&emsp;&emsp;&emsp;设一组叶节点回缩到其父节点之前与之后整体树分别为$T_B和T_A$，其对应的损失函数值分别为$C_a(T_B)$和$C_a(T_A)$，如果$C_a(T_A)$&lt;=$C_a(T_B)$,说明这个非叶子节点没必要划分，则进行剪枝，因为划分反而会影响结果，就把该非叶子节点换成叶子节点，把它之前的儿子们中的样本全部放在现在这个节点中，取最多的类当做分类结果。<br>（3）返回（2），直到不能继续为止，得到损失函数最小的子树$T_a$</p>
+<p>光说不练假把式，我们来一个例子试试。</p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>下图是我们已经生成的一颗决策树，<br><img src="http://www.carefree0910.com/posts/c6faa205/p3.png" alt="此处输入图片的描述"></p>
+<p>  由于算法顺序是从下往上、所以我们先考察最右下方的 Node（该 Node 的划分标准是“测试人员”），该 Node 所包含的数据集如下表所示：<br>  |颜色|测试人员|结果|<br>  |—|—|—|<br>  |黄色|成人|爆炸|<br>  |黄色|小孩|不爆炸|</p>
+<h2 id="我们现在开始第一次尝试剪枝："><a href="#我们现在开始第一次尝试剪枝：" class="headerlink" title="我们现在开始第一次尝试剪枝："></a>我们现在开始第一次尝试剪枝：</h2><p><strong>剪枝前：</strong><br>剪枝前该结点（测试人员的那个节点），有2个叶子结点，我们来计算他的损失为$C_a(T)=C(T)+a|T|$<br>$C(T)=\sum_{t=1}^{|T|}N_tH_t(T)$<br>$H_t(T)=-\sum_{k}\frac{N_{tk}}{N_t}log\frac{N_tk}{N_t}$<br>我们经过带入后得到 $C(T)=1<em>-1/1</em>log1/1 + 1<em>1/1</em>log1/1 = 0$ ，注意这时候的T不是整个树，而是右下角那个测试人员的那棵小树。<br>所以为$C_a(T) = |T|a= 2a$</p>
+<p><strong>剪枝后：</strong><br>剪枝之后，之前这个节点是非叶子结点，现在变成了叶子结点，我们来计算一下损失<br>$C(t)=2<em> (-\frac12</em>log\frac12 - \frac12*log\frac12) = 2$<br>所以$C_a(T) = |T|a= 2+a$<br>回忆生成算法的实现，我们彼时将α定义为了α=特征个数/2（注意：这只是α的一种朴素的定义方法，很难说它有什么合理性、只能说它从直观上有一定道理；如果想让模型表现更好、需要结合具体的问题来分析α应该取何值）。由于气球数据集 1.0 一共有四个特征、所以此时α=2；结合各个公式、我们发现：</p>
+<p> &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;$C_a(T)=2a=4=2+a=C_a(t)$<br> 所以我们已经进行局部剪枝，局部剪枝后的决策树如下图所示：<br> <img src="http://www.carefree0910.com/posts/1a7aa546/p1.png" alt="此处输入图片的描述"><br> <strong>注意：进行局部剪枝后，由于该 Node 中样本只有两个、且一个样本类别为“不爆炸”一个为“爆炸”，所以给该 Node 标注为“不爆炸”、“爆炸”甚至以 50%的概率标注为“不爆炸”等做法都是合理的。为简洁，我们如上图中所做的一般、将其标注为“爆炸”</strong></p>
+<h2 id="现在我们开始尝试第二次剪枝："><a href="#现在我们开始尝试第二次剪枝：" class="headerlink" title="现在我们开始尝试第二次剪枝："></a>现在我们开始尝试第二次剪枝：</h2><p>  然后我们需要考察最左下方的 Node（该 Node 的划分标准也是“测试人员”），易知计算过程和上述的没有区别。对其进行局部剪枝后的决策树如下图所示：<br><img src="http://www.carefree0910.com/posts/1a7aa546/p2.png" alt="此处输入图片的描述"></p>
+<h2 id="现在我们开始尝试第三次剪枝："><a href="#现在我们开始尝试第三次剪枝：" class="headerlink" title="现在我们开始尝试第三次剪枝："></a>现在我们开始尝试第三次剪枝：</h2><p>然后我们需要考察右下方的 Node（该 Node 的划分标准是“动作”），该 Node 所包含的数据集如下表所示：<br>|颜色|测试人员|测试动作|结果|<br>|-|-|-|-|<br>|黄色|成人|用手打|爆炸|<br>|黄色|成人|用脚踩|爆炸|<br>|黄色|小孩|用手打|不爆炸|<br>|黄色|小孩|用脚踩|爆炸|<br>|紫色|成人|用脚踩|爆炸|<br>|紫色|小孩|用脚踩|爆炸|<br><strong>剪枝前：</strong><br>剪枝之前这个节点（动作）有2个叶子结点，一个叶子结点中有2个样本，一个叶子结点中有4个样本，让我们来计算一下这个结点的损失：<br>&emsp;&emsp;&emsp;&emsp;$C_a(T)=C(T)+a|T|=C(T)+2a$ ，这个T代表动作这个小树<br>&emsp;&emsp;&emsp;&emsp;$C(T)=2<em>(-\frac12</em>log\frac12—\frac12<em>log\frac12)+4</em>(\frac44<em>log\frac44+0)$<br>后面一项等于0，所以$C(T)=2</em>(-\frac12<em>log\frac12—\frac12</em>log\frac12)=2$</p>
+<p><strong>剪枝后：</strong><br>剪枝后改结点变成了叶子结点，有6个样本，我们来计算一下损失<br>&emsp;&emsp;&emsp;&emsp;$C_a(t)=C(t)+a|t|=C(t)+a$<br>&emsp;&emsp;&emsp;&emsp;$C(T)=6<em>(-\frac16</em>log\frac16-\frac56*log\frac56) = 3.9$<br>将a=2带入后得剪枝后的损失&lt;剪枝前的损失，所以应该进行剪枝。<br><img src="http://www.carefree0910.com/posts/1a7aa546/p3.png" alt="此处输入图片的描述"></p>
+<p>后面的计算类似 我就不说了。 记住是对每棵树的每个叶子结点计算经验熵。</p>
+<p>写到这里的时候我才知道剪枝还分为<strong>预剪枝</strong>和<strong>后剪枝</strong>，我刚才说的是后剪枝的一种方法，其实后剪枝还有很多方法。我再介绍一种方法。</p>
+<p>这种方法需要一个验证集来进行验证。<br>你把这棵树的每个非叶子结点用验证集来对比剪枝前和剪枝后的结果，如果剪后的结果好于或者等于剪枝前，就可以进行剪枝，否则不进行剪枝，就是这样。不过这种方法不好的地方在于需要一个验证集。</p>
+<p>我们再来介绍一下预剪枝，预剪枝的话方法比较少，这里我只介绍一种方法。</p>
+<p><strong>预剪枝就是在构造决策树的过程中，先对每个结点在划分前进行估计，若果当前结点的划分不能带来决策树模型泛华性能的提升，则不对当前结点进行划分并且将当前结点标记为叶结点。不过也需要一个验证集</strong><br>过程<br>（1）先计算所有特征的信息增益比，找到一个最合适的特征来划分决策树。<br>（2）但是因为是预剪枝，所以要判断是否应该进行这个划分，判断的标准就是看划分前后的泛华性能是否有提升，也就是如果划分后泛华性能有提升，则划分；否则，不划分。<br>（3）如果遇到了某个叶子结点划分后不如不划分，则这个叶子节点就不划分了，改去划分别的结点。</p>
+<p>给个例子：<br><a href="https://blog.csdn.net/u012328159/article/details/79285214" rel="external nofollow noopener noreferrer" target="_blank">决策树用验证集来验证是否剪枝的例子</a></p>
+<p><strong>预剪枝总结：对比未剪枝的决策树和经过预剪枝的决策树可以看出：预剪枝使得决策树的很多分支都没有“展开”，这不仅降低了过拟合的风险，还显著减少了决策树的训练时间开销和测试时间开销。但是，另一方面，因为预剪枝是基于“贪心”的，所以，虽然当前划分不能提升泛华性能，但是基于该划分的后续划分却有可能导致性能提升，因此预剪枝决策树有可能带来欠拟合的风险。</strong></p>
+<p><strong>后剪枝总结：对比预剪枝和后剪枝，能够发现，后剪枝决策树通常比预剪枝决策树保留了更多的分支，一般情形下，后剪枝决策树的欠拟合风险小，泛华性能往往也要优于预剪枝决策树。但后剪枝过程是在构建完全决策树之后进行的，并且要自底向上的对树中的所有非叶结点进行逐一考察，因此其训练时间开销要比未剪枝决策树和预剪枝决策树都大得多。</strong></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/rb-tree/" itemprop="url">
-              
-                <span itemprop="name">红黑树的一些简单介绍</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-16T18:03:07+08:00" content="2018-07-16">
-          07-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/search-tree/" itemprop="url">
-              
-                <span itemprop="name">二叉搜索树的删除</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-14T10:40:29+08:00" content="2018-07-14">
-          07-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/btree/" itemprop="url">
-              
-                <span itemprop="name">关于B树的一些简单的总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-09T09:16:51+08:00" content="2018-07-09">
-          07-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/hash/" itemprop="url">
-              
-                <span itemprop="name">哈希表的一些总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-07T12:27:00+08:00" content="2018-07-07">
-          07-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/test/" itemprop="url">
-              
-                <span itemprop="name">这是一个天大的秘密</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-05T12:27:00+08:00" content="2018-07-05">
-          07-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/costfunction/" itemprop="url">
-              
-                <span itemprop="name">线性回归与最小二乘法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-07-03T12:27:00+08:00" content="2018-07-03">
-          07-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/birthday/" itemprop="url">
-              
-                <span itemprop="name">25周岁生日</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-06-29T19:27:00+08:00" content="2018-06-29">
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+	
+   <div>
+      <div>  <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>  </div>
+   </div>
+    
+	
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/decision-tree2/">决策树的整理（二）-----剪枝操作</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
+  <p><span>发布时间:</span>2018年08月01日 - 19:08</p>
+  <p><span>原始链接:</span><a href="/decision-tree2/" title="决策树的整理（二）-----剪枝操作">https://pspxiaochen.club/decision-tree2/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.club/decision-tree2/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果对你有帮助，方便的话麻烦给我的午饭加一颗卤蛋</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="pspxiaochen WeChat Pay">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="pspxiaochen Alipay">
+        <p>支付宝支付</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/decision-tree/" rel="next" title="决策树的整理">
+                <i class="fa fa-chevron-left"></i> 决策树的整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -687,6 +574,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzU1Mi8xNDA4NA=="></div>
+    
+  </div>
+
 
         </div>
         
@@ -707,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="pspxiaochen">
           <p class="site-author-name" itemprop="name">pspxiaochen</p>
@@ -788,6 +690,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#剪枝"><span class="nav-number">1.</span> <span class="nav-text">剪枝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过程"><span class="nav-number">2.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们现在开始第一次尝试剪枝："><span class="nav-number">3.1.</span> <span class="nav-text">我们现在开始第一次尝试剪枝：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在我们开始尝试第二次剪枝："><span class="nav-number">3.2.</span> <span class="nav-text">现在我们开始尝试第二次剪枝：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在我们开始尝试第三次剪枝："><span class="nav-number">3.3.</span> <span class="nav-text">现在我们开始尝试第三次剪枝：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -929,11 +847,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
@@ -963,6 +879,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
