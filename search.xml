@@ -3,6 +3,24 @@
   
     
     <entry>
+      <title><![CDATA[决策树（三）----连续值的处理]]></title>
+      <url>/decision-tree3/</url>
+      <content type="html"><![CDATA[<h1 id="连续值的处理"><a href="#连续值的处理" class="headerlink" title="连续值的处理"></a>连续值的处理</h1><p>&emsp;&emsp;因为连续属性的可取值数目不再有限，一次不能像前面处理离散值属性枚举所有的取值来对结点进行划分。因此需要连续属性离散化，常用的离散化策略是二分法，这个技术也是c4.5中采用的策略。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>&emsp;&emsp;给定训练集D和连续属性a，假设a在D上出现了n个不同的取值，先把这些值从小到大进行排序，记为{$a^1,a^2,a^3…,a^n$}.基于划分点t可将D分为子集$D_t^-和D_t^+$,其中$D_t^-$ 表示在属性a的取值小于等于t的样本，$D_t^+$则是包含那些在属性a上取值大于t的样本。显然，对相邻的属性取值$a^i和a^{i+1}$,t在这个[$a^i,a^{i+1}$)中取任意值所产生的划分结果是相同的。因此，对连续属性a，我们可以考虑包含n-1个元素的候选划分点集合.<br>&emsp;&emsp;我们从已经排好序的a可以取值的集合中，每2个相邻元素进行一次相加除2的计算，这样经过计算之后得到了一个大小为n-1个元素的划分点集合。然后，我们就可以像前面处理离散属性值那样来考虑这些划分点，选择最优的划分点进行样本集合的划分，使用的就是计算信息增益的公式，划分的时候，选择使用得到信息增益最大的划分点进行划分。</p>
+<p><strong>有一点值得注意：与离散属性不同，若当前结点划分属性为连续属性，该属性还可作为其后代结点的划分属性。如下图所示的一颗决策树，“含糖率”这个属性在根节点用了一次，后代结点也用了一次，只是两次划分点取值不同。</strong><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg" alt="此处输入图片的描述"></p>
+<p>放一个连接，里面有具体的例子可以看<br><a href="https://blog.csdn.net/u012328159/article/details/79396893" rel="external nofollow noopener noreferrer" target="_blank">决策树如何处理连续值</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[决策树的整理（二）-----剪枝操作]]></title>
       <url>/decision-tree2/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;决策树生成算法递归地产生决策树，直到不能继续下去为止。这样产生的树往往对训练数据的分类很准确，但是对未知的测试数据的分类却不准确，这就叫过拟合，我们需要对决策树进行简化。这个过程叫做剪枝。</p>

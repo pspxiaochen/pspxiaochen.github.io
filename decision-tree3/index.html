@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="偏差,方差,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -95,21 +95,19 @@
 
 
 
-<meta name="description" content="自己对偏差或者方差的一些理解。">
-<meta name="keywords" content="偏差,方差">
+<meta name="description" content="TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="偏差与方差的总结">
-<meta property="og:url" content="https://pspxiaochen.club/2017-12-12-bias-var/index.html">
+<meta property="og:title" content="决策树（三）----连续值的处理">
+<meta property="og:url" content="https://pspxiaochen.club/decision-tree3/index.html">
 <meta property="og:site_name" content="发条晨">
-<meta property="og:description" content="自己对偏差或者方差的一些理解。">
+<meta property="og:description" content="TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg">
-<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmtztpugfsj20fe0blq9x.jpg">
-<meta property="og:updated_time" content="2017-12-26T03:11:52.843Z">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg">
+<meta property="og:updated_time" content="2018-08-06T11:44:12.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="偏差与方差的总结">
-<meta name="twitter:description" content="自己对偏差或者方差的一些理解。">
-<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg">
+<meta name="twitter:title" content="决策树（三）----连续值的处理">
+<meta name="twitter:description" content="TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg">
 
 
 
@@ -151,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://pspxiaochen.club/2017-12-12-bias-var/">
+  <link rel="canonical" href="https://pspxiaochen.club/decision-tree3/">
 
 
 
 
 
-  <title>偏差与方差的总结 | 发条晨</title>
+  <title>决策树（三）----连续值的处理 | 发条晨</title>
   
 
 
@@ -317,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.club/2017-12-12-bias-var/">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.club/decision-tree3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pspxiaochen">
@@ -334,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">偏差与方差的总结</h1>
+          <h1 class="post-title" itemprop="name headline">决策树（三）----连续值的处理</h1>
         
 
         <div class="post-meta">
@@ -346,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T21:27:00+08:00">
-                2017-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T17:20:28+08:00">
+                2018-08-06
               </time>
             
 
@@ -362,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-26T11:11:52+08:00">
-                2017-12-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-06T19:44:12+08:00">
+                2018-08-06
               </time>
             
           </span>
@@ -405,7 +403,7 @@
 
           
               <div class="post-description">
-                  自己对偏差或者方差的一些理解。
+                  TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。
               </div>
           
 
@@ -422,9 +420,10 @@
       
 
       
-        <p>&emsp;&emsp;今天开始重新仔细学习西瓜书（机器学习），今天看完了第一章，第一章基本都是一些概念的东西，公式也比较少，希望可以坚持把这本书看完。</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>&emsp;&emsp;根据各种公式推导得知，泛化误差 = 偏差 + 方差 +噪声<br>&emsp;&emsp;而偏差（bias）度量了学习算法的期望预测与真实结果的偏离程度，即刻画了学习算法本身的拟合能力。方差(Variance)度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmtzttg0l6j20k00iydgl.jpg" alt="此处输入图片的描述"></p>
-<h1 id="偏差与方差的关系"><a href="#偏差与方差的关系" class="headerlink" title="偏差与方差的关系"></a>偏差与方差的关系</h1><p>&emsp;&emsp;偏差与方差是有冲突的。给定学习任务，假定我们能控制学习算法的训练程度，则在训练不足时，模型的拟合能力不够强，训练数据的扰动不足以使模型产生显著变化，此时偏差主导了泛化错误率；随着训练程度的加深，模型的拟合能力逐渐增强，训练数据发生的扰动渐渐能被模型学习到，方差逐渐主导了泛化错误率；在训练程度充足后，模型的拟合能力已经非常强，训练数据发生的轻微扰动都会导致模型发生显著变化，若训练数据自身的，非全局性的特性被模型学习到了，则将发生过拟合。<br><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmtztpugfsj20fe0blq9x.jpg" alt="此处输入图片的描述"></p>
+        <h1 id="连续值的处理"><a href="#连续值的处理" class="headerlink" title="连续值的处理"></a>连续值的处理</h1><p>&emsp;&emsp;因为连续属性的可取值数目不再有限，一次不能像前面处理离散值属性枚举所有的取值来对结点进行划分。因此需要连续属性离散化，常用的离散化策略是二分法，这个技术也是c4.5中采用的策略。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>&emsp;&emsp;给定训练集D和连续属性a，假设a在D上出现了n个不同的取值，先把这些值从小到大进行排序，记为{$a^1,a^2,a^3…,a^n$}.基于划分点t可将D分为子集$D_t^-和D_t^+$,其中$D_t^-$ 表示在属性a的取值小于等于t的样本，$D_t^+$则是包含那些在属性a上取值大于t的样本。显然，对相邻的属性取值$a^i和a^{i+1}$,t在这个[$a^i,a^{i+1}$)中取任意值所产生的划分结果是相同的。因此，对连续属性a，我们可以考虑包含n-1个元素的候选划分点集合.<br>&emsp;&emsp;我们从已经排好序的a可以取值的集合中，每2个相邻元素进行一次相加除2的计算，这样经过计算之后得到了一个大小为n-1个元素的划分点集合。然后，我们就可以像前面处理离散属性值那样来考虑这些划分点，选择最优的划分点进行样本集合的划分，使用的就是计算信息增益的公式，划分的时候，选择使用得到信息增益最大的划分点进行划分。</p>
+<p><strong>有一点值得注意：与离散属性不同，若当前结点划分属性为连续属性，该属性还可作为其后代结点的划分属性。如下图所示的一颗决策树，“含糖率”这个属性在根节点用了一次，后代结点也用了一次，只是两次划分点取值不同。</strong><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg" alt="此处输入图片的描述"></p>
+<p>放一个连接，里面有具体的例子可以看<br><a href="https://blog.csdn.net/u012328159/article/details/79396893" rel="external nofollow noopener noreferrer" target="_blank">决策树如何处理连续值</a></p>
 
       
     </div>
@@ -440,6 +439,34 @@
 	<div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/decision-tree3/">决策树（三）----连续值的处理</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
+  <p><span>发布时间:</span>2018年08月06日 - 17:08</p>
+  <p><span>原始链接:</span><a href="/decision-tree3/" title="决策树（三）----连续值的处理">https://pspxiaochen.club/decision-tree3/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.club/decision-tree3/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
 
       
     </div>
@@ -481,14 +508,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/偏差/" rel="tag"><i class="fa fa-tag"></i> 偏差</a>
-          
-            <a href="/tags/方差/" rel="tag"><i class="fa fa-tag"></i> 方差</a>
-          
-        </div>
-      
 
       
       
@@ -498,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-07-add/" rel="next" title="Sum of Two Integers（使用位运算实现）">
-                <i class="fa fa-chevron-left"></i> Sum of Two Integers（使用位运算实现）
+              <a href="/decision-tree2/" rel="next" title="决策树的整理（二）-----剪枝操作">
+                <i class="fa fa-chevron-left"></i> 决策树的整理（二）-----剪枝操作
               </a>
             
           </div>
@@ -507,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/lagrange and kkt/" rel="prev" title="从拉格朗日乘子法再到KKT条件的理解">
-                从拉格朗日乘子法再到KKT条件的理解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -664,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#偏差与方差的关系"><span class="nav-number">2.</span> <span class="nav-text">偏差与方差的关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#连续值的处理"><span class="nav-number">1.</span> <span class="nav-text">连续值的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.1.</span> <span class="nav-text">过程</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1201,6 +1216,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

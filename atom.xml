@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pspxiaochen.club/"/>
-  <updated>2018-08-02T09:24:38.081Z</updated>
+  <updated>2018-08-06T11:44:12.238Z</updated>
   <id>https://pspxiaochen.club/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>决策树（三）----连续值的处理</title>
+    <link href="https://pspxiaochen.club/decision-tree3/"/>
+    <id>https://pspxiaochen.club/decision-tree3/</id>
+    <published>2018-08-06T09:20:28.000Z</published>
+    <updated>2018-08-06T11:44:12.238Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="连续值的处理"><a href="#连续值的处理" class="headerlink" title="连续值的处理"></a>连续值的处理</h1><p>&emsp;&emsp;因为连续属性的可取值数目不再有限，一次不能像前面处理离散值属性枚举所有的取值来对结点进行划分。因此需要连续属性离散化，常用的离散化策略是二分法，这个技术也是c4.5中采用的策略。</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>&emsp;&emsp;给定训练集D和连续属性a，假设a在D上出现了n个不同的取值，先把这些值从小到大进行排序，记为{$a^1,a^2,a^3…,a^n$}.基于划分点t可将D分为子集$D_t^-和D_t^+$,其中$D_t^-$ 表示在属性a的取值小于等于t的样本，$D_t^+$则是包含那些在属性a上取值大于t的样本。显然，对相邻的属性取值$a^i和a^{i+1}$,t在这个[$a^i,a^{i+1}$)中取任意值所产生的划分结果是相同的。因此，对连续属性a，我们可以考虑包含n-1个元素的候选划分点集合.<br>&emsp;&emsp;我们从已经排好序的a可以取值的集合中，每2个相邻元素进行一次相加除2的计算，这样经过计算之后得到了一个大小为n-1个元素的划分点集合。然后，我们就可以像前面处理离散属性值那样来考虑这些划分点，选择最优的划分点进行样本集合的划分，使用的就是计算信息增益的公式，划分的时候，选择使用得到信息增益最大的划分点进行划分。</p><p><strong>有一点值得注意：与离散属性不同，若当前结点划分属性为连续属性，该属性还可作为其后代结点的划分属性。如下图所示的一颗决策树，“含糖率”这个属性在根节点用了一次，后代结点也用了一次，只是两次划分点取值不同。</strong><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg" alt="此处输入图片的描述"></p><p>放一个连接，里面有具体的例子可以看<br><a href="https://blog.csdn.net/u012328159/article/details/79396893" rel="external nofollow noopener noreferrer" target="_blank">决策树如何处理连续值</a></p>]]></content>
+    
+    <summary type="html">
+    
+      TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>决策树的整理（二）-----剪枝操作</title>
@@ -417,30 +437,6 @@
       <category term="偏差" scheme="https://pspxiaochen.club/tags/%E5%81%8F%E5%B7%AE/"/>
     
       <category term="方差" scheme="https://pspxiaochen.club/tags/%E6%96%B9%E5%B7%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sum of Two Integers（使用位运算实现）</title>
-    <link href="https://pspxiaochen.club/2017-12-07-add/"/>
-    <id>https://pspxiaochen.club/2017-12-07-add/</id>
-    <published>2017-12-07T08:27:00.000Z</published>
-    <updated>2017-12-07T08:37:43.607Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>&emsp;&emsp;两个数的加法分为两步，对应位相加和进位。<br><br><br>&emsp;&emsp;举个简单的例子：997+24<br><img src="http://images2015.cnblogs.com/blog/920491/201607/920491-20160712110859998-340357180.png" alt="此处输入图片的描述"></p><p>  &emsp;&emsp;我们平时计算时是将对应位相加和进位同时计算，其实可以保留下进位，只计算对应位相加，保留进位的位置（值）。接下来，将进位向左移动一位，将上一步的结果与移位后的进位值进行对应位相加，直到没有进位结束。<br>  &emsp;&emsp;对于二进制数的而言，对应位相加就可以使用异或（xor）操作，计算进位就可以使用与（and）操作，在下一步进行对应位相加前，对进位数使用移位操作（&lt;&lt;）。<br>  <br><br>&emsp;&emsp;这样就非常好理解下面的实现代码。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int getSum(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        int c = a ^ b;</span><br><span class="line">        b = (a &amp; b) &lt;&lt; 1;</span><br><span class="line">        a = c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> a;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&emsp;&emsp;最后，再给一个详细的运行过程示意，计算523+1125.（另外，如果是有负数的话，算法也是可行的，可以去看一下补码的相关内容）<br><img src="http://images2015.cnblogs.com/blog/920491/201607/920491-20160712112232779-1674865256.png" alt="此处输入图片的描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
-    
-    </summary>
-    
-      <category term="刷题" scheme="https://pspxiaochen.club/categories/%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="位运算" scheme="https://pspxiaochen.club/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-      <category term="异或" scheme="https://pspxiaochen.club/tags/%E5%BC%82%E6%88%96/"/>
     
   </entry>
   
