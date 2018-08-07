@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://pspxiaochen.club/"/>
-  <updated>2018-08-06T12:46:05.820Z</updated>
+  <updated>2018-08-07T06:55:30.165Z</updated>
   <id>https://pspxiaochen.club/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>决策树整理（五）----回归树（cart树）</title>
+    <link href="https://pspxiaochen.club/decision-tree5/"/>
+    <id>https://pspxiaochen.club/decision-tree5/</id>
+    <published>2018-08-07T01:31:20.000Z</published>
+    <updated>2018-08-07T06:55:30.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;分类与回归树模型同样由特征选择，树的生成和剪枝组成既可用于分类也可以用于回归。</p><h1 id="算法的组成"><a href="#算法的组成" class="headerlink" title="算法的组成"></a>算法的组成</h1><p>&emsp;&emsp;CART算法由一下两个部分组成：<br>（1）决策树生成：基于训练数据集生成决策树，生成的决策树要尽可能的大；<br>（2）决策树剪枝：用验证数据集对已生成的树进行剪枝并选择最优子树，这时用损失函数最小作为剪枝的标准。</p><h1 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h1><h2 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a>CART生成</h2><p>&emsp;&emsp;决策树的生成就是递归的构建二叉决策树的过程。对回归树用平方误差最小化准则，对分类树用基尼指数最小化准则，进行特征选择，生成二叉树。<br>假设X与Y分别为输入和输出变量，并且Y是连续的。给定训练数据集D。<br>一个回归树对应着输入空间（即特征空间）的一个划分已经在划分的单元上的输出值。假设已经输入空间划分为M个单元$R_1,R_2,…,R_M$,并且在每个单元R_n上有一个固定的输出值c_n,于是回归树模型可以表示为<script type="math/tex">f(x)=\sum_{m=1}^MC_nI(X \in R_m)</script><br>当输入孔家你得划分确定是，可以用平方误差$\sum_{x_i \in R_m}(y_i-f(x_i))^2$来表示回归树对于训练数据的预测误差，用平方误差最小的准则求解每个单元上的最优输出值。我们可以知道，某个单元上的最优的值c_m 是R_m上所有输入实例x对应的输出y的均值，意思就是 如果好多样本都在一个叶子结点中，那么这个叶子结点最好的输出值（就是让损失函数最小）就是这些样样本对应y的均值。</p><p>现在问题来了，我们应该对输入空间怎么划分。这里采用启发式的方法，选择第j个变量$x^{(j)}$和他的取值s，作为切分变量和切分点，并定义两个区域。<br>A区域就是考察所有样本的第j个变量，如果小于等于s，则把这些样本划分到A区域，其余都是大于s的，所以就划分到B区域。<br>那现在问题就变成，如何找到最优的切分变量j和最优切分点s.具体的我们来求解：<script type="math/tex">\min_{j,s}[\min_{c_1}\sum_{x_i \in A(j,s)}(y_i-c_1)^2 + \min_{c_2}\sum_{x_i \in B(j,s)}(y_i-c_2)^2]</script><br>用我自己的话解释就是，我遍历每一个特征，对特征进行尝试切分：<br>如果是离散变量，那么我们就遍历这个变量中的每个可选址值，假设是k，把所有样本分成2类（是k的属于一类，不是k的属于另外一类，因为必须是二叉树），然后计算损失函数，看看这个可选值是否可以最好切分点。计算损失函数的话，那么我们可以知道我们把所有样本分成了2个叶子结点，我们计算每个叶子结点中样本y的平均值当做这个叶子结点的输出，然后再用上面的公式计算，然后记住这个值，然后计算所有的可选值，并把他们都记住。<br>如果是连续变量，那么我们也可以遍历这个变量的所有取值，每种取值都可以把样本分成2类，小于等于这个取值的和大于这个取值的，然后按照上面的方法遍历计算，保存每次计算的值，最后对比所有 计算的值，找到最小的那个值，就把那个特征当做要切分的特征，那个点当做切分点。</p><p>用书面语说就是：遍历所有的输入变量，找到最优的切分变量j，构成一个对(j,s)。依此将输入空间划分为2个区域。接着对每个区域重复上述划分的过程，知道满足停止条件为止。这样就生成了一颗回归树。这样的回归树通常称为<strong>最小二乘回归树</strong></p><h1 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h1><p>分类树用基尼指数选择最优特征，同时决定该特征的最优二值切分点。<br>分类问题中，假设有K个类，样本点属于第k个类的概率为$p_k$,则概率分布的基尼指数定义为<script type="math/tex">Gini(p)=\sum_{k=1}^Kp_k(1-p_k)=1-\sum_{k=1}^Kp_k^2</script>对于二分类问题，若样本点属于第一个类的概率是p，则概率分布的基尼指数为<script type="math/tex">Gini(p)=2p(1-p)</script>对于给定的样本集合D，其基尼指数为<script type="math/tex">Gini(D)=1-\sum_{k=1}^K(\frac{|C_k|}{|D|})^2</script>这里$|C_k|$是D中属于第k类的样本个数，K是类的个数。<br>&emsp;&emsp;如果样本集合D根据特征A是否可某一可能值a被分割成$D_1和D_2$两部分，即<script type="math/tex">D_1={(x,y)\in D|A(x)=a},D_2=D-D_1</script>,则在特征A的条件下，集合D的基尼指数定义为<script type="math/tex">Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D2)</script>基尼指数Gini（D）表示集合D的不确定性，基尼指数Gini(D,A)表示经A=a分割后集合D的不确定性，基尼指数值越大，样本集合的不确定性也就越大，这和熵类似。</p><h2 id="CART生成算法"><a href="#CART生成算法" class="headerlink" title="CART生成算法"></a>CART生成算法</h2><p>输入：训练数据集D和停止计算的条件<br>输出：CART决策树<br>根据D，从根节点开始，递归的对每个结点进行以下操作，构建二叉决策树：<br>（1）设结点的训练数据集是D，计算现有的葛铮对该数据集的基尼指数。此时对每个特征A，对其可能去的每个值a,根据样本点对A=a测试为‘是’或者‘否’将D分割为$D_1和D_2$，利用公式计算A=a是的基尼指数。<br>（2）在所有可能的特征A以及他们所有可能的切分点a钟，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依照最优特征与最优切分点，生成2个子结点，将训练数据集依特征分配到两个子结点中去。<br>（3）对两个子结点递归的调用（1）（2），直至满足停止条件。<br>（4）生成CART决策树。<br>算法停止计算的条件是结点中的样本个数小于预定的阈值，或者样本集的基尼指数小于预定的阈值（这说明样本基本属于同一类），或者没有更多的特征可以进行划分。</p><p>这篇文章里有一个回归树做回归问题的例子，可以看一下。<br><a href="https://blog.csdn.net/weixin_40604987/article/details/79296427#commentsedit" rel="external nofollow noopener noreferrer" target="_blank">回归树例子</a></p>]]></content>
+    
+    <summary type="html">
+    
+      感觉TW是真的凉透了，难受，要是能有一个offer，感觉心里会稳很多。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>决策树（四）----如何处理缺失值</title>
@@ -411,28 +431,6 @@
     
     
       <category term="梯度下降" scheme="https://pspxiaochen.club/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从拉格朗日乘子法再到KKT条件的理解</title>
-    <link href="https://pspxiaochen.club/lagrange%20and%20kkt/"/>
-    <id>https://pspxiaochen.club/lagrange and kkt/</id>
-    <published>2017-12-26T13:27:00.000Z</published>
-    <updated>2017-12-26T13:31:10.714Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;西瓜书看了有一阵子了，终于看到了SVM，遥想研一看SVM的时候。。我操 这是什么。。这又是什么。。论高中数学的重要性的，出来混都是要还的。只好一点一点补齐SVM中用到的各种知识点。今天先扯一扯自己对拉格朗日乘子法和KKT条件的理解，希望这篇文章写完之后，能让我对这2个臭逼玩意能有更好的理解，那么现在开始。</p><h1 id="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"><a href="#我们为什么在SVM中要用到拉格朗日和KKT条件！！！" class="headerlink" title="我们为什么在SVM中要用到拉格朗日和KKT条件！！！"></a>我们为什么在SVM中要用到拉格朗日和KKT条件！！！</h1><p>&emsp;&emsp;因为在SVM中我们要计算一个有约束条件的极值问题，而拉格朗日乘子法和KKT条件是非常重要的两个求取方法。<br><br><br>&emsp;&emsp;对于等式约束的优化问题（就是限制的那个式子是个等式 s.t h(x) = 0 类似这种），可以应用拉格朗日乘子法去求取最优值。<br>&emsp;&emsp;如果含有不等式约束，可以应用KKT条件去求取最优值。<br>&emsp;&emsp;这两种方法求得的结果只是必要条件，只有当是凸函数（二次导数大于0为凸）的情况下，才能保证是充分必要条件。而KKT条件是拉格朗日乘子法的泛化。<br>&emsp;&emsp;下面我就针对这两个玩意，谈一谈我的理解。</p><h1 id="拉格朗日乘子法！！！"><a href="#拉格朗日乘子法！！！" class="headerlink" title="拉格朗日乘子法！！！"></a>拉格朗日乘子法！！！</h1><p>&emsp;&emsp;拉格朗日乘子法在考研的数学二中就用到过，当时只知道要那么用，那么用就能解决条件极值的问题，但是真心不知道为什么，这次先把为什么可以用拉格朗日说一下。<br>&emsp;&emsp;想象一下，目标函数f(x,y)是一座山的高度，约束g(x,y)=C是镶嵌在山上的一条曲线如下图。（渣画技看看就好了）<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu7qn45b7j20k00akt8o.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;你为了找到曲线上的最低点，就从最低的等高线（0那条）开始网上数。数到第三条，等高线终于和曲线有交点了（如上图所示）。因为比这条等高线低的地方都不在约束范围内，所以这肯定是这条约束曲线的最低点了。<br><br><br>&emsp;&emsp;而且约束曲线在这里不可能和等高线相交，一定是相切。因为如果是相交的话，如下图所示，那么曲线一定会有一部分在B区域，但是B区域比等高线低，这是不可能的。假设g(x)与等高线相交，交点就是同时满足等式约束条件和目标函数的可行域的值，但肯定不是最优值，因为相交意味着肯定还存在其它的等高线在该条等高线的内部或者外部，使得新的等高线与目标函数的交点的值更大或者更小，只有到等高线与目标函数的曲线相切的时候，可能取得最优值。<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu88xe79yj209004yjr6.jpg" alt="此处输入图片的描述"><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu88uoupyj208c060747.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;两条曲线相切，意味着他们在这点的法线平行，也就是法向量只差一个任意的常数乘子（取为-λ）：<br>&emsp;&emsp;<strong>∇f（x, y) = -λ(∇g(x,y)-C)</strong> 把这个式子的右边移动到左边，就得到<strong>∇（f(x,y)+λ(g(x,y)-C)=0</strong><br>&emsp;&emsp; 在看看这个式子，你又能想起来什么呢？高中数学。。。这个就是<strong>f(x,y)+λ(g(x,y)-C)</strong>没有约束情况下极值点的充分条件吧。。（令其导数等于0，求极值点。。。高中用的就是这个套路。。哎）所以证明了拉格朗日乘子法确实可以解决这类问题，拉格朗日确实牛逼。。高中数学也应该好好学 哎。难受啊。<br>&emsp;&emsp;那拉格朗日乘子法到底是怎么用的呢？简单的再说一下就是 <strong>把等式约束hi(x)用一个系数与f(x)写为一个式子，称为拉格朗日函数，而系数称为拉格朗日乘子。通过拉格朗日函数对各个变量求导，令其为零，可以求得候选值集合，然后验证求得最优值。</strong><br><br></p><h1 id="KKT条件！！！！！"><a href="#KKT条件！！！！！" class="headerlink" title="KKT条件！！！！！"></a>KKT条件！！！！！</h1><p>&emsp;&emsp;我先给出KKT条件：<br>&emsp;&emsp;对于具有等式和不等式约束的一般优化问题：<br>&emsp;&emsp;<img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmu94wrl0aj207x02k746.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;KKT条件给出了判断<strong>X*</strong>是否是最优解的必要条件：<br>&emsp;&emsp;<img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmu94z9hz2j20cw04nwem.jpg" alt="此处输入图片的描述"></p><h2 id="不等式约束优化问题"><a href="#不等式约束优化问题" class="headerlink" title="不等式约束优化问题"></a>不等式约束优化问题</h2><p>&emsp;&emsp;我们先给出其主要思想：转化的思想——将不等式约束条件变成等式约束条件.具体做法：<strong>引入松弛变量</strong>.松弛变量也是优化变量，也需要<strong>一视同仁求偏导.</strong><br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmu9qs81wdj20k00a8mxa.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;具体来说，我们先看一个一元函数的例子：<br>&emsp;&emsp;&emsp;&emsp;<strong>min f(x)</strong><br>&emsp;&emsp;<strong>s.t. g1(x) = a - x ≤ 0</strong><br>&emsp;&emsp;&emsp;&emsp;<strong>g2(x) = x - b ≤ 0</strong><br>&emsp;&emsp;（注：优化问题中，我们必须求得一个确定的值，因此不妨令所有的不等式均取到等号，即≤的情况.）<br>&emsp;&emsp;对于约束<strong>g1和g2</strong>,我们分别引入两个松弛变量<strong>a₁²和b₁²</strong>,得到<strong>h1(x,a₁) = g1 + a₁² = 0和h2(x,b₁) = g2 + b₁² = 0</strong>,这里直接加上平方项<strong>a₁²和b₁²</strong>而非<strong>a₁和b₁</strong>,是因为<strong>g1和g2</strong>这两个不等式的左边必须加上一个正数（或者0）才能使不等式变成等式。若只加上<strong>a₁和b₁</strong>,又会引入新的约束a₁≥0,b₁≥0.这岂不是很爆炸！！！<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fmua4u75oxj20j4039t9u.jpg" alt="此处输入图片的描述"><br>&emsp;&emsp;由此我们将不等式约束转化为了等式约束，并得到了拉格朗日函数<br>L（x,a₁,b₁,u₁,u₂) = f(x) + u₁(a - x + a₁²) + u₂(x - b + b₁²)<br>&emsp;&emsp;我们再按照等式约束优化问题对齐求解，联立方程组：<br><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fmubpsfd0oj20d9072dhm.jpg" alt="此处输入图片的描述"><br>（注：这里的u₁ ≥ 0,u₂ ≥ 0先承认，等会再解释，实际上对于不等式约束前的乘子，我们要求其大于等于0）<br>得出方程组后，便开始手动解，先看第3行的两个式子 <strong>u₁a₁ = 0 和 u₂b₁ = 0</strong>比较简单，我们就从他们入手。<br>对于<strong>u₁a₁ = 0</strong>,我们有两种情况:<br>情形1: <strong>u₁ = 0,a₁ ≠ 0:</strong><br>此时由于乘子<strong>u₁ = 0</strong>,<strong>因此g1与其相乘为0，可以理解为约束g1不起作用，且有g1(x) = a - x &lt; 0 (因为a₁ ≠ 0 , 所以他的平方一定是大于0的）</strong><br><br><br>情形2：<strong>u₁ ≥ 0 , a₁ = 0</strong><br><strong>此时，g1(x) = a - x = 0 且 u1 &gt; 0 (因为a₁ = 0 为了 a - x + a₁² = 0 ， 所以 a - x必须等于0），可以理解为约束g1起作用了，且有g1(x) = 0</strong></p><p><strong>合并两种情况的：u1g1 = 0 且在约束起作用时,u₁ &gt; 0,g1(x) = 0;约束不起作用时u1 = 0,g1(x) &lt; 0</strong><br><strong>同样的，分析u₂b₁ = 0,可得出约束g2起作用和不起作用的情形，并分析得到u₂g₂ = 0</strong><br>由此，方程组（极值必要条件）转化为：<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubpstwbhj207l033748.jpg" alt="此处输入图片的描述"><br>这是一元一次的情形，类似的，对于多远多次不等式约束问题<br><strong>min f(x)<br>s.t.g_j(x) ≤ 0 ( j = 1,2,````,m)</strong><br>我们有<br><img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fmubptawonj20bh03j3yk.jpg" alt="此处输入图片的描述"><br>上式便称为不等式约束优化问题的KKT（Karush-Kuhn-Tucker）条件u_j称为KKT乘子，且约束起作用时u_j＞0,g_j(x) = 0;约束不起作用时u_j = 0,g_j(x) &lt; 0.</p><h1 id="总结：同时包含等式和不等式约束的一般优化问题"><a href="#总结：同时包含等式和不等式约束的一般优化问题" class="headerlink" title="总结：同时包含等式和不等式约束的一般优化问题"></a>总结：同时包含等式和不等式约束的一般优化问题</h1><p><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fmuhrzcvsbj20dw083weu.jpg" alt="此处输入图片的描述"><br><strong>注意，对于等式约束的Lagrange乘子，并没有非负的要求！以后求其极值点，不必再引入松弛变量，直接使用KKT条件判断！</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      这次想填一个超级大的坑！！！！！
-    
-    </summary>
-    
-      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="SVM" scheme="https://pspxiaochen.club/tags/SVM/"/>
     
   </entry>
   
