@@ -3,6 +3,14 @@
   
     
     <entry>
+      <title></title>
+      <url>/decision-tree6/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[决策树整理（五）----回归树（cart树）]]></title>
       <url>/decision-tree5/</url>
       <content type="html"><![CDATA[<p>&emsp;&emsp;分类与回归树模型同样由特征选择，树的生成和剪枝组成既可用于分类也可以用于回归。</p>
@@ -928,9 +936,9 @@
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -1045,9 +1053,9 @@
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
