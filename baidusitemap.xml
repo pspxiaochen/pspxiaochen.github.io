@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://pspxiaochen.club/decision-tree6/</loc>
-    <lastmod>2018-08-08T09:37:18.355Z</lastmod>
+    <lastmod>2018-08-08T09:42:26.894Z</lastmod>
     <data>
         <display>
         <title>决策树整理（六）-----CART树的剪枝</title>
@@ -492,9 +492,9 @@
         <title>Hexo博客撰写之：MarkDown语法介绍</title>
         <pubTime>2017-11-17T16:00:00.000Z</pubTime>
         
-        <tag>markdown</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>markdown</tag>
          
          
            
@@ -516,9 +516,9 @@
         <title>第一篇post：庆祝博客搭建成功</title>
         <pubTime>2017-11-16T16:00:00.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
         <tag>教程</tag>
+         
+        <tag>hexo</tag>
          
         <tag>node</tag>
          
