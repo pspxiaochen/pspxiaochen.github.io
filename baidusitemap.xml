@@ -5,12 +5,32 @@
     
   <url>
     <loc>https://pspxiaochen.club/decision-tree6/</loc>
-    <lastmod>2018-08-08T09:45:48.627Z</lastmod>
+    <lastmod>2018-08-09T08:40:25.947Z</lastmod>
     <data>
         <display>
         <title>决策树整理（六）-----CART树的剪枝</title>
         <pubTime>2018-08-07T07:58:50.000Z</pubTime>
         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://pspxiaochen.club/cross-validation/</loc>
+    <lastmod>2018-08-09T08:40:06.221Z</lastmod>
+    <data>
+        <display>
+        <title>机器学习之交叉验证</title>
+        <pubTime>2018-06-29T02:27:00.000Z</pubTime>
+        
+        <tag>交叉验证</tag>
+         
          
            
              
@@ -274,26 +294,6 @@
            
              
               <breadCrumb title="life" url="https://pspxiaochen.club/categories/life/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://pspxiaochen.club/cross-validation/</loc>
-    <lastmod>2018-06-29T03:32:36.146Z</lastmod>
-    <data>
-        <display>
-        <title>机器学习之交叉验证</title>
-        <pubTime>2018-06-29T02:27:00.000Z</pubTime>
-        
-        <tag>交叉验证</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
