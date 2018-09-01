@@ -4,6 +4,24 @@
 
     
   <url>
+    <loc>https://pspxiaochen.club/l1andl2/</loc>
+    <lastmod>2018-09-01T09:52:00.108Z</lastmod>
+    <data>
+        <display>
+        <title>聊一聊L1和L2正则化</title>
+        <pubTime>2018-09-01T06:28:44.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://pspxiaochen.club/LR/</loc>
     <lastmod>2018-08-23T13:47:04.976Z</lastmod>
     <data>
@@ -510,9 +528,9 @@
         <title>Hexo博客撰写之：MarkDown语法介绍</title>
         <pubTime>2017-11-17T16:00:00.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
         <tag>markdown</tag>
+         
+        <tag>hexo</tag>
          
          
            
@@ -534,9 +552,9 @@
         <title>第一篇post：庆祝博客搭建成功</title>
         <pubTime>2017-11-16T16:00:00.000Z</pubTime>
         
-        <tag>教程</tag>
-         
         <tag>hexo</tag>
+         
+        <tag>教程</tag>
          
         <tag>node</tag>
          
