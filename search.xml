@@ -1012,9 +1012,9 @@ $$C(T_t) = {9 \over 60}*{3 \over 9} + {5 \over 60} * {2\over5} + {2\over60} * {0
         
         <tags>
             
-            <tag> markdown </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> markdown </tag>
             
         </tags>
         
@@ -1129,9 +1129,9 @@ $$C(T_t) = {9 \over 60}*{3 \over 9} + {5 \over 60} * {2\over5} + {2\over60} * {0
         
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 教程 </tag>
+            
+            <tag> hexo </tag>
             
             <tag> node </tag>
             
