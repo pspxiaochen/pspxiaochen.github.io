@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>发条晨</title>
+  
+  <subtitle>愿我走出半生，归来仍是少年</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://pspxiaochen.club/"/>
+  <updated>2019-07-02T08:21:49.974Z</updated>
+  <id>https://pspxiaochen.club/</id>
+  
+  <author>
+    <name>pspxiaochen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>换新电脑啦~~~（测试）</title>
+    <link href="https://pspxiaochen.club/first-new-pc/"/>
+    <id>https://pspxiaochen.club/first-new-pc/</id>
+    <published>2019-07-02T08:19:28.000Z</published>
+    <updated>2019-07-02T08:21:49.974Z</updated>
+    
+    <summary type="html">
+    
+      马上就要去上班了 难受啊。
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>聊一聊L1和L2正则化</title>
+    <link href="https://pspxiaochen.club/l1andl2/"/>
+    <id>https://pspxiaochen.club/l1andl2/</id>
+    <published>2018-09-01T06:28:44.000Z</published>
+    <updated>2019-07-02T08:05:54.115Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h1><p>一般来说，监督学习可以看做是最小化下面的目标函数。</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1fuu1fqswbvj20am01q748.jpg" alt="此处输入图片的描述"><br>其中，第一项L(yi,f(xi;w)) 衡量我们的模型（分类或者回归）对第i个样本的预测值f(xi;w)和真实的标签yi之前的误差。因为我们的模型是要拟合我们的训练样本的嘛，所以我们要求这一项最小，也就是要求我们的模型尽量的拟合我们的训练数据。但是正如上面所说，我们不仅要保证训练误差最小，我们更希望我们的模型在测试数据中误差小，所以我们要加上第二项，也就是对参数w的规则化函数Ω(w)去约束我们的模型尽量的简单。其中这个正则化函数就是我们常见的L0,L1,L2范数。</p><h2 id="正则化的目的：防止过拟合！"><a href="#正则化的目的：防止过拟合！" class="headerlink" title="正则化的目的：防止过拟合！"></a>正则化的目的：防止过拟合！</h2><h2 id="正则化的本质：约束要优化的参数。"><a href="#正则化的本质：约束要优化的参数。" class="headerlink" title="正则化的本质：约束要优化的参数。"></a>正则化的本质：约束要优化的参数。</h2><p>&emsp;&emsp;其实如果学了机器学习的算法之后，就会发现，机器学习的大部分带参数的模型都和上面的公式很像，大部分无非就是变换这两项而已。对于第一项损失函数，如果是平方损失函数那就是线性回归，如果是合页损失函数，那就是SVM，如果是对数损失函数，就是逻辑斯特回归。如果是指数损失函数那就是boosting了。不同的LOSS函数具有不同的拟合性质我们得具体问题具体分析，我们先来分析一波规则项Ω(w)。<br>&emsp;&emsp;规则化函数Ω(w)也有很多种选择，一般是模型复杂度的单调递增函数，模型越复杂，规则化值就越大。比如，规则化项可以是模型参数向量的范数。然而，不同的选择对参数w的约束不同，取得的效果也不同，但我们在论文中常见的都聚集在：零范数、一范数、二范数。<br>我们先分别来介绍一下L0和L1范数。</p><h1 id="L0范数和L1范数"><a href="#L0范数和L1范数" class="headerlink" title="L0范数和L1范数"></a>L0范数和L1范数</h1><p>&emsp;&emsp;  L0范数是指向量中非0的元素的个数。如果我们用L0范数来规则化一个参数矩阵W的话，就是希望W的大部分元素都是0。这太直观了，太露骨了吧，换句话说，让参数W是稀疏的。但是我们知道一般想让参数稀疏我们都是通过L1范数来实现的。这就是这节的题目把L0和L1放在一起的原因，因为他们有着某种不寻常的关系。那我们再来看看L1范数是什么？它为什么可以实现稀疏？为什么大家都用L1范数去实现稀疏，而不是L0范数呢？<br>&emsp;&emsp;L1范数指的是向量中各个元素绝对值只和，也叫‘稀疏规则算子’。为什么L1范数会使权值稀疏？可以回答它是L0范数的最优凸近似，实际上，还存在一个更美的回答：任何的规则化算子，如果他在Wi=0的地方不可微，并且可以分解为一个“求和”的形式，那么这个规则化算子就可以实现稀疏。<br>&emsp;&emsp;上面还有一个问题：既然L0可以实现稀疏，为什么不用L0，而要用L1呢？个人理解一是因为L0范数很难优化求解（NP难问题），二是L1范数是L0范数的最优凸近似，而且它比L0范数要容易优化求解。所以大家才把目光和万千宠爱转于L1范数。<br><strong>来个一句话总结：L1范数和L0范数可以实现稀疏，L1因具有比L0更好的优化求解特性而被广泛应用。</strong><br>那么我们再来总结一下稀疏的好处：</p><h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>&emsp;&emsp; 大家对稀疏规则化趋之若鹜的一个关键原因在于它能实现特征的自动选择。一般来说，xi的大部分元素（也就是特征）都是和最终的输出yi没有关系或者不提供任何信息的，在最小化目标函数的时候考虑xi这些额外的特征，虽然可以获得更小的训练误差，但在预测新的样本时，这些没用的信息反而会被考虑，从而干扰了对正确yi的预测。稀疏规则化算子的引入就是为了完成特征自动选择的光荣使命，它会学习地去掉这些没有信息的特征，也就是把这些特征对应的权重置为0。</p><h2 id="可解释性"><a href="#可解释性" class="headerlink" title="可解释性"></a>可解释性</h2><p>&emsp;&emsp; 另一个青睐于稀疏的理由是，模型更容易解释。例如患某种病的概率是y，然后我们收集到的数据x是1000维的，也就是我们需要寻找这1000种因素到底是怎么影响患上这种病的概率的。假设我们这个是个回归模型：y=w1<em>x1+w2</em>x2+…+w1000<em>x1000+b（当然了，为了让y限定在[0,1]的范围，一般还得加个Logistic函数）。通过学习，如果最后学习到的w</em>就只有很少的非零元素，例如只有5个非零的wi，那么我们就有理由相信，这些对应的特征在患病分析上面提供的信息是巨大的，决策性的。也就是说，患不患这种病只和这5个因素有关，那医生就好分析多了。但如果1000个wi都非0，医生面对这1000种因素，累觉不爱。</p><h1 id="L2范数"><a href="#L2范数" class="headerlink" title="L2范数"></a>L2范数</h1><p>&emsp;&emsp; 除了L1范数，还有一种更受宠幸的规则化范数是L2范数: ||W||2。它也不逊于L1范数，它有两个美称，在回归里面，有人把有它的回归叫“岭回归”（Ridge Regression），有人也叫它“权值衰减weight decay”。这用的很多吧，因为它的强大功效是改善机器学习里面一个非常重要的问题：过拟合。<br>&emsp;&emsp; L2范数是指向量各元素的平方和然后求平方根。我们让L2范数的规则项||W||2最小，可以使得W的每个元素都很小，都接近于0，但与L1范数不同，它不会让它等于0，而是接近于0，这里是有很大的区别的哦。而越小的参数说明模型越简单，越简单的模型则越不容易产生过拟合现象。<br><strong>这里也一句话总结下：通过L2范数，我们可以实现了对模型空间的限制，从而在一定程度上避免了过拟合。</strong></p><h1 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h1><h2 id="L1范数和L2范数都可以防止过拟合吗？"><a href="#L1范数和L2范数都可以防止过拟合吗？" class="headerlink" title="L1范数和L2范数都可以防止过拟合吗？"></a>L1范数和L2范数都可以防止过拟合吗？</h2><p>答：都可以防止过拟合的，加入正则化项就是为了防止过拟合。</p><h2 id="为什么L1范数可以做特征选择（部分参数变成0）？为什么L2范数可以让参数变的小"><a href="#为什么L1范数可以做特征选择（部分参数变成0）？为什么L2范数可以让参数变的小" class="headerlink" title="为什么L1范数可以做特征选择（部分参数变成0）？为什么L2范数可以让参数变的小"></a>为什么L1范数可以做特征选择（部分参数变成0）？为什么L2范数可以让参数变的小</h2><p><strong>我们先从数学的角度分析：</strong><br>&emsp;&emsp; &emsp;&emsp; &emsp;&emsp; <img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fuu3x8dmbrj20x408lq3s.jpg" alt="此处输入图片的描述"><br>我们来看一下，两个式子不一样的地方只有被框框住的地方。L1的话会减少sign(w_i)倍的$\eta\frac{\lambda}{n}$，而L2的话会减少wi倍的$\eta\frac{\lambda}{n}$,当w_i在[1,正无穷）时候，L2的减小速率比L1的更快，当w_i在（0,1）的时候，L1的比L2获得更快的减小速率，当w越来越小时，L1更容易接近0，而L2更不容易变化。因此L1会得到更多的0。<br>还有一种比较有意思的数学解释可以看一下知乎这个链接：</p><p><a href="https://www.zhihu.com/question/37096933" rel="external nofollow noopener noreferrer" target="_blank">l1 相比于 l2 为什么容易获得稀疏解？</a></p><p><strong>从概率的角度分析：</strong><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fuu65qc4iej210e0nzacs.jpg" alt="此处输入图片的描述"></p><p><strong>从优化角度分析</strong><br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fuu6ffng2aj20z303ldg0.jpg" alt="此处输入图片的描述"></p><p>可以把之前的问题换成带条件的优化问题。</p><p><img src="http://wx1.sinaimg.cn/mw690/72fdc620ly1fuu6hy7lmvj20w80hgk4a.jpg" alt="此处输入图片的描述"><br>高维我们无法想象，简化到2维的情形，如上图所示。其中，左边是L1图示，右边是L2图示，左边的方形线上是L1中w1/w2取值区间，右边得圆形线上是L2中w1/w2的取值区间，绿色的圆圈表示w1/w2取不同值时平方误差项的值的等高线（凸函数），从等高线和w1/w2取值区间的交点可以看到，L1中两个权值倾向于一个较大另一个为0，L2中两个权值倾向于均为非零的较小数。这也就是L1稀疏，L2平滑的效果。</p><h2 id="为什么说参数越小模型就越简单。"><a href="#为什么说参数越小模型就越简单。" class="headerlink" title="为什么说参数越小模型就越简单。"></a>为什么说参数越小模型就越简单。</h2><p>模型过于复杂是因为模型尝试去兼顾各个测试数据点，导致模型函数处于一种动荡的状态， 每个点的到时在某些很小的区间里，函数值的变化很剧烈。这就意味着函数在某些小区间里的导数值（绝对值）非常大，由于自变量值可大可小，所以只有系数足够大，才能保证导数值很大。而参数变小了之后会让导数的绝对值也变小，这样的话曲线就会变的比之前平滑。</p>]]></content>
+    
+    <summary type="html">
+    
+      下一章聊正则化
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>逻辑回归推导与整理</title>
+    <link href="https://pspxiaochen.club/LR/"/>
+    <id>https://pspxiaochen.club/LR/</id>
+    <published>2018-08-23T08:01:23.000Z</published>
+    <updated>2019-07-02T08:05:54.104Z</updated>
+    
+    <content type="html"><![CDATA[<p>逻辑回归虽然名字里带着‘回归’，但是他其实是一种分类的方法，可以用于二分类问题。根据线性回归我们知道，需要先找到一个预测函数$h(x)$,显然我们知道，该函数的输出必须是两个值（分别代表2个类别），所以利用了Logistic函数（或者称为Sigmoid函数），函数形式为：<script type="math/tex">g(z)=\frac{1}{1+e^-z}</script><br>对应的函数图像是一个取值在0到1之间的S。</p><h2 id="那么我们为什么要用sigmoid函数呢。"><a href="#那么我们为什么要用sigmoid函数呢。" class="headerlink" title="那么我们为什么要用sigmoid函数呢。"></a>那么我们为什么要用sigmoid函数呢。</h2><p>1.首先我们先看看sigmoid自身的好处。<br>a.sigmoid函数连续，单调递增<br>b.关于（0.0.5）中心对称<br>c.求导非常容易，所以速度很快<br>d.可以把值变成（0,1）之间，可以表示概率。<br>2.我们在从指数族来考虑<br>指数族分布的形式为：<script type="math/tex">p(y;η)=b(y)exp(η^TT(y)−α(η))</script><br>伯努利分布，高斯分布，泊松分布，贝塔分布，狄特里特分布都属于指数分布。<br>在逻辑回归时，我们认为函数概率服从伯努利分布，伯努利分布的概率可以表示成<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fujr7u5w1wj20ay03cglr.jpg" alt="此处输入图片的描述"></p><script type="math/tex; mode=display">η = log (φ/(1-φ))</script><script type="math/tex; mode=display">φ=\frac{1}{1+e^{-η}}</script><p>可以看到，η的形式的logistic函数一致，这是因为logistic模型对问题的前置概率估计是伯努利分布的缘故。这时$η=θx$（具体可以看一下统计学习方法78页中logistic函数）。</p><p>我们整理一下写成<script type="math/tex">h_θ(x)=\frac{1}{1+e^{-θx}}</script><br>其中x为样本的输入，$h_θ(x)$为模型输出，可以理解为某一分类的概率大小。而θ为分类模型的要求出的模型参数。对于模型输出hθ(x)，我们让它和我们的二元样本输出y（假设为0和1）有这样的对应关系，如果hθ(x)&gt;0.5 ，即xθ&gt;0, 则y为1。如果hθ(x)&lt;0.5，即xθ&lt;0, 则y为0。<br>hθ(x)的值越小，而分类为0的的概率越高，反之，值越大的话分类为1的的概率越高。如果靠近临界点，则分类准确率会下降。<br>理解了二元分类回归的模型，接着我们就要看模型的损失函数了，我们的目标是极小化损失函数来得到对应的模型系数θ。</p><h2 id="构造损失函数"><a href="#构造损失函数" class="headerlink" title="构造损失函数"></a>构造损失函数</h2><p>我们第一先想到还是用线性回归的平方损失函数，但是我们把h(x)带入损失函数后会发现是一个非凸函数，这就意味着代价函数有着许多的局部最小值，这不利于我们的求解。 </p><p>我们现在换一种思路，我们前面提到h(z(x))可以看做x样本是1类别的概率（z=θx），所以我们有<script type="math/tex">p(y=1|x;\theta)=h_θ(x)</script></p><script type="math/tex; mode=display">p(y=0|x;\theta)=1-h(wx)=1-h_θ(x)</script><p>其中$p(y=1|x;\theta)$表示给定w，那么x样本是正类的概率大小。<br>上面两个式子可以合并一下写成：<script type="math/tex">P(y|x;w) = h_θ(x)^y(1-h_θ(x))^{1-y}</script><br>接下来我们要用极大似然估计来估计参数w。<br>极大似然估计的思想是这样的：<br>1.极大似然估计中采样产生的样本需要满足一个重要假设，所有采样的样本都是独立同分布的。<br>2.极大似然估计是在模型已定，参数未知的情况下，估计模型中的具体参数。<br>3.极大似然估计的核心是让产生所采样的样本出现的概率最大。即利用已知的样本结果信息，反推具有最大可能导致这些样本结果出现的模型的参数值。<br>举个例子：<br>1.假设当前的样本为{(x1,y1=1),(x2,y2=0),(x3,y3=1),(x4,y4=0),(x5,y5=0)}，样本是满足独立同分布的。<br>2.由于样本是满足独立同分布的，那么出现以上样本分布的总概率为下式，需要让产生这一组样本的概率最大。</p><script type="math/tex; mode=display">P=P(Y=1|x=x1)P(Y=0|x=x2)P(Y=1|x=x3)P(Y=0|x=x4)P(Y=0|x=x5)</script><p>设$ P(Y=1|x)=π(x),P(Y=0|x)=1−π(x)$,则上式可以化为：<script type="math/tex">P=\prod_{1}^5[π(x^i)]y^i[1−π(x^i)](1−y^i)</script></p><p>所以逻辑回归的似然函数为：<script type="math/tex">L(w)=\prod_{1}^Nh_θ(x^i)^{y^i}(1-h_θ(x^i))^{1-y^i}</script><br>其中N为N个样本点。<br>由于对一个函数取对数之后单调性不变，不影响结果，所以我们对上面的式子取对数，也叫对数似然函数:</p><script type="math/tex; mode=display">L(\theta)=\sum_{1}^N(y^{(i)}ln(h_{\theta}(x^{(i)}))+ (1-y^{(i)})ln(1-h_{\theta}(x^{(i)})))</script><p>对L（θ）求极大值，可以变相变成对-L(θ)求极小值，再用梯度下降就可以求解。这里就不推了，我在笔记本上推。</p><h2 id="如果用一句话概括逻辑回归就是：逻辑回归假设数据服从伯努利分布-通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。"><a href="#如果用一句话概括逻辑回归就是：逻辑回归假设数据服从伯努利分布-通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。" class="headerlink" title="如果用一句话概括逻辑回归就是：逻辑回归假设数据服从伯努利分布,通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。"></a>如果用一句话概括逻辑回归就是：逻辑回归假设数据服从伯努利分布,通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的。</h2><p>记一篇博客 <a href="http://www.cnblogs.com/ModifyRong/p/7739955.html" rel="external nofollow noopener noreferrer" target="_blank">逻辑回归的常见面试点总结</a></p>]]></content>
+    
+    <summary type="html">
+    
+      哈哈哈哈
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树整理（六）-----CART树的剪枝</title>
+    <link href="https://pspxiaochen.club/decision-tree6/"/>
+    <id>https://pspxiaochen.club/decision-tree6/</id>
+    <published>2018-08-07T07:58:50.000Z</published>
+    <updated>2019-07-02T08:05:54.113Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;CART树的剪枝算法由两步组成：首先从生成算法的决策树$T_0$底端开始不断剪枝，直到$T_0$的根节点，形成一个子树序列{$T_0,T_1,T_2,…,T_n$};然后通过交叉验证法在独立的验证数据集上对子树序列进行测试，从中选择最优子树。</p><h2 id="剪枝，形成一个子树序列"><a href="#剪枝，形成一个子树序列" class="headerlink" title="剪枝，形成一个子树序列"></a>剪枝，形成一个子树序列</h2><p>&emsp;&emsp;在剪枝过程中，计算子树的损失函数:</p><script type="math/tex; mode=display">C_a(T)=C(T)+a|T|</script><p>其中，T为任意子树，$C(T)$为对训练数据的预测误差（比如基尼指数或者错误率                    ）,|T|为子树T的叶节点个数，a大于等于0为参数，$C_a(T)$为参数是a时的子树T的整体损失。参数a权衡训练数据的拟合程度与模型的复杂度。（又有一点正则化项的感觉）。<br>&emsp;&emsp;对固定的a，一定存在使损失函数$C_a(T)$最小的子树，将其表示为$T_a$。$T_a$在损失函数$C_a(T)$最小的意义下是最优的。容易验证这样的最优子树是唯一的。当a大的时候，最优子树$T_a$偏小（如果a比较大会导致后面一项比较大，所以尽量让|T|小一些）；当a小的时候，最优子树$T_a$偏大。极端情况下，如果a=0,那么整体树是最优的。当a接近于无穷，根节点组成的单节点树是最优的。<br>&emsp;&emsp;从整体树（最上面的根节点）$T_0$开始剪枝，对$T_0$的任意内部结点t（一般是自下而上的算），以t为单节点树的损失函数是(把t当做一个叶子结点计算，那么之前t下面的所有叶子结点的样本都会放到这个t结点中去)<script type="math/tex">C_a(t)=C(t)+a|1|</script>,因为把t当做单节点，所以a后面的数是|1|,接着在计算以t为根节点的子树$T_t$的损失函数是：<script type="math/tex">C_a(T_t)=C(T_t)+a|T_t|</script><br>当a=0时候或者a充分小时，有不等式<script type="math/tex">C_a(T_t) < C_a(t)</script><br>当a增大时，在某一a有<script type="math/tex">C_a(T_t) = C_a(t)</script><br>当a再增大时，不等式反向。那么我们知道，只要<script type="math/tex">a=\frac{C(t)-C(T_t)}{|T_t|-1}</script><br>这个t节点在做单结点或者子树时有相同的损失函数，而作为单结点的时候结点少，因此t比$T_t$更可取，所以我们对这个t结点以下的部分进行剪枝，让这个t变成单结点。<br>所以我们计算这课整体树$T_0$的每一个非叶节点，计算<script type="math/tex">g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}</script><br>这个式子表示减值后整体损失函数减少的程度。在$T_0$中剪去g(t)最小的$T_t$,将得到的子树作为$T_1$,同时将最小的g(t)设置为$a_1$,$T_1$为区间$[a_1,a_2)$的最优子树。<br>我们来捋一捋这段话，为什么g(t)表示剪枝后整体损失函数减少的程度，讲道理是g(t)越大越好对不对，但是为什么我们要先从g(t)最小的来做呢。<br>我们先再来理一遍剪枝时候的情况。对于每个给定的a值，树中的每个非叶子结点作为子结点或者叶子结点时，树的预测误差性是不同的，也就是说该结点修剪前和修剪之后，对应的树对训练数据的预测误差不同，代价函数的损失大小也不同。<br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu299q8dlrj20k00j3ab1.jpg" alt="此处输入图片的描述"><br>如上图所示，假设在a变化时，数中的两个结点对应的预测误差的变化（修剪前后）分别是黑色和红色线所示，当a比较小的时候，结点不修剪的误差要小于修剪后的误差（因为a小，所以后面一项的值小，所以肯定树越复杂预测效果越好，损失函数越小），但当a增大时，慢慢的修剪后的误差和修剪前的误差会慢慢接近，直到相等，这个值我们把他叫做临界值$g(t)$</p><p>那我们为什么要选最小的g(t)呢，以图中两个点为例，结点1和结点2，$g(t)_2 &gt; g(t)_1$,假设在所有的节点中g(t_2)最大，g(t_1)最小，那么我们如果选择最大的值，对结点2进行了剪枝，但此时结点1的不修剪的损失函数大于修剪之后的损失函数，这说明如果不修剪的话，误差会变大，依次类推，对于其他结点也如此，这相当于你的a是很大的，导致你的第二项很大，所以损失函数很大。这造成整体的累计误差也很大。但是如果我们选择了最小值，也就是对结点1进行了剪枝，则其余结点不剪枝的损失函数要小于剪枝之后的损失函数，对于这些结点来说不修剪就是最好的，也就说明整体误差小。从而以最小的g(t)剪枝获得子树是这个a值下的最优子树。     </p><p>顺便说一下，上面的那个式子g(t)他也是等于a的，这是东西叫做误差增益，看看它的分子就会明白了：分子是由剪枝前后模型的拟合程度的差值构成的，也就是说，a的大小和剪枝前后模型的拟合能力的变化所决定的n ，由于剪枝的关系，模型在样本内的拟合能力通常是减弱的，所以才叫做”误差”增益值。所以对于那个完整的树$T_0$中的每个结点t，我们都要计算误差增益是多少，然后拟合能力减少最小的那个剪枝方案$T_1$就是我们最需要的。</p><p>下面还是拿个例子还说把，分类问题。<br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu2boo3cluj20jw0b9q3b.jpg" alt="此处输入图片的描述"><br>用我们上面的剪枝方法先初始$k=0,T=T_0$,自上而下的计算每个结点的g(t)<br>$C(t)$表示训练数据的预测误差（我们的例子用基尼指数计算）= 结点t上的数据占所有数据的比例*结点的误差率，而结点的误差率 = 分错的样本数/（这个结点总共的）。</p><p>$C(T_t)$表示子树$T_t$的预测误差 = 子树 $T_t$上所有叶子结点的预测误差之和，就等于要计算每一个叶子结点，按照计算$C(t)$那样计算，最后把值加到一起。<br>如假我们一共有60条数据，而这个T4结点一共包含了16条数据，我们开始计算T4的信息：</p><script type="math/tex; mode=display">C(t) = \frac{16}{60} * \frac{7}{16}$$ (一共有16个样本，因为9比7大，我们认为9个样本被分对了，7个样本被分错了)$$C(T_t) = {9 \over 60}*{3 \over 9} + {5 \over 60} * {2\over5} + {2\over60} * {0 \over 2}</script><p>（某个叶节点k类比较多，我就认为这个正确分类是k类，其他不是k类的都是错分样本）<br>经过计算之后</p><script type="math/tex; mode=display">g(t)=\frac{1}{60}</script><p>令a = 1/60.</p><p>如果是回归问题的话，我们可能需要把基尼指数换成平方损失这种损失函数来进行计算了。</p><p>接下来进行第二部分</p><h2 id="在剪枝得到的子树序列-T-0-T-1-T-2-…-T-n-中通过交叉验证选取最优子树-T-a"><a href="#在剪枝得到的子树序列-T-0-T-1-T-2-…-T-n-中通过交叉验证选取最优子树-T-a" class="headerlink" title="在剪枝得到的子树序列$T_0,T_1,T_2,…,T_n$中通过交叉验证选取最优子树$T_a$"></a>在剪枝得到的子树序列$T_0,T_1,T_2,…,T_n$中通过交叉验证选取最优子树$T_a$</h2><p>&emsp;&emsp;具体的，利用独立的验证数据集，测试子树序列中各颗子树的平方误差或者基尼指数。平方误差或者基尼指数最小的决策树被认为是最优的决策树。每棵树都对应着参数a.所以，当最优子树$T_k$确定了，那么参数$a_k$也就确定了。</p><p>现在总结一下CART剪枝算法。<br>输入:CART算法生成的决策树$T_0$<br>输出：最优决策树<br>（1）设$k = 0,T=T_0$,a=正无穷。<br>（2）自下而上的对各非叶子结点计算$C(T_t),|T_t|,g(t)，a=min(a,g(t))$<br>(g(t)代表的是一个a的临界值，是当剪枝前和剪枝后的损失损失相同时的a值)，当计算完所有的叶子结点之后，这时的a是最小值，和最小的g(t)相等。<br> (3) 自上而下的访问每个非叶子结点，如果有g(t)=a，说明找到了最小的g(t)，进行剪枝，并对已经变成叶子 结点的t以多数表决发决定其类，得到树T。<br>（4）设$k=k+1,a_k=a,T_k=T$<br> (5) 如果T不是由根结点一个单结点组成的树，则退回到步骤2重新计算，划重点这时候退回去的树是一棵完整的原来的树，最开始的树，但是a已经变大了）（重新找最小的g(t)）,否则$T_k=T_n$<br> (6) 采用交叉验证法用验证集在子树集合中找到最优子树。</p><p> <strong>对整体过程更为直观的理解，注意上面的几个关键地方：<br>1.对树的更新是创建一个新的子树，并不是对更新了的子树赋值给树带回到步骤2，而回到步骤2的还是完整的没有任何剪枝树。<br>2.因为是逐渐增大，所以开始为0时，不会剪枝，因为过小，树的结构复杂也对损失函数造成不了什么影响，随着的增大，会到达某一个临界点，这个临界点就是所有内部结点算出的g(t)中的最小的g(t)，我们称为g(t0)，此时剪枝不剪枝损失相同，但为了结构更加简单(奥卡姆剃刀原理)，进行剪枝。<br>然后剪枝完了，得到一颗子树，并保存下来。之后恢复完整没剪枝的树回到步骤2里面，并且因为是自下而上的，所以对上面刚刚剪枝的临界值即g(t0)的基础上增大,第二次剪枝的时候就彻底不考虑g(t0)了，因为之前第一次剪枝的是所有里面最小的，所以后面的肯定比第一次的临界大，因此满足了书中的不断增加值。<br>然后再找一个g(t0)大的g(t1)，并且g(t1)比除了g(t0)的g(t)都小，于是这就是第二个剪枝的临界点，找到g(t1)对应的结点，并在此进行剪枝，又得到一棵子树，然后再找比g(t0) g(t1)大但比其他g(t)小的g(t2)，重复之前的过程，直到增大到恰好等于只剩初始完整树的根节点加俩叶节点时的g(tn)，停止，并返回这个树，增大也就结束了，也得到了一系列树。</strong></p><h1 id="再说一种剪枝的方法："><a href="#再说一种剪枝的方法：" class="headerlink" title="再说一种剪枝的方法："></a>再说一种剪枝的方法：</h1><p>简单粗暴的 错误率降低剪枝<br>直接拿验证集来怼，如果减值后验证集准确率更低 就剪枝否则不减，真简单粗暴！</p>]]></content>
+    
+    <summary type="html">
+    
+      接着整理！加油！
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树整理（五）----回归树（cart树）</title>
+    <link href="https://pspxiaochen.club/decision-tree5/"/>
+    <id>https://pspxiaochen.club/decision-tree5/</id>
+    <published>2018-08-07T01:31:20.000Z</published>
+    <updated>2019-07-02T08:05:54.113Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;分类与回归树模型同样由特征选择，树的生成和剪枝组成既可用于分类也可以用于回归。</p><h1 id="算法的组成"><a href="#算法的组成" class="headerlink" title="算法的组成"></a>算法的组成</h1><p>&emsp;&emsp;CART算法由一下两个部分组成：<br>（1）决策树生成：基于训练数据集生成决策树，生成的决策树要尽可能的大；<br>（2）决策树剪枝：用验证数据集对已生成的树进行剪枝并选择最优子树，这时用损失函数最小作为剪枝的标准。</p><h1 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h1><h2 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a>CART生成</h2><p>&emsp;&emsp;决策树的生成就是递归的构建二叉决策树的过程。对回归树用平方误差最小化准则，对分类树用基尼指数最小化准则，进行特征选择，生成二叉树。<br>假设X与Y分别为输入和输出变量，并且Y是连续的。给定训练数据集D。<br>一个回归树对应着输入空间（即特征空间）的一个划分已经在划分的单元上的输出值。假设已经输入空间划分为M个单元$R_1,R_2,…,R_M$,并且在每个单元R_n上有一个固定的输出值c_n,于是回归树模型可以表示为</p><script type="math/tex; mode=display">f(x)=\sum_{m=1}^MC_nI(X \in R_m)</script><p>当输入孔家你得划分确定是，可以用平方误差$\sum_{x_i \in R_m}(y_i-f(x_i))^2$来表示回归树对于训练数据的预测误差，用平方误差最小的准则求解每个单元上的最优输出值。我们可以知道，某个单元上的最优的值c_m 是R_m上所有输入实例x对应的输出y的均值，意思就是 如果好多样本都在一个叶子结点中，那么这个叶子结点最好的输出值（就是让损失函数最小）就是这些样样本对应y的均值。</p><p>现在问题来了，我们应该对输入空间怎么划分。这里采用启发式的方法，选择第j个变量$x^{(j)}$和他的取值s，作为切分变量和切分点，并定义两个区域。<br>A区域就是考察所有样本的第j个变量，如果小于等于s，则把这些样本划分到A区域，其余都是大于s的，所以就划分到B区域。<br>那现在问题就变成，如何找到最优的切分变量j和最优切分点s.具体的我们来求解：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<script type="math/tex">\min_{j,s}[\min_{c_1}\sum_{x_i \in A(j,s)}(y_i-c_1)^2 + \min_{c_2}\sum_{x_i \in B(j,s)}(y_i-c_2)^2]</script><br>用我自己的话解释就是，我遍历每一个特征，对特征进行尝试切分：<br>如果是离散变量，那么我们就遍历这个变量中的每个可选址值，假设是k，把所有样本分成2类（是k的属于一类，不是k的属于另外一类，因为必须是二叉树），然后计算损失函数，看看这个可选值是否可以最好切分点。计算损失函数的话，那么我们可以知道我们把所有样本分成了2个叶子结点，我们计算每个叶子结点中样本y的平均值当做这个叶子结点的输出，然后再用上面的公式计算，然后记住这个值，然后计算所有的可选值，并把他们都记住。<br>如果是连续变量，那么我们也可以遍历这个变量的所有取值，每种取值都可以把样本分成2类，小于等于这个取值的和大于这个取值的，然后按照上面的方法遍历计算，保存每次计算的值，最后对比所有 计算的值，找到最小的那个值，就把那个特征当做要切分的特征，那个点当做切分点。</p><p>用书面语说就是：遍历所有的输入变量，找到最优的切分变量j，构成一个对(j,s)。依此将输入空间划分为2个区域。接着对每个区域重复上述划分的过程，知道满足停止条件为止。这样就生成了一颗回归树。这样的回归树通常称为<strong>最小二乘回归树</strong></p><h1 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h1><p>分类树用基尼指数选择最优特征，同时决定该特征的最优二值切分点。<br>分类问题中，假设有K个类，样本点属于第k个类的概率为$p<em>k$,则概率分布的基尼指数定义为<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$$Gini(p)=\sum</em>{k=1}^Kp<em>k(1-p_k)=1-\sum</em>{k=1}^Kp<em>k^2<script type="math/tex">对于二分类问题，若样本点属于第一个类的概率是p，则概率分布的基尼指数为&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</script>Gini(p)=2p(1-p)<script type="math/tex">对于给定的样本集合D，其基尼指数为&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</script>Gini(D)=1-\sum</em>{k=1}^K(\frac{|C_k|}{|D|})^2<script type="math/tex">这里$|C_k|$是D中属于第k类的样本个数，K是类的个数。&emsp;&emsp;如果样本集合D根据特征A是否可某一可能值a被分割成$D_1和D_2$两部分，即&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</script>D_1={(x,y)\in D|A(x)=a},D_2=D-D_1<script type="math/tex">,则在特征A的条件下，集合D的基尼指数定义为&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</script>Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D2)$$<br>基尼指数Gini（D）表示集合D的不确定性，基尼指数Gini(D,A)表示经A=a分割后集合D的不确定性，基尼指数值越大，样本集合的不确定性也就越大，这和熵类似。</p><h2 id="CART生成算法"><a href="#CART生成算法" class="headerlink" title="CART生成算法"></a>CART生成算法</h2><p>输入：训练数据集D和停止计算的条件<br>输出：CART决策树<br>根据D，从根节点开始，递归的对每个结点进行以下操作，构建二叉决策树：<br>（1）设结点的训练数据集是D，计算现有的葛铮对该数据集的基尼指数。此时对每个特征A，对其可能去的每个值a,根据样本点对A=a测试为‘是’或者‘否’将D分割为$D_1和D_2$，利用公式计算A=a是的基尼指数。<br>（2）在所有可能的特征A以及他们所有可能的切分点a钟，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依照最优特征与最优切分点，生成2个子结点，将训练数据集依特征分配到两个子结点中去。<br>（3）对两个子结点递归的调用（1）（2），直至满足停止条件。<br>（4）生成CART决策树。<br>算法停止计算的条件是结点中的样本个数小于预定的阈值，或者样本集的基尼指数小于预定的阈值（这说明样本基本属于同一类），或者没有更多的特征可以进行划分。</p><p>这篇文章里有一个回归树做回归问题的例子，可以看一下。<br><a href="https://blog.csdn.net/weixin_40604987/article/details/79296427#commentsedit" rel="external nofollow noopener noreferrer" target="_blank">回归树例子</a></p>]]></content>
+    
+    <summary type="html">
+    
+      感觉TW是真的凉透了，难受，要是能有一个offer，感觉心里会稳很多。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树（四）----如何处理缺失值</title>
+    <link href="https://pspxiaochen.club/decision-tree4/"/>
+    <id>https://pspxiaochen.club/decision-tree4/</id>
+    <published>2018-08-06T11:51:25.000Z</published>
+    <updated>2019-07-02T08:05:54.112Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;先放数据集，是机器学习的西瓜数据集。<br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu086gksk1j20hx0d3wg7.jpg" alt="此处输入图片的描述"><br>在决策树中处理含有缺失值样本的时候，需要解决两个问题：<br>1.如何在属性值缺失的情况下进行划分属性的选择？（比如‘色泽’这个属性有的样本在该属性上值是缺失的，那么该计算‘色泽’的信息增益）<br>2.给定划分属性，若样本在该属性上是缺失的，那么该如何对这个样本进行划分？（到底应该把这个样本放到哪个结点里）</p><p>时间有限，直接放一片文章的连接，这篇文章写的非常好，有理论也有例子，可以直接学习。</p><p><a href="https://blog.csdn.net/u012328159/article/details/79413610" rel="external nofollow noopener noreferrer" target="_blank">决策树如何处理缺失值</a></p>]]></content>
+    
+    <summary type="html">
+    
+      提高效率！提高效率！
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树（三）----连续值的处理</title>
+    <link href="https://pspxiaochen.club/decision-tree3/"/>
+    <id>https://pspxiaochen.club/decision-tree3/</id>
+    <published>2018-08-06T09:20:28.000Z</published>
+    <updated>2019-07-02T08:05:54.111Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="连续值的处理"><a href="#连续值的处理" class="headerlink" title="连续值的处理"></a>连续值的处理</h1><p>&emsp;&emsp;因为连续属性的可取值数目不再有限，一次不能像前面处理离散值属性枚举所有的取值来对结点进行划分。因此需要连续属性离散化，常用的离散化策略是二分法，这个技术也是c4.5中采用的策略。</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>&emsp;&emsp;给定训练集D和连续属性a，假设a在D上出现了n个不同的取值，先把这些值从小到大进行排序，记为{$a^1,a^2,a^3…,a^n$}.基于划分点t可将D分为子集$D_t^-和D_t^+$,其中$D_t^-$ 表示在属性a的取值小于等于t的样本，$D_t^+$则是包含那些在属性a上取值大于t的样本。显然，对相邻的属性取值$a^i和a^{i+1}$,t在这个[$a^i,a^{i+1}$)中取任意值所产生的划分结果是相同的。因此，对连续属性a，我们可以考虑包含n-1个元素的候选划分点集合.<br>&emsp;&emsp;我们从已经排好序的a可以取值的集合中，每2个相邻元素进行一次相加除2的计算，这样经过计算之后得到了一个大小为n-1个元素的划分点集合。然后，我们就可以像前面处理离散属性值那样来考虑这些划分点，选择最优的划分点进行样本集合的划分，使用的就是计算信息增益的公式，划分的时候，选择使用得到信息增益最大的划分点进行划分。</p><p><strong>有一点值得注意：与离散属性不同，若当前结点划分属性为连续属性，该属性还可作为其后代结点的划分属性。如下图所示的一颗决策树，“含糖率”这个属性在根节点用了一次，后代结点也用了一次，只是两次划分点取值不同。</strong><br><img src="http://wx4.sinaimg.cn/mw690/72fdc620ly1fu07v40qy8j20fk095mxe.jpg" alt="此处输入图片的描述"></p><p>放一个连接，里面有具体的例子可以看<br><a href="https://blog.csdn.net/u012328159/article/details/79396893" rel="external nofollow noopener noreferrer" target="_blank">决策树如何处理连续值</a></p>]]></content>
+    
+    <summary type="html">
+    
+      TW貌似凉了啊，实验室的和我一起去面试的人都通过了，心态不好了。。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树的整理（二）-----剪枝操作</title>
+    <link href="https://pspxiaochen.club/decision-tree2/"/>
+    <id>https://pspxiaochen.club/decision-tree2/</id>
+    <published>2018-08-01T11:34:36.000Z</published>
+    <updated>2019-07-02T08:05:54.111Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;决策树生成算法递归地产生决策树，直到不能继续下去为止。这样产生的树往往对训练数据的分类很准确，但是对未知的测试数据的分类却不准确，这就叫过拟合，我们需要对决策树进行简化。这个过程叫做剪枝。</p><h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p>&emsp;&emsp;剪枝从已生成的树上裁掉一些子树或者叶节点，并将其根节点或父节点作为新的叶节点，从而简化分类树模型。</p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>&emsp;&emsp;决策树的剪枝往往通过极小化决策树整体的损失函数或代价函数来实现。设树T的叶子结点个数为|T|，t是树T的某个叶子节点，该叶子结点有$N<em>t$个样本,该叶子结点中k类的样本点有$N</em>{tk} 个， k = 1,2,3,…K$，$H<em>t(T)为叶节点t上的经验熵，$ a&gt;=0为参数，则决策树学习的损失函数可以定义为<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$C_a(T)=\sum</em>{t=1}^{|T|} N_tH_t(T)+a|T|$  <strong>这个T代表了树，不一定非得是跟，也可能是某个节点组成的小树，思维不要僵化。</strong></p><p><strong>这其实是一种添加正则化项的思想。</strong><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;其中，经验熵为$H<em>t(T)=-\sum</em>{k}\frac{N<em>{tk}}{N_t}log\frac{N_tk}{N_t}$    &emsp;&emsp;&emsp;&emsp;叶节点t所有样本中k类的个数/叶节点t的总样本数<br>&emsp;&emsp;在损失函数中，将上式的第一项记作：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$$C(T)=\sum</em>{t=1}^{|T|}N<em>tH_t(T)=-\sum</em>{t=1}^{|T|}\sum<em>{k=1}^{K}N</em>{tk}log\frac{N_{tk}}{N_t}<script type="math/tex">这时候有：&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</script>C_a(T)=C(T)+a|T|$$<br>&emsp;&emsp;&emsp;&emsp;$C(T)$表示模型对训练数据的预测误差，即模型与训练数据的拟合程度，|T|表示模型复杂度，参数控制两者之间的影响，较大的a促使选择简单的树，较小的a选择复杂的树。a=0意味着只考虑模型与训练数据的拟合程度，不考虑模型的复杂度。<br>&emsp;&emsp;&emsp;&emsp;剪枝就是当a确定时，选择损失函数最小的模型，即损失函数最小的子树。当a确定时，子树越大，往往拟合越好，但是模型复杂度就越高；子树越小则反之，损失函数正好表示了对两者的平衡。</p><p><strong>输入：</strong>树T，参数a<br><strong>输出：</strong>剪枝后的T<br>（1）计算每个结点的经验熵<br>（2）递归的从树的叶子结点向上回缩。<br> &emsp;&emsp;&emsp;&emsp;设一组叶节点回缩到其父节点之前与之后整体树分别为$T_B和T_A$，其对应的损失函数值分别为$C_a(T_B)$和$C_a(T_A)$，如果$C_a(T_A)$&lt;=$C_a(T_B)$,说明这个非叶子节点没必要划分，则进行剪枝，因为划分反而会影响结果，就把该非叶子节点换成叶子节点，把它之前的儿子们中的样本全部放在现在这个节点中，取最多的类当做分类结果。<br>（3）返回（2），直到不能继续为止，得到损失函数最小的子树$T_a$</p><p>光说不练假把式，我们来一个例子试试。</p><h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>下图是我们已经生成的一颗决策树，<br><img src="http://www.carefree0910.com/posts/c6faa205/p3.png" alt="此处输入图片的描述"></p><p>  由于算法顺序是从下往上、所以我们先考察最右下方的 Node（该 Node 的划分标准是“测试人员”），该 Node 所包含的数据集如下表所示：</p><div class="table-container"><table><thead><tr><th style="text-align:center">颜色</th><th style="text-align:center">测试人员</th><th style="text-align:center">结果</th></tr></thead><tbody><tr><td style="text-align:center">黄色</td><td style="text-align:center">成人</td><td style="text-align:center">爆炸</td></tr><tr><td style="text-align:center">黄色</td><td style="text-align:center">小孩</td><td style="text-align:center">不爆炸</td></tr></tbody></table></div><h2 id="我们现在开始第一次尝试剪枝："><a href="#我们现在开始第一次尝试剪枝：" class="headerlink" title="我们现在开始第一次尝试剪枝："></a>我们现在开始第一次尝试剪枝：</h2><p><strong>剪枝前：</strong><br>剪枝前该结点（测试人员的那个节点），有2个叶子结点，我们来计算他的损失为$C_a(T)=C(T)+a|T|$</p><script type="math/tex; mode=display">C(T)=\sum_{t=1}^{|T|}N_tH_t(T)</script><script type="math/tex; mode=display">H_t(T)=-\sum_{k}\frac{N_{tk}}{N_t}log\frac{N_tk}{N_t}</script><p>我们经过带入后得到 <script type="math/tex">C(T)=1*-1/1*log1/1 + 1*1/1*log1/1 = 0</script></p><p>注意这时候的T不是整个树，而是右下角那个测试人员的那棵小树。所以为$C_a(T) = |T|a= 2a$</p><p><strong>剪枝后：</strong><br>剪枝之后，之前这个节点是非叶子结点，现在变成了叶子结点，我们来计算一下损失</p><script type="math/tex; mode=display">C(t)=2* (-\frac12*log\frac12 - \frac12*log\frac12) = 2</script><p>所以 <script type="math/tex">C_a(T) = |T|a= 2+a</script><br>回忆生成算法的实现，我们彼时将α定义为了α=特征个数/2（注意：这只是α的一种朴素的定义方法，很难说它有什么合理性、只能说它从直观上有一定道理；如果想让模型表现更好、需要结合具体的问题来分析α应该取何值）。由于气球数据集 1.0 一共有四个特征、所以此时α=2；结合各个公式、我们发现：</p><p> &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;<script type="math/tex">C_a(T)=2a=4=2+a=C_a(t)</script><br> 所以我们已经进行局部剪枝，局部剪枝后的决策树如下图所示：<br> <img src="http://www.carefree0910.com/posts/1a7aa546/p1.png" alt="此处输入图片的描述"><br> <strong>注意：进行局部剪枝后，由于该 Node 中样本只有两个、且一个样本类别为“不爆炸”一个为“爆炸”，所以给该 Node 标注为“不爆炸”、“爆炸”甚至以 50%的概率标注为“不爆炸”等做法都是合理的。为简洁，我们如上图中所做的一般、将其标注为“爆炸”</strong></p><h2 id="现在我们开始尝试第二次剪枝："><a href="#现在我们开始尝试第二次剪枝：" class="headerlink" title="现在我们开始尝试第二次剪枝："></a>现在我们开始尝试第二次剪枝：</h2><p>  然后我们需要考察最左下方的 Node（该 Node 的划分标准也是“测试人员”），易知计算过程和上述的没有区别。对其进行局部剪枝后的决策树如下图所示：<br><img src="http://www.carefree0910.com/posts/1a7aa546/p2.png" alt="此处输入图片的描述"></p><h2 id="现在我们开始尝试第三次剪枝："><a href="#现在我们开始尝试第三次剪枝：" class="headerlink" title="现在我们开始尝试第三次剪枝："></a>现在我们开始尝试第三次剪枝：</h2><p>然后我们需要考察右下方的 Node（该 Node 的划分标准是“动作”），该 Node 所包含的数据集如下表所示：</p><div class="table-container"><table><thead><tr><th style="text-align:center">颜色</th><th style="text-align:center">测试人员</th><th style="text-align:center">测试动作</th><th style="text-align:center">结果</th></tr></thead><tbody><tr><td style="text-align:center">黄色</td><td style="text-align:center">成人</td><td style="text-align:center">用手打</td><td style="text-align:center">爆炸</td></tr><tr><td style="text-align:center">黄色</td><td style="text-align:center">成人</td><td style="text-align:center">用脚踩</td><td style="text-align:center">爆炸</td></tr><tr><td style="text-align:center">黄色</td><td style="text-align:center">小孩</td><td style="text-align:center">用手打</td><td style="text-align:center">不爆炸</td></tr><tr><td style="text-align:center">黄色</td><td style="text-align:center">小孩</td><td style="text-align:center">用脚踩</td><td style="text-align:center">爆炸</td></tr><tr><td style="text-align:center">紫色</td><td style="text-align:center">成人</td><td style="text-align:center">用脚踩</td><td style="text-align:center">爆炸</td></tr><tr><td style="text-align:center">紫色</td><td style="text-align:center">小孩</td><td style="text-align:center">用脚踩</td><td style="text-align:center">爆炸</td></tr></tbody></table></div><p><strong>剪枝前：</strong><br>剪枝之前这个节点（动作）有2个叶子结点，一个叶子结点中有2个样本，一个叶子结点中有4个样本，让我们来计算一下这个结点的损失：<br>&emsp;&emsp;&emsp;&emsp;<script type="math/tex">C_a(T)=C(T)+a|T|=C(T)+2a</script> 这个T代表动作这个小树<br>&emsp;&emsp;&emsp;&emsp;<script type="math/tex">C(T)=2*(-\frac12*log\frac12--\frac12*log\frac12)+4*(\frac44*log\frac44+0)</script></p><p>后面一项等于0，所以<script type="math/tex">C(T)=2*(-\frac12*log\frac12--\frac12*log\frac12)=2</script></p><p><strong>剪枝后：</strong><br>剪枝后改结点变成了叶子结点，有6个样本，我们来计算一下损失<br>&emsp;&emsp;&emsp;&emsp;<script type="math/tex">C_a(t)=C(t)+a|t|=C(t)+a</script><br>&emsp;&emsp;&emsp;&emsp;<script type="math/tex">C(T)=6*(-\frac16*log\frac16-\frac56*log\frac56) = 3.9</script><br>将a=2带入后得剪枝后的损失&lt;剪枝前的损失，所以应该进行剪枝。<br><img src="http://www.carefree0910.com/posts/1a7aa546/p3.png" alt="此处输入图片的描述"></p><p>后面的计算类似 我就不说了。 记住是对每棵树的每个叶子结点计算经验熵。</p><p>写到这里的时候我才知道剪枝还分为<strong>预剪枝</strong>和<strong>后剪枝</strong>，我刚才说的是后剪枝的一种方法，其实后剪枝还有很多方法。我再介绍一种方法。</p><p>这种方法需要一个验证集来进行验证。<br>你把这棵树的每个非叶子结点用验证集来对比剪枝前和剪枝后的结果，如果剪后的结果好于或者等于剪枝前，就可以进行剪枝，否则不进行剪枝，就是这样。不过这种方法不好的地方在于需要一个验证集。</p><p>我们再来介绍一下预剪枝，预剪枝的话方法比较少，这里我只介绍一种方法。</p><p><strong>预剪枝就是在构造决策树的过程中，先对每个结点在划分前进行估计，若果当前结点的划分不能带来决策树模型泛华性能的提升，则不对当前结点进行划分并且将当前结点标记为叶结点。不过也需要一个验证集</strong><br>过程<br>（1）先计算所有特征的信息增益比，找到一个最合适的特征来划分决策树。<br>（2）但是因为是预剪枝，所以要判断是否应该进行这个划分，判断的标准就是看划分前后的泛华性能是否有提升，也就是如果划分后泛华性能有提升，则划分；否则，不划分。<br>（3）如果遇到了某个叶子结点划分后不如不划分，则这个叶子节点就不划分了，改去划分别的结点。</p><p>给个例子：<br><a href="https://blog.csdn.net/u012328159/article/details/79285214" rel="external nofollow noopener noreferrer" target="_blank">决策树用验证集来验证是否剪枝的例子</a></p><p><strong>预剪枝总结：对比未剪枝的决策树和经过预剪枝的决策树可以看出：预剪枝使得决策树的很多分支都没有“展开”，这不仅降低了过拟合的风险，还显著减少了决策树的训练时间开销和测试时间开销。但是，另一方面，因为预剪枝是基于“贪心”的，所以，虽然当前划分不能提升泛华性能，但是基于该划分的后续划分却有可能导致性能提升，因此预剪枝决策树有可能带来欠拟合的风险。</strong></p><p><strong>后剪枝总结：对比预剪枝和后剪枝，能够发现，后剪枝决策树通常比预剪枝决策树保留了更多的分支，一般情形下，后剪枝决策树的欠拟合风险小，泛华性能往往也要优于预剪枝决策树。但后剪枝过程是在构建完全决策树之后进行的，并且要自底向上的对树中的所有非叶结点进行逐一考察，因此其训练时间开销要比未剪枝决策树和预剪枝决策树都大得多。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      提高效率啊。。。。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>决策树的整理</title>
+    <link href="https://pspxiaochen.club/decision-tree/"/>
+    <id>https://pspxiaochen.club/decision-tree/</id>
+    <published>2018-07-31T06:26:06.000Z</published>
+    <updated>2019-07-02T08:05:54.110Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h1><p>&emsp;&emsp;分类决策树模型是一种描述对实例进行分类的树形结构。决策树由结点和有向边组成。结点有2种类型：内部节点和叶结点。内部节点表示一个特征或属性，叶结点表示一个类别。<br>&emsp;&emsp;决策树是一种分类和回归的基本模型，可从三个角度来理解它，即：<br>&emsp;&emsp;1.一棵树<br>&emsp;&emsp;2.if-then规则的集合，该集合是决策树上的所有从根节点到叶节点的路径的集合<br>&emsp;&emsp;3.定义在特征空间与类空间上的条件概率分布，决策树实际上是将特征空间划分成了互不相交的单元，每个从根到叶的路径对应着一个单元。决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成。实际中，哪个类别有较高的条件概率，就把该单元中的实例强行划分为该类别。</p><h1 id="决策树的优点"><a href="#决策树的优点" class="headerlink" title="决策树的优点"></a>决策树的优点</h1><p>1.可解释性强，容易向业务部门人员描述<br>2.分类速度快</p><h1 id="如何学习一棵决策树？"><a href="#如何学习一棵决策树？" class="headerlink" title="如何学习一棵决策树？"></a>如何学习一棵决策树？</h1><p>决策树的学习本质上就是从训练数据集中归纳出一组分类规则，使它与训练数据矛盾较小的同时具有较强的泛华能力。从另一个角度看，学习也是基于训练数据集估计条件概率模型（至此，回答完了模型部分，下面接着说策略和算法）。<br>决策树的损失函数通常是正则化的极大似然函数，学习的策略是以损失函数为目标函数的最小化（说完了策略，该说算法了）。</p><p>由于这个最小化问题是一个NP完全问题，现实中，我们通常采用启发式算法（这里，面试官可能会问什么是启发式算法，要有准备，SMO算法就是启发式算法）来近似求解这一最优化问题，得到的决策树是次最优的。</p><p>该启发式算法可分为三步：</p><p><strong>特征选择</strong><br><strong>模型生成<br>决策树的剪枝</strong></p><h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>特征选择在于选取对训练数据具有分类能力的特征。这样可以提高决策树学习的效率。如果利用一个特征进行分类的结果与随机分类的结果没有很大差别，则称这个特征是没有分类能力的，所以这种特征理论上是可以扔掉了。通常特征选择的准则是信息增益或信息增益比。</p><h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p>先给出熵和条件熵的定义：在概率统计中，熵表示随机变量的不确定性的度量。<br>设X是一个取有限个值的离散随机变量，概率分布为<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(X = x<em>i)=p_i,i=1,2,…,n$<br>则随机变量X的熵定义为$H(X) = -\sum</em>{i=1}^np<em>ilogp_i$<br>由定义可知，熵只依赖于X的分布，而于X的取值无关，所以也可将X的熵记作$H(p)$<br>$H(p) = -\sum</em>{i=1}^np_ilogp_i$<br>熵越大，随机变量的不确定性就越大。对同一个随机变量，当它的概率分布为均匀分布时，不确定性最大，熵也最大。对有相同概率分布的不同的随机变量，取值越多的随机变量熵越大（能取的值越多说明不确定性就越大？）。（这是精华）</p><p>条件熵$H(Y|X)$表示在已知随机变量X的条件下随机变量Y的不确定性。随机变量X给定的条件下随机变量Y的H$H(Y|X)$,定义为X给定条件下Y的条件概率部分的熵对X的数学期望。<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$H(Y|X) = \sum_{i=1}^np_iH(Y|X=x_i)$<br>这里，$p_i = P(X=x_i),i=1,2,…,n.$</p><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵与条件熵分别称为<strong>经验熵</strong>和<strong>经验条件熵</strong></p><p>信息增益表示得知特征X的信息而使得类Y的信息的不确定性减少的程度。</p><h3 id="信息增益的定义"><a href="#信息增益的定义" class="headerlink" title="信息增益的定义"></a>信息增益的定义</h3><p>特征A对训练数据集D的信息增益g(D,A),定义为集合D的经验熵H(D）与特征A给定条件下D的经验条件熵H(D|A)之差，$g(D,A)=H(D)-H(D|A)$<br>一般地，熵H(Y)与条件熵H(Y|X)之差称为互信息。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。<br>信息增益表示由于特征A而使得对数据集D的分类的不确定性减少的程度。<br>H(D|A)小，证明A对D的分类不确定小，所以说A特征可以对D正确的分类，所以说信息增益越大越好。</p><p>设训练数据集为D，|D|表示其样本个数。设一共有K个类别$C<em>k$ ,   $|C_K|$表示属于类$C_k$的样本个数。设A有n个不同的取值{$a_1,a_2,…,a_n$},根据特征A的取值将D划分为n个子集{$D_1,D_2,…,D_n$},&emsp;&emsp;|$D_i$|为$D_i$的样本个数 记子集$D_i$中属于类$C_k$的样本集合$D</em>{ik}$,&emsp;&emsp;|$D<em>{ik}$|为$D</em>{ik}$的样本个数。</p><p>输入：训练数据集D和特征A：<br>输出：特征A对训练数据集的信息增益g(D,A)<br>先计算数据集D的熵H(D):<br>$H(D) = -\sum<em>{k=1}^K\frac{|C_k|}{|D|}log\frac{|C_k|}{|D|} $<br>再计算条件熵H(D|a)<br>$H(D|A) = \sum</em>{i=1}^n \frac{|D<em>i|}{|D|}H(D_i) =-\sum</em>{i=1}^n\frac{|D<em>i|}{|D|}\sum</em>{k=1}^K \frac{|D<em>{ik}|}{|D_i|}log\frac{|D</em>{ik}|}{|D_i|}$<br>$g(D,A)=H(D)-H(D|A)$</p><p><strong>这种选择特征的思路就是ID3算法选择特征的核心思想。</strong></p><h2 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h2><p>公式为：$g_R(D,A)=g(D,A)/IntI(D,A)$</p><p>本来ID3算法计算信息增益好好的，但是C4.5一定要计算信息增益比这是为什么呢？<br>比如我们有10个样本，样本中有1个特征是学号我们把它叫作A，我们知道每个学生的学号都是不一样的，这样我们在计算H(D|A)的时候发现这个值是0，这种情况会导致你会认为这个特征是非常的好的，其实学号这个特征用来切分样本并不是什么好的特征。</p><p>那么导致这样的偏差的原因是什么呢？从上面的例子应该能够感受出来，原因就是该特征可以选取的值过多。解决办法自然就想到了如何能够对树分支过多的情况进行惩罚，这样就引入了下面的公式，属性A的内部信息<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$IntI(D,A)=-\sum_{i=1}^n \frac{|D_i|}{|D|}log(\frac{|D_i|}{|D|})$</p><p>这样的话 如果还是对于学号这个特征会添加一个惩罚项10<em>(-1/10)</em>log(1/10),这个值一般是一个大于1的值。所以会起到惩罚的作用。</p><h1 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h1><h2 id="ID3算法"><a href="#ID3算法" class="headerlink" title="ID3算法"></a>ID3算法</h2><p>ID3算法的核心是在决策树各个结点上应用信息增益准则选择特征，递归的构建决策树、<br>输入：训练数据集D，特征集A，阈值o<br>输出：决策树T<br>（1）如果D中所有实例属于同一类$C_k$,则T为单节点树，并将类$C_k$作为该结点的类标记，返回T；<br>（2）如果A=None，则T为单节点树，并将D中样本中类别最多的$C_k$作为该结点的类标记，返回T；<br>（3）否则选择信息增益最大的特征$A_g$;<br> (4) 如果$A_g$的信息增益小于阈值o，则说明所有的特征的信息增益都小于阈值，那么我们认为这些特征都很垃圾，那么我们就将D中样本类别最多的$C_k$作为该结点的类标记，返回T；<br>（5）否则，对$A_g$的每一可能值$a_i$，根据$A_g=a_i$将D分割为若干非空子集$D_i$,将$D_i$中实例数最大的类作为标记，构建子结点，由结点及其子结点构成树T，返回T；<br>（6）对每个子结点递归的调用，比如对第i个子结点，以$D_i$作为训练集，以A-${A_g}$作为可选特征集，调用（1）-（5），得到子树Ti,返回Ti.</p><h2 id="c4-5算法"><a href="#c4-5算法" class="headerlink" title="c4.5算法"></a>c4.5算法</h2><p>c4.5和ID3的唯一不同就是采用信息增益比来选择特征，其他全部一样。</p><h1 id="一般递归的终止条件是什么："><a href="#一般递归的终止条件是什么：" class="headerlink" title="一般递归的终止条件是什么："></a>一般递归的终止条件是什么：</h1><p>1.所有训练数据子集被基本正确分类<br>2.没有合适的特征可选，即可用特征为0，或者可用特征的信息增益或信息增益比都很小了。</p>]]></content>
+    
+    <summary type="html">
+    
+      压力好大，感觉要找不到工作了，不知道现在做的事情有没有意义。。。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>学习CNN时候的一些疑惑总结</title>
+    <link href="https://pspxiaochen.club/cnn/"/>
+    <id>https://pspxiaochen.club/cnn/</id>
+    <published>2018-07-21T03:21:59.000Z</published>
+    <updated>2019-07-02T08:05:54.107Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="如何计算卷积层的输出尺寸："><a href="#如何计算卷积层的输出尺寸：" class="headerlink" title="如何计算卷积层的输出尺寸："></a>如何计算卷积层的输出尺寸：</h2><p>输入矩阵格式：四个维度，依次为：样本数，图像高度，图像宽度，图像通道数（RGB就是3）<br>输出矩阵格式：四个维度，依次是，样本数，图像高度，图像宽度，图像通道数（后3个通道一般会发生变化）<br>权重矩阵（卷积核）格式：同样是四个维度，依次是，卷积核的高度，卷积核的宽度，输入通道数，输出通道数（卷积核个数）</p><p>计算公式是：<br>$height<em>{out} = (height</em>{in} - height<em>{kernel} + 2 * padding) / 步长 + 1$<br>$width</em>{out} = (width<em>{in} - width</em>{kernel} + 2 * padding) / 步长 + 1$</p><p>具体的细节可以参考链接<a href="https://blog.csdn.net/dcrmg/article/details/79652487" rel="external nofollow noopener noreferrer" target="_blank">CNN中卷积层的计算细节</a></p><h2 id="如何计算池化层的输出尺寸："><a href="#如何计算池化层的输出尺寸：" class="headerlink" title="如何计算池化层的输出尺寸："></a>如何计算池化层的输出尺寸：</h2><p>输入矩阵格式：四个维度，依次为：样本数，图像高度，图像宽度，图像通道数<br>池化窗口的大小：一般取四个维度,依次是[1,height,width,1]因为我们不想在样本和图像通道上做池化，所以这两个维度设为了1。<br>计算公式是：<br>$height<em>{out} = (height</em>{in} - height<em>{filter}) / 步长 + 1$<br>$width</em>{out} = (width<em>{in} - width</em>{filter}) / 步长 + 1$</p><h2 id="关于feature-map的一些理解："><a href="#关于feature-map的一些理解：" class="headerlink" title="关于feature map的一些理解："></a>关于feature map的一些理解：</h2><p>比如有一个32<em>32的RBG图像，这张图片在没有经过卷积之前有3张feature map，卷积核的大小是5</em>5，通道数是200，相当于是有200个卷积核，每个卷积核在原图像卷积得到一个featuremap,200个卷积核产生200个featuremap。</p><h2 id="卷积层的作用："><a href="#卷积层的作用：" class="headerlink" title="卷积层的作用："></a>卷积层的作用：</h2><p>我认为卷积层作用就是提取特征，不同的滤波器有不同的权重，可以提取不同的特征，比如说颜色深浅，图像的轮廓。</p><h2 id="池化层的作用："><a href="#池化层的作用：" class="headerlink" title="池化层的作用："></a>池化层的作用：</h2><ol><li>不变性，更关注是否存在某些特征而不是特征具体的位置。可以看作加了一个很强的先验，让学到的特征要能容忍一些的变化。（包括平移，旋转，尺度。）</li><li>减小下一层输入大小，减小计算量和参数个数</li><li>获得定长输出。（文本分类的时候输入是不定长的，可以通过池化获得定长输出）</li><li>防止过拟合或有可能会带来欠拟合。</li></ol><h2 id="如何理解卷积神经网络中的权值共享？"><a href="#如何理解卷积神经网络中的权值共享？" class="headerlink" title="如何理解卷积神经网络中的权值共享？"></a>如何理解卷积神经网络中的权值共享？</h2><p>所谓的权值共享就是说，给一张图片，用一个滤波器去扫描，filter里面的参数就是权重，这张图的每个位置是被同样的filter扫的，所以权重是一样的，也就叫共享。</p><h2 id="如何理解激活函数："><a href="#如何理解激活函数：" class="headerlink" title="如何理解激活函数："></a>如何理解激活函数：</h2><p>因为线性模型的表达能力不够，引入激活函数是为了添加非线性因素。</p><h2 id="怎么计算CNN的参数个数，连接数个数，复杂度："><a href="#怎么计算CNN的参数个数，连接数个数，复杂度：" class="headerlink" title="怎么计算CNN的参数个数，连接数个数，复杂度："></a>怎么计算CNN的参数个数，连接数个数，复杂度：</h2><p>假设RGB图像的尺寸是32 <em> 32，滤波器的大小是 5 </em> 5，一共有200个滤波器，每个滤波器有1个bias参数，问有多少个训练参数，有多少连接，复杂度是多少？<br>训练参数：滤波器5<em>5</em>3=75,加上一个bias参数，一共是76个，一共有200个滤波器，所有一共有76<em>200=15200个参数。<br>连接个数：经过卷积之后的输出图像大小为 28</em>28，所以连接总数为：28<em>28</em>（5<em>5</em>3+1）*200</p><p>复杂度：时间复杂度即模型的运算次数。<br>单个卷积层的时间复杂度：Time~O(M^2 <em> K^2 </em> Cin * Cout)</p><p>注1：为了简化表达式中的变量个数，这里统一假设输入和卷积核的形状都是正方形。<br>注2：严格来讲每层应该还包含1个Bias参数，这里为了简洁就省略了。<br>M:输出特征图（Feature Map）的尺寸。<br>K:卷积核（Kernel）的尺寸。<br>Cin:输入通道数。<br>Cout:输出通道数。</p><h2 id="全连接层的作用："><a href="#全连接层的作用：" class="headerlink" title="全连接层的作用："></a>全连接层的作用：</h2><p>全连接层之前的东西都是对提取的特征做各种处理，而到了全连接层我相当于对之前提取的特征做了一个全卷积的操作，比如我的全连接层输出是1000，那么这1000代表对1000种特征进行分类（有或者没有）最后在进行最终的分类。</p>]]></content>
+    
+    <summary type="html">
+    
+      总结一下学习CNN时候的一些疑惑，只针对我个人。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>红黑树的一些简单介绍</title>
+    <link href="https://pspxiaochen.club/rb-tree/"/>
+    <id>https://pspxiaochen.club/rb-tree/</id>
+    <published>2018-07-16T10:03:07.000Z</published>
+    <updated>2019-07-02T08:05:54.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>红-黑树是基于二叉搜索树的，如果对二叉搜索树不了解，可以先看看：<br><a href="https://blog.csdn.net/eson_15/article/details/51138663" rel="external nofollow noopener noreferrer" target="_blank">二叉搜索树</a></p><h1 id="红黑树的主要规则："><a href="#红黑树的主要规则：" class="headerlink" title="红黑树的主要规则："></a>红黑树的主要规则：</h1><p>1.每个节点不是红色就是黑色。<br>2.根节点一定是黑色的。<br>3.如果一个节点是红色的，那么它的两个子节点都必须是黑色的。（反之不一定）<br>4.从根节点到每个叶子节点或者空子节点的路径，都必须包含相同数目的黑色节点。</p><p>补充：红黑树没有AVL树那么平衡。它有它自己的平衡方法，满足了上面4条就叫平衡了。<br>      如果添加或者删除节点之后打破了平衡，那么通过改变节点颜色，左旋，右旋可以使红黑树恢复平衡。</p><p>具体的看这个链接里的讲解：<a href="https://blog.csdn.net/eson_15/article/details/51144079" rel="external nofollow noopener noreferrer" target="_blank">红黑树</a></p>]]></content>
+    
+    <summary type="html">
+    
+      总结一下红黑树，只是总结。。。。
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://pspxiaochen.club/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>二叉搜索树的删除</title>
+    <link href="https://pspxiaochen.club/search-tree/"/>
+    <id>https://pspxiaochen.club/search-tree/</id>
+    <published>2018-07-14T02:40:29.000Z</published>
+    <updated>2019-07-02T08:05:54.118Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="三种情况："><a href="#三种情况：" class="headerlink" title="三种情况："></a>三种情况：</h1><p>&emsp;&emsp;删除节点时二叉搜索树中最复杂的操作，但是删除节点在很多树的应用中又非常重要，所以详细研究并总结下特点。删除节点要从查找要删的节点开始入手，首先找到节点，这个要删除的节点可能有三种情况需要考虑：<br>1.该节点是叶子结点，没有孩子结点了。<br>2.该节点有一个孩子节点。<br>3.该节点有两个孩子节点。</p><p>第一种最简单，第二种也还是比较简单的，第三种就相当复杂了。下面分析这三种删除情况：</p><h1 id="第一种情况："><a href="#第一种情况：" class="headerlink" title="第一种情况："></a>第一种情况：</h1><p>&emsp;&emsp;要删除叶子节点，只需要改变该节点的父节点对应子字段的值即可，由指向要删除的节点改为null就可以了。垃圾回收器会自动回收叶节点，不需要自己手动删掉；</p><h1 id="第二种情况："><a href="#第二种情况：" class="headerlink" title="第二种情况："></a>第二种情况：</h1><p>&emsp;&emsp;当要删除的节点有一个子节点时，这个将要删除的节点只有2个连接：连向父节点和连向它唯一的子节点。我们需要间断这些连接，把它的子节点直接连接到它的父节点上即可，如果被删除的节点是父节点的左子节点，那么我就把要删除节点的子节点连接到被删除节点父节点的左子节点就行。右子节点同理。</p><h1 id="第三种情况："><a href="#第三种情况：" class="headerlink" title="第三种情况："></a>第三种情况：</h1><p>&emsp;&emsp;第三种情况是最复杂的。如果要删除有两个子节点的节点，就不能只用它的一个子节点代替它。<br>因此需要考虑另一种方法，寻找它的中序后继来代替该节点。那么如何找后继节点呢？<br>&emsp;&emsp;首先得找到要删除的节点的右子节点，它的关键字值一定比待删除节点的大。然后转到待删除节点右子节点的左子节点那里（如果有的话），然后到这个左子节点的左子节点，以此类推，顺着左子节点的路径一直向下找，这个路径上的最后一个左子节点就是待删除节点的后继。如果待删除节点的右子节点没有左子节点，那么这个右子节点本身就是后继。（后继节点就是比这个要删除节点第一个大的数）。<br>&emsp;&emsp;找到后继节点我们就可以开始删除了。</p><h2 id="第一种情况：后继节点是需要删除节点的右节点的左后代，这种情况要执行以下四个步骤："><a href="#第一种情况：后继节点是需要删除节点的右节点的左后代，这种情况要执行以下四个步骤：" class="headerlink" title="第一种情况：后继节点是需要删除节点的右节点的左后代，这种情况要执行以下四个步骤："></a>第一种情况：后继节点是需要删除节点的右节点的左后代，这种情况要执行以下四个步骤：</h2><p>1.把后继的右子节点给后继节点的父节点的左孩子（leftChild)字段。<br>2.把要删除节点的右节点给后继节点的右孩子(rightChild)字段。<br>3.把待删除节点从它父节点的leftChild或rightChild字段删除，把这个字段置为后继；(如果删除的是左孩子字段就把左孩子字段设置成后继）。<br>4.将后继的leftChild字段置为待删除节点的左子节点。</p><h2 id="第二种情况：如果后继节点就是待删除节点的右子节点（这个后继节点肯定没有左孩子），这种情况比较简单，只需要把后继为根的子树移动到删除节点的位置即可。"><a href="#第二种情况：如果后继节点就是待删除节点的右子节点（这个后继节点肯定没有左孩子），这种情况比较简单，只需要把后继为根的子树移动到删除节点的位置即可。" class="headerlink" title="第二种情况：如果后继节点就是待删除节点的右子节点（这个后继节点肯定没有左孩子），这种情况比较简单，只需要把后继为根的子树移动到删除节点的位置即可。"></a>第二种情况：如果后继节点就是待删除节点的右子节点（这个后继节点肯定没有左孩子），这种情况比较简单，只需要把后继为根的子树移动到删除节点的位置即可。</h2><p>样例和源码看这里<br><a href="https://blog.csdn.net/eson_15/article/details/51138663" rel="external nofollow noopener noreferrer" target="_blank">二叉搜索树</a></p>]]></content>
+    
+    <summary type="html">
+    
+      介绍一下二叉搜索树怎么删除节点。
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://pspxiaochen.club/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于B树的一些简单的总结</title>
+    <link href="https://pspxiaochen.club/btree/"/>
+    <id>https://pspxiaochen.club/btree/</id>
+    <published>2018-07-09T01:16:51.000Z</published>
+    <updated>2019-07-02T08:05:54.106Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>&emsp;&emsp;先说一下，B-树，B树，是一个东西。B树和普通的平衡二叉树不同的是B树属于多叉树又名平衡多路查找树（查找的路径不只有2条），数据库索引技术里大量使用了B树。</p><h1 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h1><p>&emsp;&emsp;（1）树中的每个节点最多拥有m个子节点且m&gt;=2,空树除外（m阶代表一个树的节点最多有多少条查找路径，m阶=m路，当m=2则是平衡二叉树，当m=3时叫3阶B树）<br>&emsp;&emsp;（2）除了根节点以外，每个节点的关键字数量大于等于 ceil(m/2)-1个 (ceil向上取整的函数)，小于等于m-1个，非根节点关键字必须大于等于2。（关键字在节点中）<br>&emsp;&emsp;（3）所有叶子节点均在同一层，叶子节点除了包含了关键字和关键字记录的指针外也有只想其他子节点的指针，只不过其地址都为null.<br>&emsp;&emsp;（4）如果一个非叶子节点有N个子节点，则该结点的关键字个数等于N-1。（有3个子节点说明有3条路径，可以理解成2个关键字把一条数轴分成了3段，这每一段代表一条路径）。<br>&emsp;&emsp;（5）所有节点关键字是按递增次序排列，并遵循左小右大原则。</p><h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1ft3elepdnuj20jv08t0t8.jpg" alt="此处输入图片的描述"></p><h2 id="查找流程"><a href="#查找流程" class="headerlink" title="查找流程"></a>查找流程</h2><p> 如上图我要从上图中找到E字母<br> （1）获取根节点的关键字进行比较，当前根节点关键字为M，E要小于M（26个字母顺序），所以往找到指向左边的子节点（二分法规则，左小右大，左边放小于当前节点值的子节点、右边放大于当前节点值的子节点）；</p><p>（2）拿到关键字D和G，D&lt;E&lt;G 所以直接找到D和G中间的节点；</p><p>（3）拿到E和F，因为E=E 所以直接返回关键字和指针信息（如果树结构里面没有包含所要查找的节点则返回null）；</p><h2 id="插入规则"><a href="#插入规则" class="headerlink" title="插入规则"></a>插入规则</h2><p>（1）当前是要组成一个5路查找树，那么此时m=5,关键字数必须大于等于ceil（5/2）-1小于等于5-1（关键字数小于cei(5/2) -1就要进行节点合并，大于5-1就要进行节点拆分,非根节点关键字数&gt;=2）；<br>（2）满足节点本身比左边节点大，比右边节点小的排序规则;</p><h2 id="删除规则"><a href="#删除规则" class="headerlink" title="删除规则"></a>删除规则</h2><p>（1）当前是要组成一个5路查找树，那么此时m=5,关键字数必须大于等于cei(5/2)-1，小于等于5-1，非根节点关键字数大于2；</p><p>（2）满足节点本身比左边节点大，比右边节点小的排序规则;</p><p>（3）关键字数小于二时先从子节点取，取中间值往父节点放，子节点没有符合条件时就向向父节点取；</p><p>基本的东西就这些，如果还需要进一步的学习，可以看这篇文章<br><a href="https://blog.csdn.net/v_JULY_v/article/details/6530142/" rel="external nofollow noopener noreferrer" target="_blank">从B树、B+树、B*树谈到R 树</a></p>]]></content>
+    
+    <summary type="html">
+    
+      考研的时候复习到B树，当时感觉好难，时间不怎么够了，就放弃了。前几天复习了一下B树，现在总结一下。
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://pspxiaochen.club/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>哈希表的一些总结</title>
+    <link href="https://pspxiaochen.club/hash/"/>
+    <id>https://pspxiaochen.club/hash/</id>
+    <published>2018-07-07T04:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.114Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>&emsp;&emsp;理想的散列表数据结构只不过是一个包含有关键字的具有固定大小的数组。我们把表的大小记作Tablesize.<strong>（最好让表的大小是一个质数）</strong>每一个关键字被映射到从0到TableSize-1这个范围中的某个数，并且被放到适当的单元中。这个映射就叫做<strong>散列函数</strong>，理想情况下它应该运算简单并且应该保证任何两个不同的关键字映射到不同的单元。不过这是不可能的，因为单元的数目是有限的，而关键字实际上是用不完的。<br>&emsp;&emsp;这就是散列的基本想法。剩下的问题则是要选择一个函数，决定当关键字散列到同一个值的时候（称为冲突）应该做什么。</p><h1 id="散列冲突"><a href="#散列冲突" class="headerlink" title="散列冲突"></a>散列冲突</h1><p>&emsp;&emsp;如果当一个元素被插入时另一个元素已经存在（散列值相同），那么就产生一个冲突，这个冲突需要消除。我讲介绍其中最简单的2种方法：分离链接法和开放地址法。</p><h2 id="分离链接法"><a href="#分离链接法" class="headerlink" title="分离链接法"></a>分离链接法</h2><p>&emsp;&emsp;解决冲突的第一种方法通常叫做分离链接法，其做法是将散列到同一个值的所有元素保留到一个表中。为了方法起见，这些表都有表头。也就是数组里存了一个链表，为了以后删除元素方便，每个链表都有一个表头。如下图所示：<img src="http://wx3.sinaimg.cn/mw690/72fdc620ly1ft1ciiz3n2j20u014076v.jpg" alt="此处输入图片的描述"></p><p>&emsp;&emsp;分离链接法的缺点是需要指针，由于给新单元分配地址需要时间，一次这就导致算法的速度多少有些慢，同时算法实际上还要求对另一种数据结构的实现。</p><h2 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h2><p>&emsp;&emsp;开放定址散列法是另外一种不同链表解决冲突的方法。在这个方法中，如果有冲突发生，那么就要尝试选择另外的单元，直到找出空的单元为止。更一般的，单元$h_0(X),h_1(X),h_2(X)$等等，相继被试选，其中<br>$h_i(X)=(Hash(X)+F(i))$ mod TableSize 函数F是冲突解决方法。 一般来说，对开放定址散列算法来说，装填因子应该低于$\lambda$=0.5。接下来介绍3个通常解决冲突的方法。</p><h3 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h3><p>&emsp;&emsp;在线性探测法中，函数F是i的线性函数，典型情形是F(i)=i。这相当于逐个探测每个单元（必要时可以绕回）以查找出一个空单元。 如果表可以有多于一半被填满的话，那么线性探测就不是一个好办法。</p><h3 id="平方探测法"><a href="#平方探测法" class="headerlink" title="平方探测法"></a>平方探测法</h3><p>&emsp;&emsp;平方探测法是消除线性探测中一次聚集问题的冲突解决方法。平方探测就是冲突函数为二次函数的探测方法。流行的选择是$F(i)=i^2$<br>&emsp;&emsp;对于线性探测，让元素几乎填满散列表并不是一个好的主意，因此测试表的性能会降低。对于平方探测情况甚至更糟：一旦表被填满超过一半，当表的大小不是质数时甚至在表被填满一半之前，就不能保证一次找到一个空单元了。这是因为最多有表的一半可以用作解决冲突的备选位置。<br>&emsp;&emsp;对于这种情况，我们可以使用<strong>再散列</strong>,就是建立另外一个大约两倍大的表（并且使用一个相关的新散列函数），扫描这个那个原始散列表，计算每个（未删除的）元素的新散列值并将其插入到新表。<br>&emsp;&emsp;在散列可以用平方探测以多种方法实现。一种做法是只要表满到一半就再散列。另一种极端的方法是只有当插入失败时才再散列。第三种是当表到达某一个装填因子时进行再散列。由于随着装填因子的增加表的性能的确有下降，因此第三种可能是最好的策略。</p><h3 id="双散列"><a href="#双散列" class="headerlink" title="双散列"></a>双散列</h3><p>&emsp;&emsp;对于双散列，一种流行的选择是$F(i)=i * hash(x)$.这个方法如果hash函数选择的不好将会是灾难性的。比如X=99，hash(x) = x mod 9.因此，函数一定不要算得0.</p>]]></content>
+    
+    <summary type="html">
+    
+      今天粗略的看了一下哈希表，简单的记录一下，如果以后有需要再补充。
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://pspxiaochen.club/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>这是一个天大的秘密</title>
+    <link href="https://pspxiaochen.club/test/"/>
+    <id>https://pspxiaochen.club/test/</id>
+    <published>2018-07-05T04:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.119Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实什么都没有，这只是一个测试而已。</p>]]></content>
+    
+    <summary type="html">
+    
+      这个秘密只能我一个人知道，任何人都不应该知道。
+    
+    </summary>
+    
+      <category term="life" scheme="https://pspxiaochen.club/categories/life/"/>
+    
+    
+      <category term="秘密" scheme="https://pspxiaochen.club/tags/%E7%A7%98%E5%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性回归与最小二乘法</title>
+    <link href="https://pspxiaochen.club/costfunction/"/>
+    <id>https://pspxiaochen.club/costfunction/</id>
+    <published>2018-07-03T04:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.109Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;我们假设正确的结果y和我们的预测的输出函数有如下关系：</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$y^{(i)} = \theta^Tx^{(i)} + \epsilon^{(i)}$</p><p>在这里$\theta^Tx^{(i)}$为我们的预测函数，$\epsilon^{(i)}$是和真实值的误差。<br>因为每个样本都是独立的，因此误差直接也是独立的。所以我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布，记作$\epsilon^{(i)}\sim N(0,\sigma^2)$,而高斯分布的概率密度函数为：</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(x)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(x-\mu)^2}{2\sigma^2})$<br>&emsp;&emsp;将误差带入上面的式子得：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(\epsilon^{(i)})=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})$</p><p>因为我们假设$\epsilon^{(i)}$服从期望是0（我们希望没有误差）,方差是$\sigma^2$的高斯分布。所以还可以假设$y^{(i)}$是服从期望是里$\theta^Tx^{(i)}$，方差为$\sigma^2$的高斯分布，在给定 x(i)且参数为 θ的情况下，记作：$y^{(i)}\sim N(\theta^Tx^{(i)},\sigma^2)$,所以我们可以将上面的式子改写为：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$P(y^{(i)}|x^{(i)};\theta)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p><p>因为在我们的样本中，y(i) 已经给定了，我们需要找到一个参数 θ，使得我们最有可能去得到 y(i)的分布。我们想要估计其中的未知参数θ。由此我们可以想到一个非常常用的参数估计方法—极大似然估计。<br>关于极大似然估计我推荐知乎的2篇文章，讲的浅显易懂。<br><a href="https://zhuanlan.zhihu.com/p/32568242" rel="external nofollow noopener noreferrer" target="_blank">似然函数与极大似然估计</a><br><a href="https://zhuanlan.zhihu.com/p/26614750" rel="external nofollow noopener noreferrer" target="_blank">一文搞懂极大似然估计</a></p><p>接着刚才，我们使用极大似然估计后可写成：<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^mP(y^{(i)}|x^{(i)};\theta) $</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\prod_{i=1}^m\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p><p>因为是极大似然估计，所以我们希望$L(\theta)$要尽可能的大。所以我们对上面的式子取对数，因为对数不改变函数的单调性。</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$L(\theta)=\sum_{i=1}^m log\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}+\sum_{i=1}^m -\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}$</p><p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$=mlog\frac{1}{\sqrt{2\pi}\sigma}-\sum_{i=1}^m \frac{1}{2\sigma^2}*(y^{(i)}-\theta^Tx^{(i)})^2$</p><p>为了使$L(\theta)$要尽可能的大，我们就需要让$J(\theta)=\frac{1}{2}*(y^{(i)}-\theta^Tx^{(i)})^2$尽量的小，所以就有了平方损失函数，可以看到是一模一样的。J(θ) 即为此线性回归的cost function。由此我们可以非常自然地推导出为什么线性回归中的cost function是使用最小二乘法。<br>接下来就是求解过程，常用的就是梯度下降，如果想知道为什么用梯度下降，请看这篇<br><a href="https://www.pspxiaochen.club/2018-05-24-GD/" rel="external nofollow noopener noreferrer" target="_blank">我自己理解的梯度下降原理</a></p>]]></content>
+    
+    <summary type="html">
+    
+      当初学习线性回归的时候，知道了要优化损失函数，使损失函数要尽量的小。而损失函数就直接拿平方损失函数直接用，完全不知道为什么要用这个损失函数，慢慢的对这个问题感到好奇，查了资料才发现，确实是有一定道理的，我现在就来总结一下。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="线性回归" scheme="https://pspxiaochen.club/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>25周岁生日</title>
+    <link href="https://pspxiaochen.club/birthday/"/>
+    <id>https://pspxiaochen.club/birthday/</id>
+    <published>2018-06-29T11:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.105Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。"><a href="#今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。" class="headerlink" title="今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。"></a>今天是25岁生日，祝我生日快乐，下午接了一个团购鞋子，真是讽刺。</h1>]]></content>
+    
+    <summary type="html">
+    
+      祝我生日快乐。
+    
+    </summary>
+    
+      <category term="life" scheme="https://pspxiaochen.club/categories/life/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习之交叉验证</title>
+    <link href="https://pspxiaochen.club/cross-validation/"/>
+    <id>https://pspxiaochen.club/cross-validation/</id>
+    <published>2018-06-29T02:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.109Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="交叉验证的基本思想"><a href="#交叉验证的基本思想" class="headerlink" title="交叉验证的基本思想"></a>交叉验证的基本思想</h1><p>&emsp;&emsp; 交叉验证的基本想法是重复的使用数据；把给定数据进行切分，将切分的数据集组合为训练集与测试集，再次基础上反复地进行训练、测试、以及模型选择。</p><h2 id="简单的交叉验证"><a href="#简单的交叉验证" class="headerlink" title="简单的交叉验证"></a>简单的交叉验证</h2><p>1、首先随机得将已给数据分为两部分，一部分作为训练集，一部分作为测试集。（一般是73分）<br>2、然后用训练集在各种条件下（比如不同的参数）训练模型，从而得到不同的模型；<br>3、在测试集上评价各个模型的测试误差，选出测试误差最小的模型。<br>优点：由于测试集和训练集是分开的，就避免了过拟合现象</p><h2 id="k折交叉验证"><a href="#k折交叉验证" class="headerlink" title="k折交叉验证"></a>k折交叉验证</h2><p>1.首先将训练数据平均切分成k份，每一份互不相交且大小一样。<br>2.用k-1个子集进行训练模型，用余下的那一个作为预测。<br>3.将2这一过程对可能的k种选择重复进行。<br>4.最后选出k次测评中平均测试误差最小的模型。<br>优点：这个方法充分利用了所有样本。但计算比较繁琐，需要训练k次，测试k次。</p><h2 id="留一法"><a href="#留一法" class="headerlink" title="留一法"></a>留一法</h2><p>留一法就是每次只留下一个样本做测试集，其它样本做训练集，如果有k个样本，则需要训练k次，测试k次。<br>优点：留一发计算最繁琐，但样本利用率最高。适合于小样本的情况。</p>]]></content>
+    
+    <summary type="html">
+    
+      昨天面试的不太好，面试官问到了几种交叉验证可以解决的问题，没有答上来，今天来总结一下。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="交叉验证" scheme="https://pspxiaochen.club/tags/%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>求余和取模傻傻分不清</title>
+    <link href="https://pspxiaochen.club/rem-and-mod/"/>
+    <id>https://pspxiaochen.club/rem-and-mod/</id>
+    <published>2018-06-27T13:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.118Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;通常情况下取模运算(mod)和求余(rem)运算被混为一谈，因为在大多数的编程语言里，都用’%’符号表示取模或者求余运算。在这里要提醒大家要十分注意当前环境下’%’运算符的具体意义，因为在有负数存在的情况下，两者的结果是不一样的。<br>&emsp;&emsp;假设有整数a和b，取模或者求余运算的方法都是（1）c=a/b (2)r=a-c*b<br>&emsp;&emsp;求模运算和求余运算在第一步不同,取余运算在计算商值向0方向舍弃小数位,取模运算在计算商值向负无穷方向舍弃小数位.<br>&emsp;&emsp;在C中 %是取余，mod是取模。<br>&emsp;&emsp;在Python中%就是取模。</p><h1 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h1><p>如果a=3 b=-4<br>3/(-4)等于-0.75<br>在取余运算时候商值向0方向舍弃小数位为0<br>在取模运算时商值向负无穷方向舍弃小数位为-1<br>所以<br>3rem(-4) = 3<br>3mod(-4) = -1<br>希望这次可以记住。</p>]]></content>
+    
+    <summary type="html">
+    
+      之前总分不清楚，希望这次可以一直记住。
+    
+    </summary>
+    
+      <category term="笔试" scheme="https://pspxiaochen.club/categories/%E7%AC%94%E8%AF%95/"/>
+    
+    
+      <category term="mod" scheme="https://pspxiaochen.club/tags/mod/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kd树-第一次面试的痛</title>
+    <link href="https://pspxiaochen.club/kd-tree/"/>
+    <id>https://pspxiaochen.club/kd-tree/</id>
+    <published>2018-06-26T13:27:00.000Z</published>
+    <updated>2019-07-02T08:05:54.115Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是KD树"><a href="#什么是KD树" class="headerlink" title="什么是KD树"></a>什么是KD树</h1><p>&emsp;&emsp;kd树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。kd树是二叉树，表示对k维空间的一个划分。构造kd树相当于不断的用垂直于坐标轴的超平面将K维空间切分，构成一系列的k维超矩形区域。kd树的每个节点对应于一个K维超矩形区域。</p><h1 id="构建KD树"><a href="#构建KD树" class="headerlink" title="构建KD树"></a>构建KD树</h1><p>输入：K维空间数据集，样本数为N。$x_i = (x_i^{(1)},x_i^{(2)},x_i^{(3)}….x_i^{(k)})^T$<br>输出：KD树<br>&emsp;&emsp;(1)开始：构造根节点，根节点包含了K维空间的超矩形区域。<br>&emsp;&emsp;选择$x^{(1)}$作为第一个切分的维度，找到$x^{(1)}$坐标的中位数为切分点，将数据集一分为二，大于$x_i^{(1)}$的中位数在右，小于在左。切分由通过切分点并与坐标轴$x^{(1)}$垂直的超平面实现。<br>&emsp;&emsp;<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(2)重复切分操作，再将$x^{(2)}$作为切分的维度，并在之前已经一分为二的左边和右边分别找到$x^{(2)}$维度的中位数，接着分别切分到左右两边。<br>&emsp;&emsp;(3)一直重复切分操作,对深度为j的节点,选择$x^{(l)}$为切分的坐标轴，l=j(mod)k +1,以该结点的区域中所有实例的$x^{(l)}$坐标的中位数为切分点，将该结点对应的超平面矩形区域切分为两个子区域。<strong>将落在切分超平面的实例点保存在根节点。</strong><br>&emsp;&emsp;(4)直到两个子区域没有实例存在时停止。从而形成kd数的区域划分。</p><h1 id="搜索kd树（最近邻）"><a href="#搜索kd树（最近邻）" class="headerlink" title="搜索kd树（最近邻）"></a>搜索kd树（最近邻）</h1><p>&emsp;&emsp;下面介绍如何利用kd树进行最近邻搜索。利用kd树可以省去大部分数据点的搜索，从而减少搜索的计算量。<br>输入：（1）已经构造好的kd树（2）目标点x（想找到距离x最近的点）<br>输出： x的最近邻<br>&emsp;&emsp;（1）在kd树种找出包含目标点x的叶节点：从根节点出发，递归的向下访问kd树。若目标点x当前维（用哪个维度分的就用哪个维度）的坐标小于切分点的坐标，则移动到左子节点，否则移动到右子节点。直到找到子节点为叶节点为止。<br>&emsp;&emsp;（2）以次叶节点为‘当前最近点’<br>&emsp;&emsp;（3）<strong>递归</strong>（刚才一路下来的那些点都要进行接来下来的操作）地向上回退，在每个结点都进行以下操作：<br>&emsp;&emsp;&emsp;&emsp;a:如果该结点保存的实例点比当前最近点的距离（用选定的公式计算比如欧氏距离）目标点更近，则以该实例点为‘当前最近点’。<br>&emsp;&emsp;&emsp;&emsp;b:检查目前结点的另一子结点对应的区域是否以目标点为球心、以目标点与‘当前最近点’间的距离为半径的超球体相交。<br>&emsp;&emsp;&emsp;&emsp;若相交：可能在另一个子结点对应的区域内存在距离目标点更近的点，移动到另一个子结点，接着递归的向下搜索<br>&emsp;&emsp;&emsp;&emsp;如果不想交：向上回退。<br>&emsp;&emsp;（4）当退回到根节点时，搜索结束。最后的‘当前最近点’即为x的最近邻点。</p><p>&emsp;&emsp;kd数搜索的评论计算复杂度是O(logN),N是训练实例数.kd树更适用于训练实例数远大于空间维数时的k近邻搜索。</p><h1 id="搜索kd树-（K近邻）"><a href="#搜索kd树-（K近邻）" class="headerlink" title="搜索kd树*（K近邻）"></a>搜索kd树*（K近邻）</h1><p>输入：给定一个已经构建好的kd树，需要寻找的点P，需要寻找几个近邻K。<br>输出：L列表，L列表里有K个空位，每个空位装的是近邻点。</p><p>&emsp;&emsp;（1）根据切分的维度对比同维度下P的坐标值向下搜索。（也就是说，如果树的节点是照 $x_r=a$ 进行切分，并且 p 的 r 坐标小于 a，则向左枝进行搜索；反之则走右枝）。<br>&emsp;&emsp;（2）当到达叶子结点时，将其标记为访问过。如果L列表中不足k个点，则将当前结点的坐标加入到L列表。如果L列表不为空并且当前结点与P的距离小于L中所存放结点的最大距离，则用当前结点替换掉L中离P最远的结点。<br>&emsp;&emsp;（3）如果当前的结点不是整棵树最顶端的结点，执行a操作；反之，输出L列表。<br>&emsp;&emsp;&emsp;&emsp;a:向上爬一个结点。如果当前（向上爬过之后的）结点没有被访问过，将其标记为访问过，然后执行b和c操作；如果当前结点被访问过，再次执行a.<br>&emsp;&emsp;&emsp;&emsp;b:如果此时L列表中不足k个点，则将结点加入到L；如果L中已经满k个点，并且当前结点与P的距离小于 L列表中最远的距离的点，则用结点替换掉L中距离P最远的点。<br>&emsp;&emsp;&emsp;&emsp;c:计算p和当前结点切分线的距离（作垂线）。如果该距离大于等于L列表中距离最远的点并且L列表中已经有k个点，则在当前结点的另外一边（没访问过的那边）不会有更近的点，接着执行（3）；如果该距离小于L列表中距离最远的点或者L列表中不足k个点，则切分线另一边可能有更近的点，因此在当前结点的另外一边可能有更近的点，因此在当前结点的另外一边从（1）开始重新执行。</p><p>大概过成就是这样，下面有一个链接，链接里有距离寻找K近邻的例子。<br><a href="https://zhuanlan.zhihu.com/p/23966698" rel="external nofollow noopener noreferrer" target="_blank">搜索kd数k近邻搜索样例</a></p>]]></content>
+    
+    <summary type="html">
+    
+      记得第一次面试的时候，面试官问了我一道题，n个向量，怎么找到每个向量距离最近的向量，我想了好久，无奈只想到了两两计算这种垃圾方法，最近看统计学习方法的时候，看到了kd树，马上想起来原来可以用KD树来做。哎，现在写一篇记录一下。
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://pspxiaochen.club/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="kd树" scheme="https://pspxiaochen.club/tags/kd%E6%A0%91/"/>
+    
+  </entry>
+  
+</feed>

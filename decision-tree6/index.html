@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="mAZb1YA64T">
+<meta name="google-site-verification" content="VgjS2ObtH7PujsK4ZOhKVXseQT9nV1XL-AuuY2a4Y0c">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="发条晨" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+<meta name="description" content="接着整理！加油！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树整理（六）-----CART树的剪枝">
+<meta property="og:url" content="https://pspxiaochen.club/decision-tree6/index.html">
+<meta property="og:site_name" content="发条晨">
+<meta property="og:description" content="接着整理！加油！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu299q8dlrj20k00j3ab1.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu2boo3cluj20jw0b9q3b.jpg">
+<meta property="og:updated_time" content="2019-07-02T08:05:54.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="决策树整理（六）-----CART树的剪枝">
+<meta name="twitter:description" content="接着整理！加油！">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu299q8dlrj20k00j3ab1.jpg">
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pspxiaochen.club/decision-tree6/">
+
+
+
+
+
+  <title>决策树整理（六）-----CART树的剪枝 | 发条晨</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+	
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/pspxiaochen" class="github-corner" aria-label="View source on Github" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">发条晨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">愿我走出半生，归来仍是少年</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pspxiaochen.club/decision-tree6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pspxiaochen">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="发条晨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">决策树整理（六）-----CART树的剪枝</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-07T15:58:50+08:00">
+                2018-08-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T16:05:54+08:00">
+                2019-07-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  接着整理！加油！
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;CART树的剪枝算法由两步组成：首先从生成算法的决策树$T_0$底端开始不断剪枝，直到$T_0$的根节点，形成一个子树序列{$T_0,T_1,T_2,…,T_n$};然后通过交叉验证法在独立的验证数据集上对子树序列进行测试，从中选择最优子树。</p>
+<h2 id="剪枝，形成一个子树序列"><a href="#剪枝，形成一个子树序列" class="headerlink" title="剪枝，形成一个子树序列"></a>剪枝，形成一个子树序列</h2><p>&emsp;&emsp;在剪枝过程中，计算子树的损失函数:</p>
+<script type="math/tex; mode=display">C_a(T)=C(T)+a|T|</script><p>其中，T为任意子树，$C(T)$为对训练数据的预测误差（比如基尼指数或者错误率                    ）,|T|为子树T的叶节点个数，a大于等于0为参数，$C_a(T)$为参数是a时的子树T的整体损失。参数a权衡训练数据的拟合程度与模型的复杂度。（又有一点正则化项的感觉）。<br>&emsp;&emsp;对固定的a，一定存在使损失函数$C_a(T)$最小的子树，将其表示为$T_a$。$T_a$在损失函数$C_a(T)$最小的意义下是最优的。容易验证这样的最优子树是唯一的。当a大的时候，最优子树$T_a$偏小（如果a比较大会导致后面一项比较大，所以尽量让|T|小一些）；当a小的时候，最优子树$T_a$偏大。极端情况下，如果a=0,那么整体树是最优的。当a接近于无穷，根节点组成的单节点树是最优的。<br>&emsp;&emsp;从整体树（最上面的根节点）$T_0$开始剪枝，对$T_0$的任意内部结点t（一般是自下而上的算），以t为单节点树的损失函数是(把t当做一个叶子结点计算，那么之前t下面的所有叶子结点的样本都会放到这个t结点中去)<script type="math/tex">C_a(t)=C(t)+a|1|</script>,因为把t当做单节点，所以a后面的数是|1|,接着在计算以t为根节点的子树$T_t$的损失函数是：<script type="math/tex">C_a(T_t)=C(T_t)+a|T_t|</script><br>当a=0时候或者a充分小时，有不等式<script type="math/tex">C_a(T_t) < C_a(t)</script><br>当a增大时，在某一a有<script type="math/tex">C_a(T_t) = C_a(t)</script><br>当a再增大时，不等式反向。那么我们知道，只要<script type="math/tex">a=\frac{C(t)-C(T_t)}{|T_t|-1}</script><br>这个t节点在做单结点或者子树时有相同的损失函数，而作为单结点的时候结点少，因此t比$T_t$更可取，所以我们对这个t结点以下的部分进行剪枝，让这个t变成单结点。<br>所以我们计算这课整体树$T_0$的每一个非叶节点，计算<script type="math/tex">g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}</script><br>这个式子表示减值后整体损失函数减少的程度。在$T_0$中剪去g(t)最小的$T_t$,将得到的子树作为$T_1$,同时将最小的g(t)设置为$a_1$,$T_1$为区间$[a_1,a_2)$的最优子树。<br>我们来捋一捋这段话，为什么g(t)表示剪枝后整体损失函数减少的程度，讲道理是g(t)越大越好对不对，但是为什么我们要先从g(t)最小的来做呢。<br>我们先再来理一遍剪枝时候的情况。对于每个给定的a值，树中的每个非叶子结点作为子结点或者叶子结点时，树的预测误差性是不同的，也就是说该结点修剪前和修剪之后，对应的树对训练数据的预测误差不同，代价函数的损失大小也不同。<br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu299q8dlrj20k00j3ab1.jpg" alt="此处输入图片的描述"><br>如上图所示，假设在a变化时，数中的两个结点对应的预测误差的变化（修剪前后）分别是黑色和红色线所示，当a比较小的时候，结点不修剪的误差要小于修剪后的误差（因为a小，所以后面一项的值小，所以肯定树越复杂预测效果越好，损失函数越小），但当a增大时，慢慢的修剪后的误差和修剪前的误差会慢慢接近，直到相等，这个值我们把他叫做临界值$g(t)$</p>
+<p>那我们为什么要选最小的g(t)呢，以图中两个点为例，结点1和结点2，$g(t)_2 &gt; g(t)_1$,假设在所有的节点中g(t_2)最大，g(t_1)最小，那么我们如果选择最大的值，对结点2进行了剪枝，但此时结点1的不修剪的损失函数大于修剪之后的损失函数，这说明如果不修剪的话，误差会变大，依次类推，对于其他结点也如此，这相当于你的a是很大的，导致你的第二项很大，所以损失函数很大。这造成整体的累计误差也很大。但是如果我们选择了最小值，也就是对结点1进行了剪枝，则其余结点不剪枝的损失函数要小于剪枝之后的损失函数，对于这些结点来说不修剪就是最好的，也就说明整体误差小。从而以最小的g(t)剪枝获得子树是这个a值下的最优子树。     </p>
+<p>顺便说一下，上面的那个式子g(t)他也是等于a的，这是东西叫做误差增益，看看它的分子就会明白了：分子是由剪枝前后模型的拟合程度的差值构成的，也就是说，a的大小和剪枝前后模型的拟合能力的变化所决定的n ，由于剪枝的关系，模型在样本内的拟合能力通常是减弱的，所以才叫做”误差”增益值。所以对于那个完整的树$T_0$中的每个结点t，我们都要计算误差增益是多少，然后拟合能力减少最小的那个剪枝方案$T_1$就是我们最需要的。</p>
+<p>下面还是拿个例子还说把，分类问题。<br><img src="http://wx2.sinaimg.cn/mw690/72fdc620ly1fu2boo3cluj20jw0b9q3b.jpg" alt="此处输入图片的描述"><br>用我们上面的剪枝方法先初始$k=0,T=T_0$,自上而下的计算每个结点的g(t)<br>$C(t)$表示训练数据的预测误差（我们的例子用基尼指数计算）= 结点t上的数据占所有数据的比例*结点的误差率，而结点的误差率 = 分错的样本数/（这个结点总共的）。</p>
+<p>$C(T_t)$表示子树$T_t$的预测误差 = 子树 $T_t$上所有叶子结点的预测误差之和，就等于要计算每一个叶子结点，按照计算$C(t)$那样计算，最后把值加到一起。<br>如假我们一共有60条数据，而这个T4结点一共包含了16条数据，我们开始计算T4的信息：</p>
+<script type="math/tex; mode=display">C(t) = \frac{16}{60} * \frac{7}{16}$$ (一共有16个样本，因为9比7大，我们认为9个样本被分对了，7个样本被分错了)
+$$C(T_t) = {9 \over 60}*{3 \over 9} + {5 \over 60} * {2\over5} + {2\over60} * {0 \over 2}</script><p>（某个叶节点k类比较多，我就认为这个正确分类是k类，其他不是k类的都是错分样本）<br>经过计算之后</p>
+<script type="math/tex; mode=display">g(t)=\frac{1}{60}</script><p>令a = 1/60.</p>
+<p>如果是回归问题的话，我们可能需要把基尼指数换成平方损失这种损失函数来进行计算了。</p>
+<p>接下来进行第二部分</p>
+<h2 id="在剪枝得到的子树序列-T-0-T-1-T-2-…-T-n-中通过交叉验证选取最优子树-T-a"><a href="#在剪枝得到的子树序列-T-0-T-1-T-2-…-T-n-中通过交叉验证选取最优子树-T-a" class="headerlink" title="在剪枝得到的子树序列$T_0,T_1,T_2,…,T_n$中通过交叉验证选取最优子树$T_a$"></a>在剪枝得到的子树序列$T_0,T_1,T_2,…,T_n$中通过交叉验证选取最优子树$T_a$</h2><p>&emsp;&emsp;具体的，利用独立的验证数据集，测试子树序列中各颗子树的平方误差或者基尼指数。平方误差或者基尼指数最小的决策树被认为是最优的决策树。每棵树都对应着参数a.所以，当最优子树$T_k$确定了，那么参数$a_k$也就确定了。</p>
+<p>现在总结一下CART剪枝算法。<br>输入:CART算法生成的决策树$T_0$<br>输出：最优决策树<br>（1）设$k = 0,T=T_0$,a=正无穷。<br>（2）自下而上的对各非叶子结点计算$C(T_t),|T_t|,g(t)，a=min(a,g(t))$<br>(g(t)代表的是一个a的临界值，是当剪枝前和剪枝后的损失损失相同时的a值)，当计算完所有的叶子结点之后，这时的a是最小值，和最小的g(t)相等。<br> (3) 自上而下的访问每个非叶子结点，如果有g(t)=a，说明找到了最小的g(t)，进行剪枝，并对已经变成叶子 结点的t以多数表决发决定其类，得到树T。<br>（4）设$k=k+1,a_k=a,T_k=T$<br> (5) 如果T不是由根结点一个单结点组成的树，则退回到步骤2重新计算，划重点这时候退回去的树是一棵完整的原来的树，最开始的树，但是a已经变大了）（重新找最小的g(t)）,否则$T_k=T_n$<br> (6) 采用交叉验证法用验证集在子树集合中找到最优子树。</p>
+<p> <strong>对整体过程更为直观的理解，注意上面的几个关键地方：<br>1.对树的更新是创建一个新的子树，并不是对更新了的子树赋值给树带回到步骤2，而回到步骤2的还是完整的没有任何剪枝树。<br>2.因为是逐渐增大，所以开始为0时，不会剪枝，因为过小，树的结构复杂也对损失函数造成不了什么影响，随着的增大，会到达某一个临界点，这个临界点就是所有内部结点算出的g(t)中的最小的g(t)，我们称为g(t0)，此时剪枝不剪枝损失相同，但为了结构更加简单(奥卡姆剃刀原理)，进行剪枝。<br>然后剪枝完了，得到一颗子树，并保存下来。之后恢复完整没剪枝的树回到步骤2里面，并且因为是自下而上的，所以对上面刚刚剪枝的临界值即g(t0)的基础上增大,第二次剪枝的时候就彻底不考虑g(t0)了，因为之前第一次剪枝的是所有里面最小的，所以后面的肯定比第一次的临界大，因此满足了书中的不断增加值。<br>然后再找一个g(t0)大的g(t1)，并且g(t1)比除了g(t0)的g(t)都小，于是这就是第二个剪枝的临界点，找到g(t1)对应的结点，并在此进行剪枝，又得到一棵子树，然后再找比g(t0) g(t1)大但比其他g(t)小的g(t2)，重复之前的过程，直到增大到恰好等于只剩初始完整树的根节点加俩叶节点时的g(tn)，停止，并返回这个树，增大也就结束了，也得到了一系列树。</strong></p>
+<h1 id="再说一种剪枝的方法："><a href="#再说一种剪枝的方法：" class="headerlink" title="再说一种剪枝的方法："></a>再说一种剪枝的方法：</h1><p>简单粗暴的 错误率降低剪枝<br>直接拿验证集来怼，如果减值后验证集准确率更低 就剪枝否则不减，真简单粗暴！</p>
+
+      
+    </div>
+    
+    
+    
+	
+   <div>
+      <div>  <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>  </div>
+   </div>
+    
+	
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/decision-tree6/">决策树整理（六）-----CART树的剪枝</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 pspxiaochen 的个人博客">pspxiaochen</a></p>
+  <p><span>发布时间:</span>2018年08月07日 - 15:08</p>
+  <p><span>原始链接:</span><a href="/decision-tree6/" title="决策树整理（六）-----CART树的剪枝">https://pspxiaochen.club/decision-tree6/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://pspxiaochen.club/decision-tree6/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      
+    </div>
+	
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果对你有帮助，方便的话麻烦给我的午饭加一颗卤蛋</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="pspxiaochen WeChat Pay">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="pspxiaochen Alipay">
+        <p>支付宝支付</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/decision-tree5/" rel="next" title="决策树整理（五）----回归树（cart树）">
+                <i class="fa fa-chevron-left"></i> 决策树整理（五）----回归树（cart树）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/LR/" rel="prev" title="逻辑回归推导与整理">
+                逻辑回归推导与整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzU1Mi8xNDA4NA=="></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="pspxiaochen">
+          <p class="site-author-name" itemprop="name">pspxiaochen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/pspxiaochen" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝，形成一个子树序列"><span class="nav-number">1.</span> <span class="nav-text">剪枝，形成一个子树序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在剪枝得到的子树序列-T-0-T-1-T-2-…-T-n-中通过交叉验证选取最优子树-T-a"><span class="nav-number">2.</span> <span class="nav-text">在剪枝得到的子树序列$T_0,T_1,T_2,…,T_n$中通过交叉验证选取最优子树$T_a$</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#再说一种剪枝的方法："><span class="nav-number"></span> <span class="nav-text">再说一种剪枝的方法：</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pspxiaochen</span>
+
+  
+</div>
+
+
+ <!-- <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Muse
+    </a>
+  </div>
+-->
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" rel="external nofollow noopener noreferrer" target="_blank">Coding Pages</a></p>
+<div>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp 本站访客数
+    <span id="busuanzi_value_site_uv"></span>人次&nbsp&nbsp&nbsp 本页阅读量<span id="busuanzi_value_page_pv"></span>次
+    </div>
+	
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共32.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
